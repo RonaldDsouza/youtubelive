@@ -1,3 +1,5 @@
+
+google.com, pub-4821855388989115, DIRECT, f08c47fec0942fa0
 adform.com,3061,RESELLER,9f5210a2f0999e32
 appnexus.com,3360,RESELLER,f5ab79cb980f11d1
 appnexus.com,6924,RESELLER,f5ab79cb980f11d1
