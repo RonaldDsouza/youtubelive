@@ -2,9 +2,51 @@
     "articles": [
       {
         "id": "article1",
-        "title": "Italy vs Israel | Highlights | UEFA Nations League | 15th October 2024 ",
-        "image": "https://img.youtube.com/vi/j-_drf51E5w/maxresdefault.jpg",
-        "videoitem": ["j-_drf51E5w"],
+        "title": "Wolf Man | Official Trailer",
+        "image": "https://i.ytimg.com/vi/1KbYupg62Nw/maxresdefault.jpg",
+        "videoitem": ["kAw4PH2IQgo"],
+        "videotittle": ["Seven Cemeteries (2024)"]
+      },
+      {
+        "id": "article2",
+        "title": "PM Narendra Modi - Official Trailer ",
+        "image": "https://img.youtube.com/vi/CCTASz2gmGo/maxresdefault.jpg",
+        "videoitem": ["CCTASz2gmGo"],
+        "videotittle": ["Seven Cemeteries (2024)"]
+      },
+      {
+        "id": "article3",
+        "title": "Vettaiyan The Hunter (Hindi) - Official Trailer ",
+        "image": "https://img.youtube.com/vi/NQXE3iJCWNI/maxresdefault.jpg",
+        "videoitem": ["NQXE3iJCWNI"],
+        "videotittle": ["Seven Cemeteries (2024)"]
+      },
+      {
+        "id": "article4",
+        "title": "Singham Again - Official Trailer ",
+        "image": "https://img.youtube.com/vi/MD7v0-igVIM/maxresdefault.jpg",
+        "videoitem": ["MD7v0-igVIM"],
+        "videotittle": ["Seven Cemeteries (2024)"]
+      },
+      {
+        "id": "article5",
+        "title": "Jaat - Official Trailer ",
+        "image": "https://img.youtube.com/vi/7lP0H2CBUL0/maxresdefault.jpg",
+        "videoitem": ["7lP0H2CBUL0"],
+        "videotittle": ["Seven Cemeteries (2024)"]
+      },
+      {
+        "id": "article6",
+        "title": "JIGRA - Official Trailer ",
+        "image": "https://img.youtube.com/vi/3uE0RuQndZc/maxresdefault.jpg",
+        "videoitem": ["3uE0RuQndZc"],
+        "videotittle": ["Seven Cemeteries (2024)"]
+      },
+      {
+        "id": "article7",
+        "title": "ALIEN HUNT - Official Trailer ",
+        "image": "https://i.ytimg.com/vi/C67dFTITZjI/maxresdefault.jpg",
+        "videoitem": ["x96rmly"],
         "videotittle": ["Seven Cemeteries (2024)"]
       }
     ]
