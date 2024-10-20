@@ -1,7 +1,7 @@
 
 /** @type {import('next-sitemap').IConfig} */
 module.exports = {
-  siteUrl: 'http://localhost:3000/', // Replace with your actual live domain
+  siteUrl: 'https://youtubelive.vercel.app/', // Replace with your actual live domain
   changefreq: 'daily',
   sitemapSize: 7000,
   // generateRobotsTxt: true, // Optionally generate robots.txt
