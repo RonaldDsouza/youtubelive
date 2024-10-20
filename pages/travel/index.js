@@ -7,7 +7,7 @@ import Head from "next/head";
 import Script from "next/script";
 
 export async function getServerSideProps() {
-  const res = await fetch("https://youtubelive.vercel.app/articles.json");
+  const res = await fetch("https://youtubelive.vercel.app/travel.json");
   const articles = await res.json();
 
   return {
@@ -116,7 +116,7 @@ export default function HomePage({ articles }) {
     {
       "@context": "https://schema.org",
       "@type": "Organization",
-      name: "Youtube Live™ - Live Section.",
+      name: "Youtube Live™ - Luxury & Travel Section.",
       url: "https://youtubelive.vercel.app/",
       image: ["https://youtubelive.vercel.app/favicon.ico"],
       logo: {
@@ -159,14 +159,14 @@ export default function HomePage({ articles }) {
       {
         "@type": "Organization",
         "@id": "https://youtubelive.vercel.app/#organization",
-        name: "Youtube Live™ - Live Section.",
+        name: "Youtube Live™ - Luxury & Travel Section.",
         url: "https://youtubelive.vercel.app",
       },
       {
         "@type": "WebSite",
         "@id": "https://youtubelive.vercel.app/#website",
         url: "https://youtubelive.vercel.app",
-        name: "Youtube Live™ - Live Section.",
+        name: "Youtube Live™ - Luxury & Travel Section.",
         publisher: {
           "@type": "Organization",
           "@id": "https://youtubelive.vercel.app/#organization",
@@ -174,9 +174,9 @@ export default function HomePage({ articles }) {
       },
       {
         "@type": "WebPage",
-        "@id": "https://youtubelive.vercel.app/live#webpage",
-        url: "https://youtubelive.vercel.app/live",
-        name: "Youtube Live™ - Live Section.",
+        "@id": "https://youtubelive.vercel.app/travel#webpage",
+        url: "https://youtubelive.vercel.app/travel",
+        name: "Youtube Live™ - Luxury & Travel Section.",
         datePublished: "2024-01-13T13:00:00+00:00",
         dateModified: "2024-01-13T13:13:00+00:00",
         isPartOf: {
@@ -190,7 +190,7 @@ export default function HomePage({ articles }) {
   return (
     <>
       <Head>
-        <title>Youtube Live™ - Live Section.</title>
+        <title>Youtube Live™ - Luxury & Travel Section.</title>
 
         <link
           rel="sitemap"
@@ -209,16 +209,16 @@ export default function HomePage({ articles }) {
           name="description"
           content="Discover the best YouTube content in news, movies, sports, podcasts, music, games, and more with Youtube Live™. Explore, stream, and enjoy top-quality videos curated for you."
         />
-        <link rel="canonical" href="https://youtubelive.vercel.app/live" />
+        <link rel="canonical" href="https://youtubelive.vercel.app/travel" />
         <meta
           name="google-site-verification"
           content="RNN2teFhD-lV1TQ9qcLQiSO5BLBB4DmztyYJS6QLqDg"
         />
         <meta property="og:locale" content="en_US" />
         <meta property="og:type" content="website" />
-        <meta property="og:title" content="Youtube Live™ - Live Section." />
-        <meta property="og:url" content="https://youtubelive.vercel.app/live" />
-        <meta property="og:site_name" content="Youtube Live™ - Live Section." />
+        <meta property="og:title" content="Youtube Live™ - Luxury & Travel Section." />
+        <meta property="og:url" content="https://youtubelive.vercel.app/travel" />
+        <meta property="og:site_name" content="Youtube Live™ - Luxury & Travel Section." />
         <meta
           property="og:image"
           content="https://youtubelive.vercel.app/og_image.jpg"
@@ -226,7 +226,7 @@ export default function HomePage({ articles }) {
         <meta property="og:image:width" content="1280" />
         <meta property="og:image:height" content="720" />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Youtube Live™ - Live Section." />
+        <meta name="twitter:title" content="Youtube Live™ - Luxury & Travel Section." />
         <meta
           name="twitter:description"
           content="Discover the best YouTube content in news, movies, sports, podcasts, music, games, and more with Youtube Live™. Explore, stream, and enjoy top-quality videos curated for you."
@@ -401,7 +401,7 @@ export default function HomePage({ articles }) {
 
       {/* <div className={youtubeStyles.container} > */}
       <header className={youtubeStyles.header}>
-        <h1 className={youtubeStyles.logo}>Live News Section.</h1>
+        <h1 className={youtubeStyles.logo}>Luxury & Travel Section.</h1>
       </header>
 
       <main className={youtubeStyles.main}>
