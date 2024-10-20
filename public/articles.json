@@ -1,0 +1,89 @@
+{
+    "articles": [
+      {
+        "id": "article1",
+        "title": "D W Live",
+        "image": "https://img.youtube.com/vi/tZT2MCYu6Zw/maxresdefault.jpg",
+        "videoitem": ["tZT2MCYu6Zw"],
+        "videotittle": ["D W Live"]
+      },
+      {
+        "id": "article2",
+        "title": "Al jazeera Live",
+        "image": "https://img.youtube.com/vi/gCNeDWCI0vo/maxresdefault.jpg",
+        "videoitem": ["gCNeDWCI0vo"],
+        "videotittle": ["Al jazeera Live"]
+      },
+      {
+        "id": "article3",
+        "title": "A N I News Live",
+        "image": "https://i.ytimg.com/vi/HeP8HZt3OQw/maxresdefault.jpg",
+        "videoitem": ["mDQ8-gHPx7s"],
+        "videotittle": ["A N I News Live"]
+      },
+      {
+        "id": "article4",
+        "title": "Times Of India Live",
+        "image": "https://timesofindia.indiatimes.com/thumb/msid-113159906,width-1280,height-720,resizemode-4/113159906.jpg",
+        "videoitem": ["zIbQBds00Aw"],
+        "videotittle": ["Times Of India Live"]
+      },
+      {
+        "id": "article5",
+        "title": "Sky News Live",
+        "image": "https://i.ytimg.com/vi/oJUvTVdTMyY/maxresdefault.jpg",
+        "videoitem": ["oJUvTVdTMyY"],
+        "videotittle": ["Sky News Live"]
+      },
+      {
+        "id": "article6",
+        "title": "ABC News Live",
+        "image": "https://i.ytimg.com/vi/5VEmOvfAvpw/maxresdefault.jpg",
+        "videoitem": ["-mvUkiILTqI"],
+        "videotittle": ["ABC News Live"]
+      },
+      {
+        "id": "article7",
+        "title": "Fox News Live",
+        "image": "https://i.ytimg.com/vi/v6qoMVdonMU/maxresdefault.jpg",
+        "videoitem": ["rXTAxGe3yK0"],
+        "videotittle": ["Fox News Live"]
+      },
+      {
+        "id": "article8",
+        "title": "USA TODAY Live",
+        "image": "https://img.youtube.com/vi/vZYMwAm8sso/maxresdefault.jpg",
+        "videoitem": ["vZYMwAm8sso"],
+        "videotittle": ["USA TODAY Live"]
+      },
+      {
+        "id": "article9",
+        "title": "FRANCE 24 English Live",
+        "image": "https://img.youtube.com/vi/Ap-UM1O9RBU/maxresdefault.jpg",
+        "videoitem": ["Ap-UM1O9RBU"],
+        "videotittle": ["FRANCE 24 English Live"]
+      },
+      {
+        "id": "article10",
+        "title": "ABC News Australia Live",
+        "image": "https://img.youtube.com/vi/vOTiJkg1voo/maxresdefault.jpg",
+        "videoitem": ["vOTiJkg1voo"],
+        "videotittle": ["ABC News Australia Live"]
+      },
+      {
+        "id": "article11",
+        "title": "NBC News Live",
+        "image": "https://img.youtube.com/vi/NZhyveLHwAE/maxresdefault.jpg",
+        "videoitem": ["NZhyveLHwAE"],
+        "videotittle": ["NBC News Live"]
+      },
+      {
+        "id": "article12",
+        "title": "Euro News Live",
+        "image": "https://i.ytimg.com/vi/gIyKiqt3bAE/maxresdefault.jpg",
+        "videoitem": ["ON4JiEjXUyw"],
+        "videotittle": ["euro News Live"]
+      }
+    ]
+  }
+  

@@ -1,0 +1,54 @@
+{
+    "articles": [
+      {
+        "id": "article1",
+        "title": "Seven Cemeteries (2024) ",
+        "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR95lVNRp6dCJ38wyanMVmkgM2AsjfIf_MDJA&s",
+        "videoitem": ["x97otbg"],
+        "videotittle": ["Seven Cemeteries (2024)"]
+      },
+      {
+        "id": "article2",
+        "title": "Die Alone (2024)",
+        "image": "https://i.ytimg.com/vi/QaUy-i-qe5I/maxresdefault.jpg",
+        "videoitem": ["x97oyme"],
+        "videotittle": ["Die Alone (2024)"]
+      },
+      {
+        "id": "article3",
+        "title": "Bad Genius (2024)",
+        "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRaMfggb_OITCC-OvcYUOHhehFrel__1jhedw&s",
+        "videoitem": ["x97oz1k"],
+        "videotittle": ["Bad Genius (2024)"]
+      },
+      {
+        "id": "article4",
+        "title": "The Stoic (2024)",
+        "image": "https://dramatv.click/uploads/thumbs/24f9bcaba-1.jpg",
+        "videoitem": ["x97p1f6"],
+        "videotittle": ["The Stoic (2024)"]
+      },
+      {
+        "id": "article5",
+        "title": "9 Windows (2024)",
+        "image": "https://i.ytimg.com/vi/13yHYvml9H4/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLBdpWcmv_0VAZ6vBMnKkaQlvjAlJA",
+        "videoitem": ["x97p2k2"],
+        "videotittle": ["9 Windows (2024)"]
+      },
+      {
+        "id": "article6",
+        "title": "Rippy (2024)",
+        "image": "https://i.ytimg.com/vi/hu7IcWuCv7g/maxresdefault.jpg",
+        "videoitem": ["x97p4ce"],
+        "videotittle": ["Rippy (2024)"]
+      },
+      {
+        "id": "article6",
+        "title": "Cold Case (2021)",
+        "image": "https://img.youtube.com/vi/Z9uDOF5YmMs/maxresdefault.jpg",
+        "videoitem": ["Z9uDOF5YmMs"],
+        "videotittle": ["Cold Case (2021)"]
+      }
+    ]
+  }
+  
