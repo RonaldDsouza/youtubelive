@@ -137,7 +137,7 @@ export default function HomePage() {
           name="twitter:image"
           content="https://youtubelive.vercel.app/og_image.jpg"
         />
-        <meta name="google-adsense-account" content="ca-pub-4821855388989115">
+        <meta name="google-adsense-account" content="ca-pub-4821855388989115" />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: rankMathSchema }}
