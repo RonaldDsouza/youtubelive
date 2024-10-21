@@ -287,7 +287,7 @@ export default function HomePage({ articles }) {
           content="RNN2teFhD-lV1TQ9qcLQiSO5BLBB4DmztyYJS6QLqDg"
         />
         <meta property="og:locale" content="en_US" />
-        <meta property="og:type" content="website" />
+        <meta property="og:type" content="article" />
         <meta
           property="og:title"
           content="Youtube Live™ - Movie Trailers Section."
