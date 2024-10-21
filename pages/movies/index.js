@@ -120,7 +120,7 @@ export default function HomePage({ articles }) {
   
     // Create the iframe for Dailymotion
     const player = document.createElement("iframe");
-    player.src = `https://geo.dailymotion.com/player/xjrxe.html?video=${videoId}&autoplay=1&mute=true&Autoquality=1080p`;
+    player.src = `https://geo.dailymotion.com/player/xjrxe.html?video=${videoId}&autoplay=1&Autoquality=1080p`;
     player.width = "100%";
     player.height = "100%";
     player.setAttribute("allowfullscreen", "true");
