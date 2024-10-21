@@ -6,15 +6,45 @@ import Styles from "@styles/styles.module.css";
 import Head from "next/head";
 import Script from "next/script";
 
-export async function getServerSideProps() {
-  const res = await fetch("https://youtubelive.vercel.app/education.json");
-  const articles = await res.json();
+// export async function getStaticProps() {
+//   const res = await fetch("https://youtubelive.vercel.app/education.json");
+//   const articles = await res.json();
 
-  return {
-    props: {
-      articles: articles.articles,
-    },
-  };
+//   return {
+//     props: {
+//       articles: articles.articles,
+//     },
+//   };
+// }
+
+export async function getStaticProps() {
+  try {
+    // Fetch data from the local JSON file
+    const res = await fetch("https://youtubelive.vercel.app/education.json");
+
+    // Check if the response is OK (status in the range 200-299)
+    if (!res.ok) {
+      throw new Error(`Failed to fetch data: ${res.status}`);
+    }
+
+    const articles = await res.json();
+
+    return {
+      props: {
+        articles: articles.articles, // Ensure this matches your JSON structure
+      },
+    
+    };
+  } catch (error) {
+    console.error("Error fetching articles:", error);
+    
+    // Return an empty array or some fallback data in case of an error
+    return {
+      props: {
+        articles: [],
+      }
+    };
+  }
 }
 
 export default function HomePage({ articles }) {
