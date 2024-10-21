@@ -4,81 +4,87 @@ import { useEffect } from "react";
 import styles from "@styles/styles.module.css";
 
 export default function HomePage() {
-  const uwatchfreeSchema = JSON.stringify([
+ // Define the JSON-LD schema
+const ytSchema = JSON.stringify({
+  "@context": "https://schema.org",
+  "@graph": [
     {
-      "@context": "https://schema.org",
-      "@type": "Organization",
-      name: "Youtube Live™ - Online. Stream. Discover.",
-      url: "https://youtubelive.vercel.app/",
-      image: ["https://youtubelive.vercel.app/favicon.ico"],
-      logo: {
-        "@type": "ImageObject",
-        url: "https://youtubelive.vercel.app/logo.png",
-        width: 280,
-        height: 80,
-      },
+      "@type": "WebPage",
+      "@id": "https://youtubelive.vercel.app/",
+      "url": "https://youtubelive.vercel.app/",
+      "name": "Youtube Live™",
+      "isPartOf": { "@id": "https://youtubelive.vercel.app/#website" },
+      "about": { "@id": "https://youtubelive.vercel.app/#organization" },
+      "primaryImageOfPage": { "@id": "https://youtubelive.vercel.app/#primaryimage" },
+      "image": { "@id": "https://youtubelive.vercel.app/#primaryimage" },
+      "thumbnailUrl": "https://youtubelive.vercel.app/og_image.jpg",
+      "datePublished": "2023-07-02T18:30:00+00:00",
+      "dateModified": "2024-09-24T05:11:20+00:00",
+      "breadcrumb": { "@id": "https://youtubelive.vercel.app/#breadcrumb" },
+      "inLanguage": "en-US",
+      "potentialAction": [
+        { "@type": "ReadAction", "target": ["https://youtubelive.vercel.app/"] }
+      ]
     },
     {
-      "@context": "https://schema.org",
+      "@type": "ImageObject",
+      "inLanguage": "en-US",
+      "@id": "https://youtubelive.vercel.app/#primaryimage",
+      "url": "https://youtubelive.vercel.app/og_image.jpg",
+      "contentUrl": "https://youtubelive.vercel.app/og_image.jpg",
+      "width": 1280,
+      "height": 720
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://youtubelive.vercel.app/#breadcrumb",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home" }
+      ]
+    },
+    {
       "@type": "WebSite",
-      url: "https://youtubelive.vercel.app/",
-      potentialAction: {
-        "@type": "SearchAction",
-        target: {
-          "@type": "EntryPoint",
-          urlTemplate:
-            "https://youtubelive.vercel.app/search?q={search_term_string}",
-        },
-        "query-input": "required name=search_term_string",
-      },
+      "@id": "https://youtubelive.vercel.app/#website",
+      "url": "https://youtubelive.vercel.app/",
+      "name": "Youtube Live™",
+      "description": "",
+      "publisher": { "@id": "https://youtubelive.vercel.app/#organization" },
+      "potentialAction": [
+        {
+          "@type": "SearchAction",
+          "target": {
+            "@type": "EntryPoint",
+            "urlTemplate": "https://youtubelive.vercel.app/?s={search_term_string}"
+          },
+          "query-input": {
+            "@type": "PropertyValueSpecification",
+            "valueRequired": true,
+            "valueName": "search_term_string"
+          }
+        }
+      ],
+      "inLanguage": "en-US"
     },
-  ]);
+    {
+      "@type": "Organization",
+      "@id": "https://youtubelive.vercel.app/#organization",
+      "name": "Youtube Live™",
+      "url": "https://youtubelive.vercel.app/",
+      "logo": {
+        "@type": "ImageObject",
+        "inLanguage": "en-US",
+        "@id": "https://youtubelive.vercel.app/#/schema/logo/image/",
+        "url": "https://youtubelive.vercel.app/logo.png",
+        "contentUrl": "https://youtubelive.vercel.app/logo.png",
+        "width": 280,
+        "height": 100,
+        "caption": "Youtube Live™"
+      },
+      "image": { "@id": "https://youtubelive.vercel.app/#/schema/logo/image/" }
+    }
+  ]
+});
 
-  const rankMathSchema = JSON.stringify({
-    "@context": "https://schema.org",
-    "@graph": [
-      {
-        "@type": "Person",
-        "@id": "https://gravatar.com/drtrailer2022",
-        name: "Dr Trailer",
-        url: "https://gravatar.com/drtrailer2022",
-        image: {
-          "@type": "ImageObject",
-          "@id": "https://gravatar.com/drtrailer2022",
-          url: "https://gravatar.com/drtrailer2022",
-          caption: "Dr Trailer",
-        },
-      },
-      {
-        "@type": "Organization",
-        "@id": "https://youtubelive.vercel.app/#organization",
-        name: "Youtube Live™ - Online. Stream. Discover.",
-        url: "https://youtubelive.vercel.app",
-      },
-      {
-        "@type": "WebSite",
-        "@id": "https://youtubelive.vercel.app/#website",
-        url: "https://youtubelive.vercel.app",
-        name: "Youtube Live™ - Online. Stream. Discover.",
-        publisher: {
-          "@type": "Organization",
-          "@id": "https://youtubelive.vercel.app/#organization",
-        },
-      },
-      {
-        "@type": "WebPage",
-        "@id": "https://youtubelive.vercel.app/#webpage",
-        url: "https://youtubelive.vercel.app/",
-        name: "Movie",
-        datePublished: "2024-01-13T13:00:00+00:00",
-        dateModified: "2024-01-13T13:13:00+00:00",
-        isPartOf: {
-          "@id": "https://youtubelive.vercel.app/#website",
-        },
-        inLanguage: "en-US",
-      },
-    ],
-  });
 
   return (
     <>
@@ -140,13 +146,9 @@ export default function HomePage() {
         <meta name="google-adsense-account" content="ca-pub-4821855388989115" />
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: rankMathSchema }}
+          dangerouslySetInnerHTML={{ __html: ytSchema }}
         />
         <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: uwatchfreeSchema }}
-        />
-          <script
           async
           src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4821855388989115"
           crossOrigin="anonymous"

@@ -33,20 +33,18 @@ export async function getStaticProps() {
       props: {
         articles: articles.articles, // Ensure this matches your JSON structure
       },
-    
     };
   } catch (error) {
     console.error("Error fetching articles:", error);
-    
+
     // Return an empty array or some fallback data in case of an error
     return {
       props: {
         articles: [],
-      }
+      },
     };
   }
 }
-
 
 export default function HomePage({ articles }) {
   const [isModalOpen, setModalOpen] = useState(false);
@@ -143,81 +141,79 @@ export default function HomePage({ articles }) {
     }
   };
 
-  const uwatchfreeSchema = JSON.stringify([
-    {
-      "@context": "https://schema.org",
-      "@type": "Organization",
-      name: "Youtube Live™ - Luxury & Travel Section.",
-      url: "https://youtubelive.vercel.app/",
-      image: ["https://youtubelive.vercel.app/favicon.ico"],
-      logo: {
-        "@type": "ImageObject",
-        url: "https://youtubelive.vercel.app/logo.png",
-        width: 280,
-        height: 80,
-      },
-    },
-    {
-      "@context": "https://schema.org",
-      "@type": "WebSite",
-      url: "https://youtubelive.vercel.app/",
-      potentialAction: {
-        "@type": "SearchAction",
-        target: {
-          "@type": "EntryPoint",
-          urlTemplate: "https://youtubelive.vercel.app/search?q={search_term_string}",
-        },
-        "query-input": "required name=search_term_string",
-      },
-    },
-  ]);
-
-  const rankMathSchema = JSON.stringify({
+  const travelSchema = JSON.stringify({
     "@context": "https://schema.org",
     "@graph": [
       {
-        "@type": "Person",
-        "@id": "https://gravatar.com/drtrailer2022",
-        name: "Dr Trailer",
-        url: "https://gravatar.com/drtrailer2022",
-        image: {
-          "@type": "ImageObject",
-          "@id": "https://gravatar.com/drtrailer2022",
-          url: "https://gravatar.com/drtrailer2022",
-          caption: "Dr Trailer",
-        },
+        "@type": "CollectionPage",
+        "@id": "https://youtubelive.vercel.app/category/travel/",
+        "url": "https://youtubelive.vercel.app/category/travel/",
+        "name": "Luxury & Travel Section - Youtube Live™",
+        "isPartOf": { "@id": "https://youtubelive.vercel.app/#website" },
+        "primaryImageOfPage": { "@id": "https://youtubelive.vercel.app/travel/#primaryimage" },
+        "image": { "@id": "https://youtubelive.vercel.app/travel/#primaryimage" },
+        "thumbnailUrl": "https://youtubelive.vercel.app/og_image.jpg",
+        "breadcrumb": { "@id": "https://youtubelive.vercel.app/travel/#breadcrumb" },
+        "inLanguage": "en-US"
       },
       {
-        "@type": "Organization",
-        "@id": "https://youtubelive.vercel.app/#organization",
-        name: "Youtube Live™ - Luxury & Travel Section.",
-        url: "https://youtubelive.vercel.app",
+        "@type": "ImageObject",
+        "inLanguage": "en-US",
+        "@id": "https://youtubelive.vercel.app/travel/#primaryimage",
+        "url": "https://youtubelive.vercel.app/og_image.jpg",
+        "contentUrl": "https://youtubelive.vercel.app/og_image.jpg",
+        "width": 1280,
+        "height": 720
+      },
+      {
+        "@type": "BreadcrumbList",
+        "@id": "https://youtubelive.vercel.app/travel/#breadcrumb",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://youtubelive.vercel.app/" },
+          { "@type": "ListItem", "position": 2, "name": "Travel" }
+        ]
       },
       {
         "@type": "WebSite",
         "@id": "https://youtubelive.vercel.app/#website",
-        url: "https://youtubelive.vercel.app",
-        name: "Youtube Live™ - Luxury & Travel Section.",
-        publisher: {
-          "@type": "Organization",
-          "@id": "https://youtubelive.vercel.app/#organization",
-        },
+        "url": "https://youtubelive.vercel.app/",
+        "name": "Youtube Live™",
+        "description": "",
+        "publisher": { "@id": "https://youtubelive.vercel.app/#organization" },
+        "potentialAction": [
+          {
+            "@type": "SearchAction",
+            "target": { "@type": "EntryPoint", "urlTemplate": "https://youtubelive.vercel.app/?s={search_term_string}" },
+            "query-input": {
+              "@type": "PropertyValueSpecification",
+              "valueRequired": true,
+              "valueName": "search_term_string"
+            }
+          }
+        ],
+        "inLanguage": "en-US"
       },
       {
-        "@type": "WebPage",
-        "@id": "https://youtubelive.vercel.app/travel#webpage",
-        url: "https://youtubelive.vercel.app/travel",
-        name: "Youtube Live™ - Luxury & Travel Section.",
-        datePublished: "2024-01-13T13:00:00+00:00",
-        dateModified: "2024-01-13T13:13:00+00:00",
-        isPartOf: {
-          "@id": "https://youtubelive.vercel.app/#website",
+        "@type": "Organization",
+        "@id": "https://youtubelive.vercel.app/#organization",
+        "name": "Youtube Live™",
+        "url": "https://youtubelive.vercel.app/",
+        "logo": {
+          "@type": "ImageObject",
+          "inLanguage": "en-US",
+          "@id": "https://youtubelive.vercel.app/#/schema/logo/image/",
+          "url": "https://youtubelive.vercel.app/logo.png",
+          "contentUrl": "https://youtubelive.vercel.app/logo.png",
+          "width": 280,
+          "height": 100,
+          "caption": "Youtube Live™"
         },
-        inLanguage: "en-US",
-      },
-    ],
+        "image": { "@id": "https://youtubelive.vercel.app/#/schema/logo/image/" }
+      }
+    ]
   });
-
+  
+  
   return (
     <>
       <Head>
@@ -247,9 +243,18 @@ export default function HomePage({ articles }) {
         />
         <meta property="og:locale" content="en_US" />
         <meta property="og:type" content="website" />
-        <meta property="og:title" content="Youtube Live™ - Luxury & Travel Section." />
-        <meta property="og:url" content="https://youtubelive.vercel.app/travel" />
-        <meta property="og:site_name" content="Youtube Live™ - Luxury & Travel Section." />
+        <meta
+          property="og:title"
+          content="Youtube Live™ - Luxury & Travel Section."
+        />
+        <meta
+          property="og:url"
+          content="https://youtubelive.vercel.app/travel"
+        />
+        <meta
+          property="og:site_name"
+          content="Youtube Live™ - Luxury & Travel Section."
+        />
         <meta
           property="og:image"
           content="https://youtubelive.vercel.app/og_image.jpg"
@@ -257,7 +262,10 @@ export default function HomePage({ articles }) {
         <meta property="og:image:width" content="1280" />
         <meta property="og:image:height" content="720" />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Youtube Live™ - Luxury & Travel Section." />
+        <meta
+          name="twitter:title"
+          content="Youtube Live™ - Luxury & Travel Section."
+        />
         <meta
           name="twitter:description"
           content="Discover the best YouTube content in news, movies, sports, podcasts, music, games, and more with Youtube Live™. Explore, stream, and enjoy top-quality videos curated for you."
@@ -269,13 +277,9 @@ export default function HomePage({ articles }) {
 
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: rankMathSchema }}
+          dangerouslySetInnerHTML={{ __html: travelSchema }}
         />
         <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: uwatchfreeSchema }}
-        />
-          <script
           async
           src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4821855388989115"
           crossOrigin="anonymous"

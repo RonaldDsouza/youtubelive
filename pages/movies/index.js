@@ -33,16 +33,15 @@ export async function getStaticProps() {
       props: {
         articles: articles.articles, // Ensure this matches your JSON structure
       },
-    
     };
   } catch (error) {
     console.error("Error fetching articles:", error);
-    
+
     // Return an empty array or some fallback data in case of an error
     return {
       props: {
         articles: [],
-      }
+      },
     };
   }
 }
@@ -147,7 +146,7 @@ export default function HomePage({ articles }) {
       // Clear existing player if any
       dailymotionPlayerRef.current.innerHTML = ""; // Clear previous player
     }
-  
+
     // Create the iframe for Dailymotion
     const player = document.createElement("iframe");
     player.src = `https://geo.dailymotion.com/player/xjrxe.html?video=${videoId}&autoplay=1&Autoquality=1080p`;
@@ -156,120 +155,130 @@ export default function HomePage({ articles }) {
     player.setAttribute("allowfullscreen", "true");
     player.setAttribute("frameborder", "0");
     player.setAttribute("allow", "autoplay");
-  
+
     // Append the new player
     dailymotionPlayerRef.current.appendChild(player);
     setShowMessage(true); // Show message when the player loads
-  
+
     // Hide the message after 30 seconds
     setTimeout(() => {
       setShowMessage(false);
     }, 30000); // 30000 milliseconds = 30 seconds
-  
+
     // Use the Dailymotion API to detect when the video ends
     player.addEventListener("load", () => {
       const dailymotionPlayer = player.contentWindow.Dailymotion.player;
-  
+
       // Check if the Dailymotion player API is available
       if (dailymotionPlayer) {
-        dailymotionPlayer.on('end', () => {
+        dailymotionPlayer.on("end", () => {
           closeModal(); // Close modal when video ends
         });
       }
     });
   };
-  
+
   const openModal = (videoId) => {
     setCurrentVideoId(videoId);
     setModalOpen(true);
   };
-  
+
   const closeModal = () => {
     setModalOpen(false);
     setCurrentVideoId("");
-  
+
     // Stop YouTube video if it's playing
     if (playerRef.current && playerRef.current.stopVideo) {
       playerRef.current.stopVideo(); // Stop the video for YouTube
     }
-  
+
     // Clear Dailymotion player
     if (dailymotionPlayerRef.current) {
       dailymotionPlayerRef.current.innerHTML = ""; // Clear the player container
     }
   };
-  
-  const uwatchfreeSchema = JSON.stringify([
-    {
-      "@context": "https://schema.org",
-      "@type": "Organization",
-      name: "Youtube Live™ - Movies & Tv Show Section.",
-      url: "https://youtubelive.vercel.app/",
-      image: ["https://youtubelive.vercel.app/favicon.ico"],
-      logo: {
-        "@type": "ImageObject",
-        url: "https://youtubelive.vercel.app/logo.png",
-        width: 280,
-        height: 80,
-      },
-    },
-    {
-      "@context": "https://schema.org",
-      "@type": "WebSite",
-      url: "https://youtubelive.vercel.app/",
-      potentialAction: {
-        "@type": "SearchAction",
-        target: {
-          "@type": "EntryPoint",
-          urlTemplate: "https://youtubelive.vercel.app/search?q={search_term_string}",
-        },
-        "query-input": "required name=search_term_string",
-      },
-    },
-  ]);
 
-  const rankMathSchema = JSON.stringify({
+  const moviesSchema = JSON.stringify({
     "@context": "https://schema.org",
     "@graph": [
       {
-        "@type": "Person",
-        "@id": "https://gravatar.com/drtrailer2022",
-        name: "Dr Trailer",
-        url: "https://gravatar.com/drtrailer2022",
-        image: {
-          "@type": "ImageObject",
-          "@id": "https://gravatar.com/drtrailer2022",
-          url: "https://gravatar.com/drtrailer2022",
-          caption: "Dr Trailer",
+        "@type": "CollectionPage",
+        "@id": "https://youtubelive.vercel.app/category/movies/",
+        url: "https://youtubelive.vercel.app/category/movies/",
+        name: "Movies & Tv Show Section - Youtube Live™",
+        isPartOf: { "@id": "https://youtubelive.vercel.app/#website" },
+        primaryImageOfPage: {
+          "@id": "https://youtubelive.vercel.app/movies/#primaryimage",
         },
+        image: { "@id": "https://youtubelive.vercel.app/movies/#primaryimage" },
+        thumbnailUrl: "https://youtubelive.vercel.app/og_image.jpg",
+        breadcrumb: {
+          "@id": "https://youtubelive.vercel.app/movies/#breadcrumb",
+        },
+        inLanguage: "en-US",
       },
       {
-        "@type": "Organization",
-        "@id": "https://youtubelive.vercel.app/#organization",
-        name: "Youtube Live™ - Movies & Tv Show Section.",
-        url: "https://youtubelive.vercel.app",
+        "@type": "ImageObject",
+        inLanguage: "en-US",
+        "@id": "https://youtubelive.vercel.app/movies/#primaryimage",
+        url: "https://youtubelive.vercel.app/og_image.jpg",
+        contentUrl: "https://youtubelive.vercel.app/og_image.jpg",
+        width: 1280,
+        height: 720,
+      },
+      {
+        "@type": "BreadcrumbList",
+        "@id": "https://youtubelive.vercel.app/movies/#breadcrumb",
+        itemListElement: [
+          {
+            "@type": "ListItem",
+            position: 1,
+            name: "Home",
+            item: "https://youtubelive.vercel.app/",
+          },
+          { "@type": "ListItem", position: 2, name: "Movies" },
+        ],
       },
       {
         "@type": "WebSite",
         "@id": "https://youtubelive.vercel.app/#website",
-        url: "https://youtubelive.vercel.app",
-        name: "Youtube Live™ - Movies & Tv Show Section.",
-        publisher: {
-          "@type": "Organization",
-          "@id": "https://youtubelive.vercel.app/#organization",
-        },
+        url: "https://youtubelive.vercel.app/",
+        name: "Youtube Live™",
+        description: "",
+        publisher: { "@id": "https://youtubelive.vercel.app/#organization" },
+        potentialAction: [
+          {
+            "@type": "SearchAction",
+            target: {
+              "@type": "EntryPoint",
+              urlTemplate:
+                "https://youtubelive.vercel.app/?s={search_term_string}",
+            },
+            "query-input": {
+              "@type": "PropertyValueSpecification",
+              valueRequired: true,
+              valueName: "search_term_string",
+            },
+          },
+        ],
+        inLanguage: "en-US",
       },
       {
-        "@type": "WebPage",
-        "@id": "https://youtubelive.vercel.app/movies#webpage",
-        url: "https://youtubelive.vercel.app/movies",
-        name: "Youtube Live™ - Movies & Tv Show Section.",
-        datePublished: "2024-01-13T13:00:00+00:00",
-        dateModified: "2024-01-13T13:13:00+00:00",
-        isPartOf: {
-          "@id": "https://youtubelive.vercel.app/#website",
+        "@type": "Organization",
+        "@id": "https://youtubelive.vercel.app/#organization",
+        name: "Youtube Live™",
+        url: "https://youtubelive.vercel.app/",
+        logo: {
+          "@type": "ImageObject",
+          inLanguage: "en-US",
+          "@id": "https://youtubelive.vercel.app/#/schema/logo/image/",
+          url: "https://youtubelive.vercel.app/logo.png",
+          contentUrl: "https://youtubelive.vercel.app/logo.png",
+          width: 280,
+          height: 100,
+          caption: "Youtube Live™",
         },
-        inLanguage: "en-US",
+        image: { "@id": "https://youtubelive.vercel.app/#/schema/logo/image/" },
       },
     ],
   });
@@ -307,7 +316,10 @@ export default function HomePage({ articles }) {
           property="og:title"
           content="Youtube Live™ - Movies & Tv Show Section."
         />
-        <meta property="og:url" content="https://youtubelive.vercel.app/movies" />
+        <meta
+          property="og:url"
+          content="https://youtubelive.vercel.app/movies"
+        />
         <meta
           property="og:site_name"
           content="Youtube Live™ - Movies & Tv Show Section."
@@ -334,13 +346,9 @@ export default function HomePage({ articles }) {
 
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: rankMathSchema }}
+          dangerouslySetInnerHTML={{ __html: moviesSchema }}
         />
         <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: uwatchfreeSchema }}
-        />
-          <script
           async
           src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4821855388989115"
           crossOrigin="anonymous"

@@ -142,85 +142,82 @@ export default function HomePage({ articles }) {
     }
   };
 
-  const uwatchfreeSchema = JSON.stringify([
-    {
-      "@context": "https://schema.org",
-      "@type": "Organization",
-      name: "Youtube Live™ - Live Section.",
-      url: "https://youtubelive.vercel.app/",
-      image: ["https://youtubelive.vercel.app/favicon.ico"],
-      logo: {
-        "@type": "ImageObject",
-        url: "https://youtubelive.vercel.app/logo.png",
-        width: 280,
-        height: 80,
-      },
-    },
-    {
-      "@context": "https://schema.org",
-      "@type": "WebSite",
-      url: "https://youtubelive.vercel.app/",
-      potentialAction: {
-        "@type": "SearchAction",
-        target: {
-          "@type": "EntryPoint",
-          urlTemplate: "https://youtubelive.vercel.app/search?q={search_term_string}",
-        },
-        "query-input": "required name=search_term_string",
-      },
-    },
-  ]);
-
-  const rankMathSchema = JSON.stringify({
+  const liveSchema = JSON.stringify({
     "@context": "https://schema.org",
     "@graph": [
       {
-        "@type": "Person",
-        "@id": "https://gravatar.com/drtrailer2022",
-        name: "Dr Trailer",
-        url: "https://gravatar.com/drtrailer2022",
-        image: {
-          "@type": "ImageObject",
-          "@id": "https://gravatar.com/drtrailer2022",
-          url: "https://gravatar.com/drtrailer2022",
-          caption: "Dr Trailer",
-        },
+        "@type": "CollectionPage",
+        "@id": "https://youtubelive.vercel.app/category/live/",
+        "url": "https://youtubelive.vercel.app/category/live/",
+        "name": "Live News Section - Youtube Live™",
+        "isPartOf": { "@id": "https://youtubelive.vercel.app/#website" },
+        "primaryImageOfPage": { "@id": "https://youtubelive.vercel.app/live/#primaryimage" },
+        "image": { "@id": "https://youtubelive.vercel.app/live/#primaryimage" },
+        "thumbnailUrl": "https://youtubelive.vercel.app/og_image.jpg",
+        "breadcrumb": { "@id": "https://youtubelive.vercel.app/live/#breadcrumb" },
+        "inLanguage": "en-US"
       },
       {
-        "@type": "Organization",
-        "@id": "https://youtubelive.vercel.app/#organization",
-        name: "Youtube Live™ - Live Section.",
-        url: "https://youtubelive.vercel.app",
+        "@type": "ImageObject",
+        "inLanguage": "en-US",
+        "@id": "https://youtubelive.vercel.app/live/#primaryimage",
+        "url": "https://youtubelive.vercel.app/og_image.jpg",
+        "contentUrl": "https://youtubelive.vercel.app/og_image.jpg",
+        "width": 1280,
+        "height": 720
+      },
+      {
+        "@type": "BreadcrumbList",
+        "@id": "https://youtubelive.vercel.app/live/#breadcrumb",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://youtubelive.vercel.app/" },
+          { "@type": "ListItem", "position": 2, "name": "Live" }
+        ]
       },
       {
         "@type": "WebSite",
         "@id": "https://youtubelive.vercel.app/#website",
-        url: "https://youtubelive.vercel.app",
-        name: "Youtube Live™ - Live Section.",
-        publisher: {
-          "@type": "Organization",
-          "@id": "https://youtubelive.vercel.app/#organization",
-        },
+        "url": "https://youtubelive.vercel.app/",
+        "name": "Youtube Live™",
+        "description": "",
+        "publisher": { "@id": "https://youtubelive.vercel.app/#organization" },
+        "potentialAction": [
+          {
+            "@type": "SearchAction",
+            "target": { "@type": "EntryPoint", "urlTemplate": "https://youtubelive.vercel.app/?s={search_term_string}" },
+            "query-input": {
+              "@type": "PropertyValueSpecification",
+              "valueRequired": true,
+              "valueName": "search_term_string"
+            }
+          }
+        ],
+        "inLanguage": "en-US"
       },
       {
-        "@type": "WebPage",
-        "@id": "https://youtubelive.vercel.app/live#webpage",
-        url: "https://youtubelive.vercel.app/live",
-        name: "Youtube Live™ - Live Section.",
-        datePublished: "2024-01-13T13:00:00+00:00",
-        dateModified: "2024-01-13T13:13:00+00:00",
-        isPartOf: {
-          "@id": "https://youtubelive.vercel.app/#website",
+        "@type": "Organization",
+        "@id": "https://youtubelive.vercel.app/#organization",
+        "name": "Youtube Live™",
+        "url": "https://youtubelive.vercel.app/",
+        "logo": {
+          "@type": "ImageObject",
+          "inLanguage": "en-US",
+          "@id": "https://youtubelive.vercel.app/#/schema/logo/image/",
+          "url": "https://youtubelive.vercel.app/logo.png",
+          "contentUrl": "https://youtubelive.vercel.app/logo.png",
+          "width": 280,
+          "height": 100,
+          "caption": "Youtube Live™"
         },
-        inLanguage: "en-US",
-      },
-    ],
+        "image": { "@id": "https://youtubelive.vercel.app/#/schema/logo/image/" }
+      }
+    ]
   });
 
   return (
     <>
       <Head>
-        <title>Youtube Live™ - Live Section.</title>
+        <title>Youtube Live™ - Live News Section.</title>
 
         <link
           rel="sitemap"
@@ -246,9 +243,9 @@ export default function HomePage({ articles }) {
         />
         <meta property="og:locale" content="en_US" />
         <meta property="og:type" content="website" />
-        <meta property="og:title" content="Youtube Live™ - Live Section." />
+        <meta property="og:title" content="Youtube Live™ - Live News Section." />
         <meta property="og:url" content="https://youtubelive.vercel.app/live" />
-        <meta property="og:site_name" content="Youtube Live™ - Live Section." />
+        <meta property="og:site_name" content="Youtube Live™ - Live News Section." />
         <meta
           property="og:image"
           content="https://youtubelive.vercel.app/og_image.jpg"
@@ -256,7 +253,7 @@ export default function HomePage({ articles }) {
         <meta property="og:image:width" content="1280" />
         <meta property="og:image:height" content="720" />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Youtube Live™ - Live Section." />
+        <meta name="twitter:title" content="Youtube Live™ - Live News Section." />
         <meta
           name="twitter:description"
           content="Discover the best YouTube content in news, movies, sports, podcasts, music, games, and more with Youtube Live™. Explore, stream, and enjoy top-quality videos curated for you."
@@ -268,12 +265,9 @@ export default function HomePage({ articles }) {
 
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: rankMathSchema }}
+          dangerouslySetInnerHTML={{ __html: liveSchema }}
         />
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: uwatchfreeSchema }}
-        />
+      
           <script
           async
           src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4821855388989115"

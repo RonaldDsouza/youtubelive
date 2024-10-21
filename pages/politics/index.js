@@ -33,20 +33,18 @@ export async function getStaticProps() {
       props: {
         articles: articles.articles, // Ensure this matches your JSON structure
       },
-    
     };
   } catch (error) {
     console.error("Error fetching articles:", error);
-    
+
     // Return an empty array or some fallback data in case of an error
     return {
       props: {
         articles: [],
-      }
+      },
     };
   }
 }
-
 
 export default function HomePage({ articles }) {
   const [isModalOpen, setModalOpen] = useState(false);
@@ -143,79 +141,76 @@ export default function HomePage({ articles }) {
     }
   };
 
-  const uwatchfreeSchema = JSON.stringify([
-    {
-      "@context": "https://schema.org",
-      "@type": "Organization",
-      name: "Youtube Live™ - Politics Section.",
-      url: "https://youtubelive.vercel.app/",
-      image: ["https://youtubelive.vercel.app/favicon.ico"],
-      logo: {
-        "@type": "ImageObject",
-        url: "https://youtubelive.vercel.app/logo.png",
-        width: 280,
-        height: 80,
-      },
-    },
-    {
-      "@context": "https://schema.org",
-      "@type": "WebSite",
-      url: "https://youtubelive.vercel.app/",
-      potentialAction: {
-        "@type": "SearchAction",
-        target: {
-          "@type": "EntryPoint",
-          urlTemplate: "https://youtubelive.vercel.app/search?q={search_term_string}",
-        },
-        "query-input": "required name=search_term_string",
-      },
-    },
-  ]);
-
-  const rankMathSchema = JSON.stringify({
+  const politicsSchema = JSON.stringify({
     "@context": "https://schema.org",
     "@graph": [
       {
-        "@type": "Person",
-        "@id": "https://gravatar.com/drtrailer2022",
-        name: "Dr Trailer",
-        url: "https://gravatar.com/drtrailer2022",
-        image: {
-          "@type": "ImageObject",
-          "@id": "https://gravatar.com/drtrailer2022",
-          url: "https://gravatar.com/drtrailer2022",
-          caption: "Dr Trailer",
-        },
+        "@type": "CollectionPage",
+        "@id": "https://youtubelive.vercel.app/category/politics/",
+        "url": "https://youtubelive.vercel.app/category/politics/",
+        "name": "Politics Section - Youtube Live™",
+        "isPartOf": { "@id": "https://youtubelive.vercel.app/#website" },
+        "primaryImageOfPage": { "@id": "https://youtubelive.vercel.app/politics/#primaryimage" },
+        "image": { "@id": "https://youtubelive.vercel.app/politics/#primaryimage" },
+        "thumbnailUrl": "https://youtubelive.vercel.app/og_image.jpg",
+        "breadcrumb": { "@id": "https://youtubelive.vercel.app/politics/#breadcrumb" },
+        "inLanguage": "en-US"
       },
       {
-        "@type": "Organization",
-        "@id": "https://youtubelive.vercel.app/#organization",
-        name: "Youtube Live™ - Politics Section.",
-        url: "https://youtubelive.vercel.app",
+        "@type": "ImageObject",
+        "inLanguage": "en-US",
+        "@id": "https://youtubelive.vercel.app/politics/#primaryimage",
+        "url": "https://youtubelive.vercel.app/og_image.jpg",
+        "contentUrl": "https://youtubelive.vercel.app/og_image.jpg",
+        "width": 1280,
+        "height": 720
+      },
+      {
+        "@type": "BreadcrumbList",
+        "@id": "https://youtubelive.vercel.app/politics/#breadcrumb",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://youtubelive.vercel.app/" },
+          { "@type": "ListItem", "position": 2, "name": "Politics" }
+        ]
       },
       {
         "@type": "WebSite",
         "@id": "https://youtubelive.vercel.app/#website",
-        url: "https://youtubelive.vercel.app",
-        name: "Youtube Live™ - Politics Section.",
-        publisher: {
-          "@type": "Organization",
-          "@id": "https://youtubelive.vercel.app/#organization",
-        },
+        "url": "https://youtubelive.vercel.app/",
+        "name": "Youtube Live™",
+        "description": "",
+        "publisher": { "@id": "https://youtubelive.vercel.app/#organization" },
+        "potentialAction": [
+          {
+            "@type": "SearchAction",
+            "target": { "@type": "EntryPoint", "urlTemplate": "https://youtubelive.vercel.app/?s={search_term_string}" },
+            "query-input": {
+              "@type": "PropertyValueSpecification",
+              "valueRequired": true,
+              "valueName": "search_term_string"
+            }
+          }
+        ],
+        "inLanguage": "en-US"
       },
       {
-        "@type": "WebPage",
-        "@id": "https://youtubelive.vercel.app/politics#webpage",
-        url: "https://youtubelive.vercel.app/politics",
-        name: "Youtube Live™ - Politics Section.",
-        datePublished: "2024-01-13T13:00:00+00:00",
-        dateModified: "2024-01-13T13:13:00+00:00",
-        isPartOf: {
-          "@id": "https://youtubelive.vercel.app/#website",
+        "@type": "Organization",
+        "@id": "https://youtubelive.vercel.app/#organization",
+        "name": "Youtube Live™",
+        "url": "https://youtubelive.vercel.app/",
+        "logo": {
+          "@type": "ImageObject",
+          "inLanguage": "en-US",
+          "@id": "https://youtubelive.vercel.app/#/schema/logo/image/",
+          "url": "https://youtubelive.vercel.app/logo.png",
+          "contentUrl": "https://youtubelive.vercel.app/logo.png",
+          "width": 280,
+          "height": 100,
+          "caption": "Youtube Live™"
         },
-        inLanguage: "en-US",
-      },
-    ],
+        "image": { "@id": "https://youtubelive.vercel.app/#/schema/logo/image/" }
+      }
+    ]
   });
 
   return (
@@ -248,7 +243,10 @@ export default function HomePage({ articles }) {
         <meta property="og:locale" content="en_US" />
         <meta property="og:type" content="website" />
         <meta property="og:title" content="Youtube Live™ - Politics Section." />
-        <meta property="og:url" content="https://youtubelive.vercel.app/politics" />
+        <meta
+          property="og:url"
+          content="https://youtubelive.vercel.app/politics"
+        />
         <meta
           property="og:site_name"
           content="Youtube Live™ - Politics Section."
@@ -275,13 +273,9 @@ export default function HomePage({ articles }) {
 
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: rankMathSchema }}
+          dangerouslySetInnerHTML={{ __html: politicsSchema }}
         />
         <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: uwatchfreeSchema }}
-        />
-          <script
           async
           src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4821855388989115"
           crossOrigin="anonymous"

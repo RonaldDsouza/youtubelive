@@ -33,16 +33,15 @@ export async function getStaticProps() {
       props: {
         articles: articles.articles, // Ensure this matches your JSON structure
       },
-    
     };
   } catch (error) {
     console.error("Error fetching articles:", error);
-    
+
     // Return an empty array or some fallback data in case of an error
     return {
       props: {
         articles: [],
-      }
+      },
     };
   }
 }
@@ -142,79 +141,76 @@ export default function HomePage({ articles }) {
     }
   };
 
-  const uwatchfreeSchema = JSON.stringify([
-    {
-      "@context": "https://schema.org",
-      "@type": "Organization",
-      name: "Youtube Live™ - Shopping Section.",
-      url: "https://youtubelive.vercel.app/",
-      image: ["https://youtubelive.vercel.app/favicon.ico"],
-      logo: {
-        "@type": "ImageObject",
-        url: "https://youtubelive.vercel.app/logo.png",
-        width: 280,
-        height: 80,
-      },
-    },
-    {
-      "@context": "https://schema.org",
-      "@type": "WebSite",
-      url: "https://youtubelive.vercel.app/",
-      potentialAction: {
-        "@type": "SearchAction",
-        target: {
-          "@type": "EntryPoint",
-          urlTemplate: "https://youtubelive.vercel.app/search?q={search_term_string}",
-        },
-        "query-input": "required name=search_term_string",
-      },
-    },
-  ]);
-
-  const rankMathSchema = JSON.stringify({
+  const shoppingSchema = JSON.stringify({
     "@context": "https://schema.org",
     "@graph": [
       {
-        "@type": "Person",
-        "@id": "https://gravatar.com/drtrailer2022",
-        name: "Dr Trailer",
-        url: "https://gravatar.com/drtrailer2022",
-        image: {
-          "@type": "ImageObject",
-          "@id": "https://gravatar.com/drtrailer2022",
-          url: "https://gravatar.com/drtrailer2022",
-          caption: "Dr Trailer",
-        },
+        "@type": "CollectionPage",
+        "@id": "https://youtubelive.vercel.app/category/shopping/",
+        "url": "https://youtubelive.vercel.app/category/shopping/",
+        "name": "Shopping Section - Youtube Live™",
+        "isPartOf": { "@id": "https://youtubelive.vercel.app/#website" },
+        "primaryImageOfPage": { "@id": "https://youtubelive.vercel.app/shopping/#primaryimage" },
+        "image": { "@id": "https://youtubelive.vercel.app/shopping/#primaryimage" },
+        "thumbnailUrl": "https://youtubelive.vercel.app/og_image.jpg",
+        "breadcrumb": { "@id": "https://youtubelive.vercel.app/shopping/#breadcrumb" },
+        "inLanguage": "en-US"
       },
       {
-        "@type": "Organization",
-        "@id": "https://youtubelive.vercel.app/#organization",
-        name: "Youtube Live™ - Shopping Section.",
-        url: "https://youtubelive.vercel.app",
+        "@type": "ImageObject",
+        "inLanguage": "en-US",
+        "@id": "https://youtubelive.vercel.app/shopping/#primaryimage",
+        "url": "https://youtubelive.vercel.app/og_image.jpg",
+        "contentUrl": "https://youtubelive.vercel.app/og_image.jpg",
+        "width": 1280,
+        "height": 720
+      },
+      {
+        "@type": "BreadcrumbList",
+        "@id": "https://youtubelive.vercel.app/shopping/#breadcrumb",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://youtubelive.vercel.app/" },
+          { "@type": "ListItem", "position": 2, "name": "Shopping" }
+        ]
       },
       {
         "@type": "WebSite",
         "@id": "https://youtubelive.vercel.app/#website",
-        url: "https://youtubelive.vercel.app",
-        name: "Youtube Live™ - Shopping Section.",
-        publisher: {
-          "@type": "Organization",
-          "@id": "https://youtubelive.vercel.app/#organization",
-        },
+        "url": "https://youtubelive.vercel.app/",
+        "name": "Youtube Live™",
+        "description": "",
+        "publisher": { "@id": "https://youtubelive.vercel.app/#organization" },
+        "potentialAction": [
+          {
+            "@type": "SearchAction",
+            "target": { "@type": "EntryPoint", "urlTemplate": "https://youtubelive.vercel.app/?s={search_term_string}" },
+            "query-input": {
+              "@type": "PropertyValueSpecification",
+              "valueRequired": true,
+              "valueName": "search_term_string"
+            }
+          }
+        ],
+        "inLanguage": "en-US"
       },
       {
-        "@type": "WebPage",
-        "@id": "https://youtubelive.vercel.app/shopping#webpage",
-        url: "https://youtubelive.vercel.app/shopping",
-        name: "Youtube Live™ - Shopping Section.",
-        datePublished: "2024-01-13T13:00:00+00:00",
-        dateModified: "2024-01-13T13:13:00+00:00",
-        isPartOf: {
-          "@id": "https://youtubelive.vercel.app/#website",
+        "@type": "Organization",
+        "@id": "https://youtubelive.vercel.app/#organization",
+        "name": "Youtube Live™",
+        "url": "https://youtubelive.vercel.app/",
+        "logo": {
+          "@type": "ImageObject",
+          "inLanguage": "en-US",
+          "@id": "https://youtubelive.vercel.app/#/schema/logo/image/",
+          "url": "https://youtubelive.vercel.app/logo.png",
+          "contentUrl": "https://youtubelive.vercel.app/logo.png",
+          "width": 280,
+          "height": 100,
+          "caption": "Youtube Live™"
         },
-        inLanguage: "en-US",
-      },
-    ],
+        "image": { "@id": "https://youtubelive.vercel.app/#/schema/logo/image/" }
+      }
+    ]
   });
 
   return (
@@ -247,7 +243,10 @@ export default function HomePage({ articles }) {
         <meta property="og:locale" content="en_US" />
         <meta property="og:type" content="website" />
         <meta property="og:title" content="Youtube Live™ - Shopping Section." />
-        <meta property="og:url" content="https://youtubelive.vercel.app/shopping" />
+        <meta
+          property="og:url"
+          content="https://youtubelive.vercel.app/shopping"
+        />
         <meta
           property="og:site_name"
           content="Youtube Live™ - Shopping Section."
@@ -274,13 +273,9 @@ export default function HomePage({ articles }) {
 
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: rankMathSchema }}
+          dangerouslySetInnerHTML={{ __html: shoppingSchema }}
         />
         <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: uwatchfreeSchema }}
-        />
-          <script
           async
           src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4821855388989115"
           crossOrigin="anonymous"
