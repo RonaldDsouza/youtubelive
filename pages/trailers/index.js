@@ -120,7 +120,7 @@ export default function HomePage({ articles }) {
   
     // Create the iframe for Dailymotion
     const player = document.createElement("iframe");
-    player.src = `https://geo.dailymotion.com/player/xjrxe.html?video=${videoId}?autoplay=1&mute=true&Autoquality=1080p`;
+    player.src = `https://geo.dailymotion.com/player/xjrxe.html?video=${videoId}&autoplay=1&mute=true&Autoquality=1080p`;
     player.width = "100%";
     player.height = "100%";
     player.setAttribute("allowfullscreen", "true");
@@ -136,12 +136,16 @@ export default function HomePage({ articles }) {
       setShowMessage(false);
     }, 30000); // 30000 milliseconds = 30 seconds
   
-    // Listen for the video end event
+    // Use the Dailymotion API to detect when the video ends
     player.addEventListener("load", () => {
-      // Use the Dailymotion API to detect when the video ends
-      player.contentWindow.Dailymotion.player.on('end', () => {
-        closeModal(); // Close modal when video ends
-      });
+      const dailymotionPlayer = player.contentWindow.Dailymotion.player;
+  
+      // Check if the Dailymotion player API is available
+      if (dailymotionPlayer) {
+        dailymotionPlayer.on('end', () => {
+          closeModal(); // Close modal when video ends
+        });
+      }
     });
   };
   
@@ -164,6 +168,7 @@ export default function HomePage({ articles }) {
       dailymotionPlayerRef.current.innerHTML = ""; // Clear the player container
     }
   };
+  
   
   const uwatchfreeSchema = JSON.stringify([
     {
