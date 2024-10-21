@@ -15,6 +15,20 @@
         "videotittle": ["D W Live"]
       },
       {
+        "id": "article15",
+        "title": "Télénantes Live",
+        "image": "https://s2.dmcdn.net/v/Kv1J51Y_qjgZbMkjB/x1080",
+        "videoitem": ["x5so98l"],
+        "videotittle": ["Télénantes en Live"]
+      },
+      {
+        "id": "article14",
+        "title": "YTN Live",
+        "image": "https://www.ytn.co.kr/img/comm/sns_live_v2.jpg",
+        "videoitem": ["x5vg34h"],
+        "videotittle": ["YTN Live"]
+      },
+      {
         "id": "article2",
         "title": "Al jazeera Live",
         "image": "https://img.youtube.com/vi/gCNeDWCI0vo/maxresdefault.jpg",
