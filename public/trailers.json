@@ -1,7 +1,7 @@
 {
     "articles": [
       {
-        "id": "article12",
+        "id": "article4",
         "title": "Singham Again - Official Trailer ",
         "image": "https://i.ytimg.com/vi/U1G-9mp8aAU/maxresdefault.jpg",
         "videoitem": ["x97qp44"],
@@ -35,13 +35,7 @@
         "videoitem": ["NQXE3iJCWNI"],
         "videotittle": ["Seven Cemeteries (2024)"]
       },
-      {
-        "id": "article4",
-        "title": "Singham Again - Official Trailer ",
-        "image": "https://img.youtube.com/vi/MD7v0-igVIM/maxresdefault.jpg",
-        "videoitem": ["MD7v0-igVIM"],
-        "videotittle": ["Seven Cemeteries (2024)"]
-      },
+    
       {
         "id": "article5",
         "title": "Jaat - Official Trailer ",
