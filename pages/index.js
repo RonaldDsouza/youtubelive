@@ -146,6 +146,11 @@ export default function HomePage() {
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: uwatchfreeSchema }}
         />
+          <script
+          async
+          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4821855388989115"
+          crossOrigin="anonymous"
+        ></script>
       </Head>
       {/* <div className='container'> */}
       <div className={styles.title}>

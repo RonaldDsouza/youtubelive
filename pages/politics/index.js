@@ -250,6 +250,11 @@ export default function HomePage({ articles }) {
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: uwatchfreeSchema }}
         />
+          <script
+          async
+          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4821855388989115"
+          crossOrigin="anonymous"
+        ></script>
       </Head>
       <SocialSharing />
       <Script src="../../propler/ads.js" defer />

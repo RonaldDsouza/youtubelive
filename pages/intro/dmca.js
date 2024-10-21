@@ -278,6 +278,11 @@ const dmca = () => {
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: rankMathSchema }}
         />
+          <script
+          async
+          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4821855388989115"
+          crossOrigin="anonymous"
+        ></script>
       </Head>
       <Script src="../../propler/ads.js" defer />
       <Script src="../../propler/ads2.js" defer />
