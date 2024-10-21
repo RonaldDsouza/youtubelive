@@ -69,49 +69,102 @@ export default function HomePage({ articles }) {
     }
   }, [playerReady, currentVideoId]);
 
+  // const loadDailymotionPlayer = (videoId) => {
+  //   if (dailymotionPlayerRef.current) {
+  //     // Clear existing player if any
+  //     dailymotionPlayerRef.current.innerHTML = ""; // Clear previous player
+  //   }
+
+  //   const player = document.createElement("iframe");
+  //   player.src = `https://www.dailymotion.com/embed/video/${videoId}`;
+  //   player.width = "100%";
+  //   player.height = "100%";
+  //   player.setAttribute("allowfullscreen", "true");
+  //   player.setAttribute("frameborder", "0");
+  //   player.setAttribute("allow", "autoplay");
+
+  //   dailymotionPlayerRef.current.appendChild(player); // Append new player
+  //   setShowMessage(true); // Show message when the player loads
+
+  //   // Hide the message after 30 seconds
+  //   setTimeout(() => {
+  //     setShowMessage(false);
+  //   }, 30000); // 30000 milliseconds = 30 seconds
+  // };
+
+  // const openModal = (videoId) => {
+  //   setCurrentVideoId(videoId);
+  //   setModalOpen(true);
+  // };
+
+  // const closeModal = () => {
+  //   setModalOpen(false);
+  //   setCurrentVideoId("");
+
+  //   // Stop YouTube video if it's playing
+  //   if (playerRef.current && playerRef.current.stopVideo) {
+  //     playerRef.current.stopVideo(); // Stop the video for YouTube
+  //   }
+
+  //   // Clear Dailymotion player
+  //   if (dailymotionPlayerRef.current) {
+  //     dailymotionPlayerRef.current.innerHTML = ""; // Clear the player container
+  //   }
+  // };
+
   const loadDailymotionPlayer = (videoId) => {
     if (dailymotionPlayerRef.current) {
       // Clear existing player if any
       dailymotionPlayerRef.current.innerHTML = ""; // Clear previous player
     }
-
+  
+    // Create the iframe for Dailymotion
     const player = document.createElement("iframe");
-    player.src = `https://www.dailymotion.com/embed/video/${videoId}`;
+    player.src = `https://www.dailymotion.com/embed/video/${videoId}?autoplay=1`;
     player.width = "100%";
     player.height = "100%";
     player.setAttribute("allowfullscreen", "true");
     player.setAttribute("frameborder", "0");
     player.setAttribute("allow", "autoplay");
-
-    dailymotionPlayerRef.current.appendChild(player); // Append new player
+  
+    // Append the new player
+    dailymotionPlayerRef.current.appendChild(player);
     setShowMessage(true); // Show message when the player loads
-
+  
     // Hide the message after 30 seconds
     setTimeout(() => {
       setShowMessage(false);
     }, 30000); // 30000 milliseconds = 30 seconds
+  
+    // Listen for the video end event
+    player.addEventListener("load", () => {
+      // Use the Dailymotion API to detect when the video ends
+      player.contentWindow.Dailymotion.player.on('end', () => {
+        closeModal(); // Close modal when video ends
+      });
+    });
   };
-
+  
   const openModal = (videoId) => {
     setCurrentVideoId(videoId);
     setModalOpen(true);
   };
-
+  
   const closeModal = () => {
     setModalOpen(false);
     setCurrentVideoId("");
-
+  
     // Stop YouTube video if it's playing
     if (playerRef.current && playerRef.current.stopVideo) {
       playerRef.current.stopVideo(); // Stop the video for YouTube
     }
-
+  
     // Clear Dailymotion player
     if (dailymotionPlayerRef.current) {
       dailymotionPlayerRef.current.innerHTML = ""; // Clear the player container
     }
   };
-
+  
   const uwatchfreeSchema = JSON.stringify([
     {
       "@context": "https://schema.org",
