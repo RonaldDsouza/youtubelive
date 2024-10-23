@@ -866,22 +866,20 @@ export default function HomePage({ articles }) {
                   }}
                 >
                   Playing video from YouTube
-                  This content is made available under the Fair Use Act for
-                    educational and commentary purposes only. No copyright
-                    infringement is intended.
-                  {/* <p
+                  <p
                     className="items-center justify-center"
                     style={{
                       color: "red",
                       fontSize: "10px",
                       fontWeight: "bold",
                       textAlign: "center",
+                      display: showMessage ? "block" : "none",
                     }}
                   >
                     This content is made available under the Fair Use Act for
                     educational and commentary purposes only. No copyright
                     infringement is intended.
-                  </p> */}
+                  </p>
                 </div>
               </>
             ) : (
@@ -906,22 +904,20 @@ export default function HomePage({ articles }) {
                   }}
                 >
                   Playing video from Dailymotion
-                  This content is made available under the Fair Use Act for
-                    educational and commentary purposes only. No copyright
-                    infringement is intended.
-                  {/* <p
+                  <p
                     className="items-center justify-center"
                     style={{
                       color: "red",
                       fontSize: "10px",
                       fontWeight: "bold",
                       textAlign: "center",
+                      display: showMessage ? "block" : "none",
                     }}
                   >
                     This content is made available under the Fair Use Act for
                     educational and commentary purposes only. No copyright
                     infringement is intended.
-                  </p> */}
+                  </p>
                 </div>
               </>
             )}
