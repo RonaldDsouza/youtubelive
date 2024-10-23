@@ -41,22 +41,14 @@ export default function HomePage({ articles }) {
   // Pagination States
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 10; // Number of articles per page
-  const [selectedCategory, setSelectedCategory] = useState("All"); // State for selected category
 
-  // Extract unique categories from articles
-  const categories = Array.from(new Set(articles.map(article => article.category))).concat("All");
-
-  // Calculate displayed articles based on pagination and filtering
-  const filteredArticles = selectedCategory === "All" 
-    ? articles 
-    : articles.filter(article => article.category === selectedCategory);
-  
+  // Calculate displayed articles based on pagination
   const indexOfLastArticle = currentPage * itemsPerPage;
   const indexOfFirstArticle = indexOfLastArticle - itemsPerPage;
-  const currentArticles = filteredArticles.slice(indexOfFirstArticle, indexOfLastArticle);
+  const currentArticles = articles.slice(indexOfFirstArticle, indexOfLastArticle);
 
   // Calculate total pages
-  const totalPages = Math.ceil(filteredArticles.length / itemsPerPage);
+  const totalPages = Math.ceil(articles.length / itemsPerPage);
 
   const loadYouTubeAPI = () => {
     const onYouTubeIframeAPIReady = () => setPlayerReady(true);
@@ -448,185 +440,64 @@ export default function HomePage({ articles }) {
         </h1>
       </header>
 
-      <main className={youtubeStyles.main}>
-        {currentArticles.length > 0 ? (
-          <div className={youtubeStyles.grid}>
-            {currentArticles.map((article) => (
-              <div key={article.id} className={youtubeStyles.card}>
-                {article.image && (
-                  <div
-                    className={youtubeStyles.imageWrapper}
-                    onClick={() => openModal(article.videoitem[0])}
-                  >
-                    <img
-                      src={article.image}
-                      alt={article.title}
-                      style={{
-                        width: "100%",
-                        height: "200px",
-                        objectFit: "fill",
-                        margin: "auto",
-                        fontWeight: "bold",
-                        textAlign: "center",
-                        cursor: "pointer",
-                        boxShadow: "0 0 10px 0 #000",
-                        filter: "contrast(1.1) saturate(1.1) brightness(1.0) hue-rotate(0deg)",
-                      }}
-                    />
-                  </div>
-                )}
-                <div
-                  className={youtubeStyles.title}
-                  style={{
-                    margin: "auto",
-                    fontWeight: "bold",
-                    fontSize: "16px",
-                    textAlign: "center",
-                    cursor: "pointer",
-                    textShadow: "1px 1px 0px #000",
-                  }}
-                >
-                  {article.title}
-                </div>
-                <div className={youtubeStyles.channel}>{article.channel}</div>
-              </div>
-            ))}
-          </div>
-        ) : (
-          <p>No videos available.</p>
-        )}
-        <p
-          className="flex flex-col items-center justify-center"
-          style={{
-            color: "red",
-            fontSize: "18px",
-            fontWeight: "bold",
-            textAlign: "center",
-          }}
-        >
-          This content is made available under the Fair Use Act for educational
-          and commentary purposes only. No copyright infringement is intended.
-        </p>
+      <div className="shadow-lg flex items-center justify-center" role="navigation">
+        <ul id="menu-header-menu" className="menu flex flex-wrap justify-center">
+          {/* Add your buttons for categories or other sections here */}
+        </ul>
+      </div>
+
+      <div className="container mx-auto py-5">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+          {currentArticles.map((article, index) => (
+            <div key={index} className="border p-4 rounded-lg shadow-md">
+              <h3 className="text-xl font-bold mb-2">{article.title}</h3>
+              <p>{article.description}</p>
+              <button
+                style={buttonStyle}
+                onClick={() => openModal(article.videoId)}
+              >
+                Watch Now
+              </button>
+            </div>
+          ))}
+        </div>
 
         {/* Pagination Controls */}
-        <div style={{ textAlign: "center", margin: "20px 0" }}>
-          <button
-            onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
-            disabled={currentPage === 1}
-            style={buttonStyle}
-          >
-            Previous
-          </button>
-          <span style={{ margin: "0 15px", fontWeight: "bold" }}>
-            Page {currentPage} of {totalPages}
-          </span>
-          <button
-            onClick={() => setCurrentPage((prev) => Math.min(prev + 1, totalPages))}
-            disabled={currentPage === totalPages}
-            style={buttonStyle}
-          >
-            Next
-          </button>
+        <div className="flex justify-center mt-5">
+          {Array.from({ length: totalPages }, (_, i) => (
+            <button
+              key={i}
+              onClick={() => setCurrentPage(i + 1)}
+              className={`px-3 py-1 mx-1 ${
+                currentPage === i + 1 ? "bg-blue-500 text-white" : "bg-gray-200"
+              }`}
+            >
+              {i + 1}
+            </button>
+          ))}
         </div>
-      </main>
+      </div>
 
+      {/* Modal for video */}
       {isModalOpen && (
-  <div className={youtubeStyles.modal}>
-    <div className={youtubeStyles.modalContent}>
-      <button className={youtubeStyles.close} onClick={closeModal}>
-        Close
-      </button>
-
-      {currentVideoId.length === 11 ? ( // Assuming YouTube IDs are always 11 characters
-        <>
-          <div
-            id="youtube-player"
-            className={youtubeStyles.player}
-            style={{
-              filter: "contrast(1.1) saturate(1.2) brightness(1.3) hue-rotate(0deg)",
-              display: "block",
-            }}
-          />
-          <div
-            className="button"
-            style={{
-              position: "absolute",
-              bottom: "20px",
-              left: "50%",
-              transform: "translateX(-50%)",
-              color: "white",
-              backgroundColor: "rgba(0, 0, 0, 0.5)",
-              padding: "10px",
-              borderRadius: "5px",
-              textAlign: "center",
-              display: showMessage ? "block" : "none",
-              zIndex: 1000, // Ensure it sits above the player
-            }}
-          >
-            Playing video from YouTube
-            <p
-              className="flex flex-col items-center justify-center"
-              style={{
-                color: "red",
-                fontSize: "10px",
-                fontWeight: "bold",
-                textAlign: "center",
-              }}
+        <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-75">
+          <div className="bg-white p-5 rounded-lg relative w-full max-w-4xl mx-auto">
+            <button
+              className="absolute top-2 right-2 text-xl font-bold"
+              onClick={closeModal}
             >
-              This content is made available under the Fair Use Act for
-              educational and commentary purposes only. No copyright
-              infringement is intended.
-            </p>
+              &times;
+            </button>
+            {currentVideoId.length === 11 ? (
+              <div id="youtube-player" className={youtubeStyles.videoWrapper} />
+            ) : (
+              <div ref={dailymotionPlayerRef} className={dailymotionStyles.videoWrapper} />
+            )}
           </div>
-        </>
-      ) : (
-        <>
-          <div
-            ref={dailymotionPlayerRef}
-            className={youtubeStyles.player}
-            style={{
-              filter: "contrast(1.1) saturate(1.2) brightness(1.3) hue-rotate(0deg)",
-              display: "block",
-            }}
-          />
-          <div
-            className="button"
-            style={{
-              position: "absolute",
-              bottom: "20px",
-              left: "50%",
-              transform: "translateX(-50%)",
-              color: "white",
-              backgroundColor: "rgba(0, 0, 0, 0.5)",
-              padding: "10px",
-              textAlign: "center",
-              borderRadius: "5px",
-              display: showMessage ? "block" : "none",
-              zIndex: 1000, // Ensure it sits above the player
-            }}
-          >
-            Playing video from Dailymotion
-            <p
-              className="flex flex-col items-center justify-center"
-              style={{
-                color: "red",
-                fontSize: "10px",
-                fontWeight: "bold",
-                textAlign: "center",
-              }}
-            >
-              This content is made available under the Fair Use Act for
-              educational and commentary purposes only. No copyright
-              infringement is intended.
-            </p>
-          </div>
-        </>
+        </div>
       )}
-    </div>
-  </div>
-)}
-<SocialSharing />
 
+      {showMessage && <div className={Styles.message}>Enjoy your video!</div>}
     </>
   );
 }

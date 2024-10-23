@@ -630,7 +630,7 @@ export default function HomePage({ articles }) {
     </div>
   </div>
 )}
-<SocialSharing />
+  <SocialSharing />
 
     </>
   );
