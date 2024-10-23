@@ -1,4 +1,4 @@
-/* styles/Youtube.module.css */
+/* styles/YoutubeDailymotion.module.css */
 
 /* General Container Styles */
 .container {
@@ -22,6 +22,7 @@
   font-weight: bold;
 }
 
+/* Main content area */
 .main {
   padding: 20px;
 }
@@ -175,6 +176,7 @@
     max-width: 95%; /* Ensure modal is responsive */
     height: 90%; /* Set height for very small screens */
   }
+
   .message {
     font-size: 16px; /* Adjust size as needed */
     color: white; /* Or any other color */
@@ -187,5 +189,4 @@
     z-index: 1000; /* Ensure it's above other elements */
     border-radius: 5px; /* Optional rounded corners */
   }
-  
 }
