@@ -1,7 +1,47 @@
 {
     "articles": [
       {
-        "id": "article1",
+        "id": "1",
+        "badge": " [ Fashion ]  ",
+        "title": "Gucci Spring Summer 2025 Women's Fashion Show | 2024",
+        "image": "https://img.youtube.com/vi/IfWYDcVfBVo/maxresdefault.jpg",
+        "videoitem": ["IfWYDcVfBVo"],
+        "videotittle": ["Seven Cemeteries (2024)"]
+      },
+      {
+        "id": "1",
+        "badge": " [ Fashion ]  ",
+        "title": "Hermès women's spring-summer 2025 Show | 2024",
+        "image": "https://img.youtube.com/vi/qqqciPvwS5s/maxresdefault.jpg",
+        "videoitem": ["qqqciPvwS5s"],
+        "videotittle": ["Seven Cemeteries (2024)"]
+      },
+      {
+        "id": "1",
+        "badge": " [ Fashion ]  ",
+        "title": "The Victoria's Secret Fashion Show | 2024",
+        "image": "https://img.youtube.com/vi/A8n9wf0R1xo/maxresdefault.jpg",
+        "videoitem": ["A8n9wf0R1xo"],
+        "videotittle": ["Seven Cemeteries (2024)"]
+      },
+      {
+        "id": "1",
+        "badge": " [ Fashion ]  ",
+        "title": "Miu Miu SS25 Fashion Show | Paris Fashion Week | 2024",
+        "image": "https://img.youtube.com/vi/D-p_DeJvEqQ/maxresdefault.jpg",
+        "videoitem": ["D-p_DeJvEqQ"],
+        "videotittle": ["Seven Cemeteries (2024)"]
+      },
+      {
+        "id": "2",
+        "badge": " [ Fashion ]  ",
+        "title": "Lacoste Runway Show | Spring Summer | 2024",
+        "image": "https://img.youtube.com/vi/MY7_I6SDLec/maxresdefault.jpg",
+        "videoitem": ["MY7_I6SDLec"],
+        "videotittle": ["Seven Cemeteries (2024)"]
+      },
+      {
+        "id": "3",
         "badge": " [ Fashion ]  ",
         "title": "Women's Spring-Summer 2025 Show | LOUIS VUITTON",
         "image": "https://img.youtube.com/vi/8zkCGuyUSdE/maxresdefault.jpg",
