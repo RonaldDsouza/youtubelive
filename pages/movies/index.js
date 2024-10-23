@@ -842,7 +842,7 @@ export default function HomePage({ articles }) {
             <button className={youtubeStyles.close} onClick={closeModal}>
               Close
             </button>
-            {showMessage && (
+            {/* {showMessage && (
                 <div
                 className={dailymotionStyles.message}
                 className="shadow-lg flex items-center justify-center text-black hover:px-0 text-bg font-black bg-gradient-to-r from-amber-500 to-pink-500 bg-clip-text text-transparent text-xl"
@@ -851,7 +851,7 @@ export default function HomePage({ articles }) {
                 <br />
                 This Message will disappear after 30 seconds.
               </div>
-            )}
+            )} */}
             {currentVideoId.length === 11 ? (
            <>
            <div
