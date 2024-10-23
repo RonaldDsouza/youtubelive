@@ -2,6 +2,7 @@
     "articles": [
       {
         "id": "article1",
+        "badge": " [ Technology ] ",
         "title": "ASML Outlook Weighs on Global Tech ",
         "image": "https://img.youtube.com/vi/aIjwiBAvaAs/maxresdefault.jpg",
         "videoitem": ["aIjwiBAvaAs"],

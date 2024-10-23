@@ -2,6 +2,7 @@
     "articles": [
       {
         "id": "article1",
+        "badge": " [ Education ]  ",
         "title": "Excel for Data Analytics - Full Course for Beginners",
         "image": "https://img.youtube.com/vi/pCJ15nGFgVg/maxresdefault.jpg",
         "videoitem": ["pCJ15nGFgVg"],

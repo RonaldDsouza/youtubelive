@@ -2,6 +2,7 @@
     "articles": [
       {
         "id": "article1",
+        "badge": " [ Music ] ",
         "title": "O Beliya Official Music Video",
         "image": "https://img.youtube.com/vi/UFrg-IQS9Ac/maxresdefault.jpg",
         "videoitem": ["UFrg-IQS9Ac"],

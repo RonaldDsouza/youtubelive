@@ -2,6 +2,7 @@
     "articles": [
       {
         "id": "article1",
+        "badge": " [ Travel ] ",
         "title": "Kazakhstan Tourist Places ",
         "image": "https://img.youtube.com/vi/wRuMABOXWM8/maxresdefault.jpg",
         "videoitem": ["wRuMABOXWM8"],

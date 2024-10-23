@@ -2,6 +2,7 @@
     "articles": [
       {
         "id": "article13",
+        "badge": " [ News ]  ",
         "title": "CGTN Europe News",
         "image": "https://i.ytimg.com/vi/flCvAFhoCWE/maxresdefault.jpg",
         "videoitem": ["x8p5u0u"],
@@ -9,6 +10,7 @@
       },
       {
         "id": "article1",
+        "badge": " [ News ]  ",
         "title": "D W Live",
         "image": "https://img.youtube.com/vi/tZT2MCYu6Zw/maxresdefault.jpg",
         "videoitem": ["tZT2MCYu6Zw"],
@@ -16,6 +18,7 @@
       },
       {
         "id": "article15",
+        "badge": " [ News ]  ",
         "title": "Télénantes Live",
         "image": "https://s2.dmcdn.net/v/Kv1J51Y_qjgZbMkjB/x1080",
         "videoitem": ["x5so98l"],
@@ -23,6 +26,7 @@
       },
       {
         "id": "article14",
+        "badge": " [ News ]  ",
         "title": "YTN Live",
         "image": "https://www.ytn.co.kr/img/comm/sns_live_v2.jpg",
         "videoitem": ["x5vg34h"],
@@ -30,6 +34,7 @@
       },
       {
         "id": "article2",
+        "badge": " [ News ]  ",
         "title": "Al jazeera Live",
         "image": "https://img.youtube.com/vi/gCNeDWCI0vo/maxresdefault.jpg",
         "videoitem": ["gCNeDWCI0vo"],
@@ -37,6 +42,7 @@
       },
       {
         "id": "article3",
+        "badge": " [ News ]  ",
         "title": "A N I News Live",
         "image": "https://i.ytimg.com/vi/HeP8HZt3OQw/maxresdefault.jpg",
         "videoitem": ["mDQ8-gHPx7s"],
@@ -44,6 +50,7 @@
       },
       {
         "id": "article4",
+        "badge": " [ News ]  ",
         "title": "Times Of India Live",
         "image": "https://timesofindia.indiatimes.com/thumb/msid-113159906,width-1280,height-720,resizemode-4/113159906.jpg",
         "videoitem": ["zIbQBds00Aw"],
@@ -51,6 +58,7 @@
       },
       {
         "id": "article5",
+        "badge": " [ News ]  ",
         "title": "Sky News Live",
         "image": "https://i.ytimg.com/vi/oJUvTVdTMyY/maxresdefault.jpg",
         "videoitem": ["oJUvTVdTMyY"],
@@ -58,6 +66,7 @@
       },
       {
         "id": "article6",
+        "badge": " [ News ]  ",
         "title": "ABC News Live",
         "image": "https://i.ytimg.com/vi/5VEmOvfAvpw/maxresdefault.jpg",
         "videoitem": ["-mvUkiILTqI"],
@@ -65,6 +74,7 @@
       },
       {
         "id": "article7",
+        "badge": " [ News ]  ",
         "title": "Fox News Live",
         "image": "https://i.ytimg.com/vi/v6qoMVdonMU/maxresdefault.jpg",
         "videoitem": ["rXTAxGe3yK0"],
@@ -72,6 +82,7 @@
       },
       {
         "id": "article8",
+        "badge": " [ News ]  ",
         "title": "USA TODAY Live",
         "image": "https://img.youtube.com/vi/vZYMwAm8sso/maxresdefault.jpg",
         "videoitem": ["vZYMwAm8sso"],
@@ -79,6 +90,7 @@
       },
       {
         "id": "article9",
+        "badge": " [ News ]  ",
         "title": "FRANCE 24 English Live",
         "image": "https://img.youtube.com/vi/Ap-UM1O9RBU/maxresdefault.jpg",
         "videoitem": ["Ap-UM1O9RBU"],
@@ -86,6 +98,7 @@
       },
       {
         "id": "article10",
+        "badge": " [ News ]  ",
         "title": "ABC News Australia Live",
         "image": "https://img.youtube.com/vi/vOTiJkg1voo/maxresdefault.jpg",
         "videoitem": ["vOTiJkg1voo"],
@@ -93,6 +106,7 @@
       },
       {
         "id": "article11",
+        "badge": " [ News ]  ",
         "title": "NBC News Live",
         "image": "https://img.youtube.com/vi/NZhyveLHwAE/maxresdefault.jpg",
         "videoitem": ["NZhyveLHwAE"],
@@ -100,6 +114,7 @@
       },
       {
         "id": "article12",
+        "badge": " [ News ]  ",
         "title": "Euro News Live",
         "image": "https://i.ytimg.com/vi/gIyKiqt3bAE/maxresdefault.jpg",
         "videoitem": ["ON4JiEjXUyw"],

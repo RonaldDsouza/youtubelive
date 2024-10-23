@@ -2,6 +2,7 @@
     "articles": [
       {
         "id": "article6",
+        "badge": " [ Sports ] ",
         "title": "1st ODI | Highlights | West Indies Tour Of Sri Lanka | 2024",
         "image": "https://img.youtube.com/vi/V2DEffiA-KI/maxresdefault.jpg",
         "videoitem": ["V2DEffiA-KI"],
@@ -9,6 +10,7 @@
       },
       {
         "id": "article5",
+        "badge": " [ Sports ] ",
         "title": "WRC Rally Finland 2024",
         "image": "https://img.youtube.com/vi/8M9irQc5egM/maxresdefault.jpg",
         "videoitem": ["8M9irQc5egM"],
@@ -16,6 +18,7 @@
       },
       {
         "id": "article1",
+        "badge": " [ Sports ] ",
         "title": "Italy vs Israel | Highlights | UEFA Nations League | 15th October 2024 ",
         "image": "https://img.youtube.com/vi/j-_drf51E5w/maxresdefault.jpg",
         "videoitem": ["j-_drf51E5w"],
@@ -23,6 +26,7 @@
       },
       {
         "id": "article2",
+        "badge": " [ Sports ] ",
         "title": "Aleksandar Rakić vs Anthony Smith| FULL FIGHT | UFC 308",
         "image": "https://img.youtube.com/vi/R4sH0o9jel4/maxresdefault.jpg",
         "videoitem": ["R4sH0o9jel4"],
@@ -30,6 +34,7 @@
       },
       {
         "id": "article3",
+        "badge": " [ Sports ] ",
         "title": "LIVE: Chelsea v Tottenham Hotspur | Barclays WSL 2024-25",
         "image": "https://img.youtube.com/vi/HLNdLby5_AM/maxresdefault.jpg",
         "videoitem": ["HLNdLby5_AM"],
@@ -37,6 +42,7 @@
       },
       {
         "id": "article4",
+        "badge": " [ Sports ] ",
         "title": "FIGHT HIGHLIGHTS | FRANCIS NGANNOU VS. RENAN FERREIRA",
         "image": "https://img.youtube.com/vi/qV5LsxBF7IM/maxresdefault.jpg",
         "videoitem": ["qV5LsxBF7IM"],

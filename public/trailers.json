@@ -2,6 +2,7 @@
     "articles": [
       {
         "id": "article4",
+        "badge": " [ Trailers ] ",
         "title": "Singham Again - Official Trailer ",
         "image": "https://i.ytimg.com/vi/U1G-9mp8aAU/maxresdefault.jpg",
         "videoitem": ["x97qp44"],
@@ -9,6 +10,7 @@
       },
       {
         "id": "article11",
+        "badge": " [ Trailers ] ",
         "title": "Popeye - The Sailor Man - Official Trailer ",
         "image": "https://i.ytimg.com/vi/fkhWP14LcKg/maxresdefault.jpg",
         "videoitem": ["x97qp1e"],
@@ -16,6 +18,7 @@
       },
       {
         "id": "article1",
+        "badge": " [ Trailers ] ",
         "title": "Wolf Man | Official Trailer",
         "image": "https://i.ytimg.com/vi/1KbYupg62Nw/maxresdefault.jpg",
         "videoitem": ["kAw4PH2IQgo"],
@@ -23,6 +26,7 @@
       },
       {
         "id": "article2",
+        "badge": " [ Trailers ] ",
         "title": "PM Narendra Modi - Official Trailer ",
         "image": "https://img.youtube.com/vi/CCTASz2gmGo/maxresdefault.jpg",
         "videoitem": ["CCTASz2gmGo"],
@@ -30,6 +34,7 @@
       },
       {
         "id": "article3",
+        "badge": " [ Trailers ] ",
         "title": "Vettaiyan The Hunter (Hindi) - Official Trailer ",
         "image": "https://img.youtube.com/vi/NQXE3iJCWNI/maxresdefault.jpg",
         "videoitem": ["NQXE3iJCWNI"],
@@ -38,6 +43,7 @@
     
       {
         "id": "article5",
+        "badge": " [ Trailers ] ",
         "title": "Jaat - Official Trailer ",
         "image": "https://img.youtube.com/vi/7lP0H2CBUL0/maxresdefault.jpg",
         "videoitem": ["7lP0H2CBUL0"],
@@ -45,6 +51,7 @@
       },
       {
         "id": "article6",
+        "badge": " [ Trailers ] ",
         "title": "JIGRA - Official Trailer ",
         "image": "https://img.youtube.com/vi/3uE0RuQndZc/maxresdefault.jpg",
         "videoitem": ["3uE0RuQndZc"],
@@ -52,6 +59,7 @@
       },
       {
         "id": "article7",
+        "badge": " [ Trailers ] ",
         "title": "ALIEN HUNT - Official Trailer ",
         "image": "https://i.ytimg.com/vi/C67dFTITZjI/maxresdefault.jpg",
         "videoitem": ["x96rmly"],
@@ -59,6 +67,7 @@
       },
       {
         "id": "article8",
+        "badge": " [ Trailers ] ",
         "title": "Vedaa - Official Trailer ",
         "image": "https://m.timesofindia.com/photo/112197898/size-228703/112197898.jpg",
         "videoitem": ["x97j90s"],
@@ -66,6 +75,7 @@
       },
       {
         "id": "article9",
+        "badge": " [ Trailers ] ",
         "title": "Khel Khel Mein - Official Trailer ",
         "image": "https://i.ytimg.com/vi/oi0PFvOVJoU/maxresdefault.jpg",
         "videoitem": ["x97j8r4"],
@@ -73,6 +83,7 @@
       },
       {
         "id": "article10",
+        "badge": " [ Trailers ] ",
         "title": "F BUDDIES - Official Trailer ",
         "image": "https://i.ytimg.com/vi/c4Q-V7SVJzo/maxresdefault.jpg",
         "videoitem": ["x96vwec"],

@@ -2,6 +2,7 @@
     "articles": [
       {
         "id": "article1",
+        "badge": " [ Fashion ]  ",
         "title": "Women's Spring-Summer 2025 Show | LOUIS VUITTON",
         "image": "https://img.youtube.com/vi/8zkCGuyUSdE/maxresdefault.jpg",
         "videoitem": ["8zkCGuyUSdE"],

@@ -2,6 +2,7 @@
     "articles": [
       {
         "id": "article1",
+        "badge": " [ Podcast ] ",
         "title": "Diddy’s ‘Freak Off’: Relationship With Diddy",
         "image": "https://img.youtube.com/vi/C-Y5PI-uDFY/maxresdefault.jpg",
         "videoitem": ["C-Y5PI-uDFY"],

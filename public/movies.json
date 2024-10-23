@@ -2,6 +2,7 @@
     "articles": [
       {
         "id": "article1",
+        "badge": " [ Movies ] ",
         "title": "Seven Cemeteries (2024) ",
         "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR95lVNRp6dCJ38wyanMVmkgM2AsjfIf_MDJA&s",
         "videoitem": ["x97otbg"],
@@ -9,6 +10,7 @@
       },
       {
         "id": "article3",
+        "badge": " [ Movies ] ",
         "title": "Bad Genius (2024)",
         "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRaMfggb_OITCC-OvcYUOHhehFrel__1jhedw&s",
         "videoitem": ["x97oz1k"],
@@ -16,6 +18,7 @@
       },
       {
         "id": "article4",
+        "badge": " [ Movies ] ",
         "title": "The Stoic (2024)",
         "image": "https://dramatv.click/uploads/thumbs/24f9bcaba-1.jpg",
         "videoitem": ["x97p1f6"],
@@ -23,6 +26,7 @@
       },
       {
         "id": "article5",
+        "badge": " [ Movies ] ",
         "title": "9 Windows (2024)",
         "image": "https://i.ytimg.com/vi/13yHYvml9H4/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLBdpWcmv_0VAZ6vBMnKkaQlvjAlJA",
         "videoitem": ["x97p2k2"],
@@ -30,6 +34,7 @@
       },
       {
         "id": "article6",
+        "badge": " [ Movies ] ",
         "title": "Rippy (2024)",
         "image": "https://i.ytimg.com/vi/hu7IcWuCv7g/maxresdefault.jpg",
         "videoitem": ["x97p4ce"],
@@ -37,6 +42,7 @@
       },
       {
         "id": "article6",
+        "badge": " [ Movies ] ",
         "title": "Cold Case (2021)",
         "image": "https://img.youtube.com/vi/Z9uDOF5YmMs/maxresdefault.jpg",
         "videoitem": ["Z9uDOF5YmMs"],

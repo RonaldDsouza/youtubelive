@@ -2,6 +2,7 @@
     "articles": [
       {
         "id": "article1",
+        "badge": " [ Games ]  ",
         "title": "Train Sim World 5 - Part 1 - The Beginning",
         "image": "https://img.youtube.com/vi/7xO74Bknp6Y/maxresdefault.jpg",
         "videoitem": ["7xO74Bknp6Y"],
