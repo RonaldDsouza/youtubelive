@@ -722,15 +722,6 @@ export default function HomePage({ articles }) {
       </main>
 
       {isModalOpen && (
-        <div className={youtubeStyles.modal}>
-          <div className={youtubeStyles.modalContent}>
-            <button className={youtubeStyles.close} onClick={closeModal}>
-              Close
-            </button>
-
-            {currentVideoId.length === 11 ? ( // Assuming YouTube IDs are always 11 characters
-              <>
-           {isModalOpen && (
   <div className={youtubeStyles.modal}>
     <div className={youtubeStyles.modalContent}>
       <button className={youtubeStyles.close} onClick={closeModal}>
@@ -748,7 +739,7 @@ export default function HomePage({ articles }) {
             }}
           />
           <div
-            className={youtubeStyles.message}
+            className="button"
             style={{
               position: "absolute",
               bottom: "20px",
@@ -759,8 +750,8 @@ export default function HomePage({ articles }) {
               padding: "10px",
               borderRadius: "5px",
               textAlign: "center",
-              zIndex: 1000, // Ensure it sits above the player
               display: showMessage ? "block" : "none",
+              zIndex: 1000, // Ensure it sits above the player
             }}
           >
             Playing video from YouTube
@@ -786,7 +777,7 @@ export default function HomePage({ articles }) {
             className={youtubeStyles.player}
           />
           <div
-            className={youtubeStyles.message1}
+            className="button"
             style={{
               position: "absolute",
               bottom: "20px",
@@ -797,8 +788,8 @@ export default function HomePage({ articles }) {
               padding: "10px",
               textAlign: "center",
               borderRadius: "5px",
+              display: showMessage ? "block" : "none",
               zIndex: 1000, // Ensure it sits above the player
-              display: showMessage1 ? "block" : "none",
             }}
           >
             Playing video from Dailymotion
