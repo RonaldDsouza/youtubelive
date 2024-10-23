@@ -926,7 +926,7 @@ export default function HomePage({ articles }) {
                     position: "absolute",
                     bottom: "20px",
                     left: "50%",
-                    // transform: "translateX(-50%)",
+                    transform: "translateX(-50%)",
                     color: "white",
                     // backgroundColor: "rgba(0, 0, 0, 0.5)",
                     padding: "10px",
