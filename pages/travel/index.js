@@ -468,7 +468,7 @@ export default function HomePage({ articles }) {
                       style={{
                         width: "100%",
                         height: "200px",
-                        objectFit: "cover",
+                        objectFit: "fill",
                         margin: "auto",
                         fontWeight: "bold",
                         textAlign: "center",
