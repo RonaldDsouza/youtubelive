@@ -779,92 +779,156 @@ export default function HomePage({ articles }) {
       </header>
 
       <main className={youtubeStyles.main}>
-  {currentArticles.length > 0 ? (
-    <div className={youtubeStyles.grid}>
-      {currentArticles.map((article) => (
-        <div key={article.id} className={youtubeStyles.card}>
-          {article.image && (
-            <div
-              className={youtubeStyles.imageWrapper}
-              onClick={() => openModal(article.videoitem[0])}
-            >
-              <img
-                src={article.image}
-                alt={article.title}
-                className={youtubeStyles.image} // Use CSS class instead of inline styles
-              />
-            </div>
-          )}
-          <div className={youtubeStyles.title}>
-            {article.title}
+        {currentArticles.length > 0 ? (
+          <div className={youtubeStyles.grid}>
+            {currentArticles.map((article) => (
+              <div key={article.id} className={youtubeStyles.card}>
+                {article.image && (
+                  <div
+                    className={youtubeStyles.imageWrapper}
+                    onClick={() => openModal(article.videoitem[0])}
+                  >
+                    <img
+                      src={article.image}
+                      alt={article.title}
+                      style={{
+                        width: "100%",
+                        height: "200px",
+                        objectFit: "fill",
+                        margin: "auto",
+                        fontWeight: "bold",
+                        textAlign: "center",
+                        cursor: "pointer",
+                        boxShadow: "0 0 10px 0 #000",
+                        filter:
+                          "contrast(1.1) saturate(1.1) brightness(1.0) hue-rotate(0deg)",
+                      }}
+                    />
+                  </div>
+                )}
+                <div
+                  className={youtubeStyles.title}
+                  style={{
+                    margin: "auto",
+                    fontWeight: "bold",
+                    fontSize: "16px",
+                    textAlign: "center",
+                    cursor: "pointer",
+                    textShadow: "1px 1px 0px #000",
+                  }}
+                >
+                  {article.title}
+                </div>
+                <div className={youtubeStyles.channel}>{article.channel}</div>
+              </div>
+            ))}
           </div>
-          <div className={youtubeStyles.channel}>{article.channel}</div>
-        </div>
-      ))}
-    </div>
-  ) : (
-    <p>No videos available.</p>
-  )}
-  
-  <p className={youtubeStyles.notice}>
-    This content is made available under the Fair Use Act for educational
-    and commentary purposes only. No copyright infringement is intended.
-  </p>
-
-  {/* Pagination Controls */}
-  <div className={youtubeStyles.pagination}>
-    <button
-      onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
-      disabled={currentPage === 1}
-      className={youtubeStyles.button}
-    >
-      Previous
-    </button>
-    <span className={youtubeStyles.pageInfo}>
-      Page {currentPage} of {totalPages}
-    </span>
-    <button
-      onClick={() => setCurrentPage((prev) => Math.min(prev + 1, totalPages))}
-      disabled={currentPage === totalPages}
-      className={youtubeStyles.button}
-    >
-      Next
-    </button>
-  </div>
-
-  {isModalOpen && (
-    <div className={youtubeStyles.modal}>
-      <div className={youtubeStyles.modalContent}>
-        <button className={youtubeStyles.close} onClick={closeModal}>
-          Close
-        </button>
-
-        {currentVideoId.length === 11 ? ( // Assuming YouTube IDs are always 11 characters
-          <>
-            <div id="youtube-player" className={youtubeStyles.player} />
-            <div className={youtubeStyles.message}>
-              Playing video from YouTube
-              <p className={youtubeStyles.footerNotice}>
-                This content is made available under the Fair Use Act for educational and commentary purposes only. No copyright infringement is intended.
-              </p>
-            </div>
-          </>
         ) : (
-          <>
-            <div ref={dailymotionPlayerRef} className={youtubeStyles.player} />
-            <div className={youtubeStyles.message}>
-              Playing video from Dailymotion
-              <p className={youtubeStyles.footerNotice}>
-                This content is made available under the Fair Use Act for educational and commentary purposes only. No copyright infringement is intended.
-              </p>
-            </div>
-          </>
+          <p>No videos available.</p>
         )}
+        <p
+          className="flex flex-col items-center justify-center"
+          style={{
+            color: "red",
+            fontSize: "18px",
+            fontWeight: "bold",
+            textAlign: "center",
+          }}
+        >
+          This content is made available under the Fair Use Act for educational
+          and commentary purposes only. No copyright infringement is intended.
+        </p>
+
+        {/* Pagination Controls */}
+        <div style={{ textAlign: "center", margin: "20px 0" }}>
+          <button
+            onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
+            disabled={currentPage === 1}
+            style={buttonStyle}
+          >
+            Previous
+          </button>
+          <span style={{ margin: "0 15px", fontWeight: "bold" }}>
+            Page {currentPage} of {totalPages}
+          </span>
+          <button
+            onClick={() =>
+              setCurrentPage((prev) => Math.min(prev + 1, totalPages))
+            }
+            disabled={currentPage === totalPages}
+            style={buttonStyle}
+          >
+            Next
+          </button>
+        </div>
+      </main>
+
+      {isModalOpen && (
+        <div className={youtubeStyles.modal}>
+          <div className={youtubeStyles.modalContent}>
+            <button className={youtubeStyles.close} onClick={closeModal}>
+              Close
+            </button>
+
+            {currentVideoId.length === 11 ? ( // Assuming YouTube IDs are always 11 characters
+              <>
+                <div
+                  id="youtube-player"
+                  className={youtubeStyles.player}
+                  style={{
+                    filter:
+                      "contrast(1.1) saturate(1.2) brightness(1.3) hue-rotate(0deg)",
+                    display: "block",
+                  }}
+                />
+              <div className={youtubeStyles.main}>
+  {isYouTube ? (
+    <>
+      <div className={youtubeStyles.player} ref={youtubePlayerRef} />
+      <div
+        className={`${youtubeStyles.message} ${showMessage ? 'show' : ''}`}
+      >
+        Playing video from YouTube
+        <p
+          style={{
+            color: "red",
+            fontSize: "10px",
+            fontWeight: "bold",
+            textAlign: "center",
+          }}
+        >
+          This content is made available under the Fair Use Act for educational and commentary purposes only. No copyright infringement is intended.
+        </p>
       </div>
-    </div>
+    </>
+  ) : (
+    <>
+      <div className={youtubeStyles.player} ref={dailymotionPlayerRef} />
+      <div
+        className={`${youtubeStyles.message} ${showMessage ? 'show' : ''}`}
+      >
+        Playing video from Dailymotion
+        <p
+          style={{
+            color: "red",
+            fontSize: "10px",
+            fontWeight: "bold",
+            textAlign: "center",
+          }}
+        >
+          This content is made available under the Fair Use Act for educational and commentary purposes only. No copyright infringement is intended.
+        </p>
+      </div>
+    </>
   )}
-  <SocialSharing />
-</main>
+</div>
+
+       
+      )}
+      <SocialSharing />
+    </>
+  );
+}
 
 // OVER ALL PAGINATION
 // import React, { useState, useEffect, useRef } from "react";
