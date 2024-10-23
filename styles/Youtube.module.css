@@ -175,34 +175,17 @@
     max-width: 95%; /* Ensure modal is responsive */
     height: 90%; /* Set height for very small screens */
   }
-
   .message {
-    position: absolute; /* Position above the player */
-    bottom: 20px;
-    left: 50%;
-    transform: translateX(-50%);
-    color: white;
-    background-color: rgba(0, 0, 0, 0.5);
-    padding: 10px;
-    border-radius: 5px;
-    text-align: center;
+    font-size: 16px; /* Adjust size as needed */
+    color: white; /* Or any other color */
+    background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent background */
+    padding: 10px; /* Padding around the text */
+    position: absolute; /* Position it on top of the player */
+    top: 10px; /* Adjust top position */
+    left: 50%; /* Center horizontally */
+    transform: translateX(-50%); /* Center adjustment */
     z-index: 1000; /* Ensure it's above other elements */
-  }
-  
-  .flex {
-    display: flex; /* Maintain the flexbox behavior */
-  }
-  
-  .flex-col {
-    flex-direction: column; /* Stack items vertically */
-  }
-  
-  .items-center {
-    align-items: center; /* Center align items */
-  }
-  
-  .justify-center {
-    justify-content: center; /* Center justify items */
+    border-radius: 5px; /* Optional rounded corners */
   }
   
 }

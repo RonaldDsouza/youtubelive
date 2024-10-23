@@ -552,7 +552,7 @@ export default function HomePage({ articles }) {
             }}
           />
           <div
-            className={youtubeStyles.message}
+            className="button"
             style={{
               position: "absolute",
               bottom: "20px",
@@ -563,8 +563,8 @@ export default function HomePage({ articles }) {
               padding: "10px",
               borderRadius: "5px",
               textAlign: "center",
-              zIndex: 1000, // Ensure it sits above the player
               display: showMessage ? "block" : "none",
+              zIndex: 1000, // Ensure it sits above the player
             }}
           >
             Playing video from YouTube
@@ -590,7 +590,7 @@ export default function HomePage({ articles }) {
             className={youtubeStyles.player}
           />
           <div
-            className={youtubeStyles.message}
+            className="button"
             style={{
               position: "absolute",
               bottom: "20px",
@@ -601,8 +601,8 @@ export default function HomePage({ articles }) {
               padding: "10px",
               textAlign: "center",
               borderRadius: "5px",
-              zIndex: 1000, // Ensure it sits above the player
               display: showMessage ? "block" : "none",
+              zIndex: 1000, // Ensure it sits above the player
             }}
           >
             Playing video from Dailymotion
@@ -626,6 +626,7 @@ export default function HomePage({ articles }) {
   </div>
 )}
 <SocialSharing />
+
 
     </>
   );
