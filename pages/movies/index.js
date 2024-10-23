@@ -863,37 +863,38 @@ export default function HomePage({ articles }) {
                display: "block",
              }}
            />
-           <div
-             className={youtubeStyles.message}
-             style={{
-               position: "absolute",
-               bottom: "20px",
-               left: "50%",
-               transform: "translateX(-50%)",
-               color: "white",
-               backgroundColor: "rgba(0, 0, 0, 0.5)",
-               padding: "10px",
-               borderRadius: "5px",
-               textAlign: "center",
-               display: showMessage ? "block" : "none",
-             }}
-           >
-             Playing video from YouTube
-             <p
-               className="flex flex-col items-center justify-center"
-               style={{
-                 color: "red",
-                 fontSize: "10px",
-                 fontWeight: "bold",
-                 textAlign: "center",
-               }}
-             >
-               This content is made available under the Fair Use Act for
-               educational and commentary purposes only. No copyright
-               infringement is intended.
-             </p>
-           </div>
-         </>
+            <div
+            className="button"
+            style={{
+              position: "absolute",
+              bottom: "20px",
+              left: "50%",
+              transform: "translateX(-50%)",
+              color: "white",
+              backgroundColor: "rgba(0, 0, 0, 0.5)",
+              padding: "10px",
+              borderRadius: "5px",
+              textAlign: "center",
+              display: showMessage ? "block" : "none",
+              zIndex: 1000, // Ensure it sits above the player
+            }}
+          >
+            Playing video from YouTube
+            <p
+              className="flex flex-col items-center justify-center"
+              style={{
+                color: "red",
+                fontSize: "10px",
+                fontWeight: "bold",
+                textAlign: "center",
+              }}
+            >
+              This content is made available under the Fair Use Act for
+              educational and commentary purposes only. No copyright
+              infringement is intended.
+            </p>
+          </div>
+        </>
        ) : (
          <>
           {showMessage && (
@@ -910,36 +911,37 @@ export default function HomePage({ articles }) {
              ref={dailymotionPlayerRef}
              className={youtubeStyles.player}
            />
-           <div
-             className={youtubeStyles.message}
-             style={{
-               position: "absolute",
-               bottom: "20px",
-               left: "50%",
-               transform: "translateX(-50%)",
-               color: "white",
-               backgroundColor: "rgba(0, 0, 0, 0.5)",
-               padding: "10px",
-               textAlign: "center",
-               borderRadius: "5px",
-               display: showMessage ? "block" : "none",
-             }}
-           >
-             Playing video from Dailymotion
-             <p
-               className="flex flex-col items-center justify-center"
-               style={{
-                 color: "red",
-                 fontSize: "10px",
-                 fontWeight: "bold",
-                 textAlign: "center",
-               }}
-             >
-               This content is made available under the Fair Use Act for
-               educational and commentary purposes only. No copyright
-               infringement is intended.
-             </p>
-           </div>
+          <div
+            className="button"
+            style={{
+              position: "absolute",
+              bottom: "20px",
+              left: "50%",
+              transform: "translateX(-50%)",
+              color: "white",
+              backgroundColor: "rgba(0, 0, 0, 0.5)",
+              padding: "10px",
+              textAlign: "center",
+              borderRadius: "5px",
+              display: showMessage ? "block" : "none",
+              zIndex: 1000, // Ensure it sits above the player
+            }}
+          >
+            Playing video from Dailymotion
+            <p
+              className="flex flex-col items-center justify-center"
+              style={{
+                color: "red",
+                fontSize: "10px",
+                fontWeight: "bold",
+                textAlign: "center",
+              }}
+            >
+              This content is made available under the Fair Use Act for
+              educational and commentary purposes only. No copyright
+              infringement is intended.
+            </p>
+          </div>
          </>
 
           )}

@@ -527,96 +527,102 @@ export default function HomePage({ articles }) {
       </main>
 
       {isModalOpen && (
-        <div className={youtubeStyles.modal}>
-          <div className={youtubeStyles.modalContent}>
-            <button className={youtubeStyles.close} onClick={closeModal}>
-              Close
-            </button>
+  <div className={youtubeStyles.modal}>
+    <div className={youtubeStyles.modalContent}>
+      <button className={youtubeStyles.close} onClick={closeModal}>
+        Close
+      </button>
 
-            {currentVideoId.length === 11 ? ( // Assuming YouTube IDs are always 11 characters
-              <>
-               <div
-                  id="youtube-player"
-                  className={youtubeStyles.player}
-                  style={{
-                    filter:
-                      "contrast(1.1) saturate(1.2) brightness(1.3) hue-rotate(0deg)",
-                    display: "block",
-                  }}
-                />
-                <div
-                  className={youtubeStyles.message}
-                  style={{
-                    position: "absolute",
-                    bottom: "20px",
-                    left: "50%",
-                    transform: "translateX(-50%)",
-                    color: "white",
-                    backgroundColor: "rgba(0, 0, 0, 0.5)",
-                    padding: "10px",
-                    borderRadius: "5px",
-                    textAlign: "center",
-                    display: showMessage ? "block" : "none",
-                  }}
-                >
-                  Playing video from YouTube
-                  <p
-                    className="flex flex-col items-center justify-center"
-                    style={{
-                      color: "red",
-                      fontSize: "10px",
-                      fontWeight: "bold",
-                      textAlign: "center",
-                    }}
-                  >
-                    This content is made available under the Fair Use Act for
-                    educational and commentary purposes only. No copyright
-                    infringement is intended.
-                  </p>
-                </div>
-              </>
-            ) : (
-              <>
-                <div
-                  ref={dailymotionPlayerRef}
-                  className={youtubeStyles.player}
-                />
-                <div
-                  className={youtubeStyles.message}
-                  style={{
-                    position: "absolute",
-                    bottom: "20px",
-                    left: "50%",
-                    transform: "translateX(-50%)",
-                    color: "white",
-                    backgroundColor: "rgba(0, 0, 0, 0.5)",
-                    padding: "10px",
-                    textAlign: "center",
-                    borderRadius: "5px",
-                    display: showMessage ? "block" : "none",
-                  }}
-                >
-                  Playing video from Dailymotion
-                  <p
-                    className="flex flex-col items-center justify-center"
-                    style={{
-                      color: "red",
-                      fontSize: "10px",
-                      fontWeight: "bold",
-                      textAlign: "center",
-                    }}
-                  >
-                    This content is made available under the Fair Use Act for
-                    educational and commentary purposes only. No copyright
-                    infringement is intended.
-                  </p>
-                </div>
-              </>
-            )}
+      {currentVideoId.length === 11 ? ( // Assuming YouTube IDs are always 11 characters
+        <>
+          <div
+            id="youtube-player"
+            className={youtubeStyles.player}
+            style={{
+              filter: "contrast(1.1) saturate(1.2) brightness(1.3) hue-rotate(0deg)",
+              display: "block",
+            }}
+          />
+          <div
+            className="button"
+            style={{
+              position: "absolute",
+              bottom: "20px",
+              left: "50%",
+              transform: "translateX(-50%)",
+              color: "white",
+              backgroundColor: "rgba(0, 0, 0, 0.5)",
+              padding: "10px",
+              borderRadius: "5px",
+              textAlign: "center",
+              display: showMessage ? "block" : "none",
+              zIndex: 1000, // Ensure it sits above the player
+            }}
+          >
+            Playing video from YouTube
+            <p
+              className="flex flex-col items-center justify-center"
+              style={{
+                color: "red",
+                fontSize: "10px",
+                fontWeight: "bold",
+                textAlign: "center",
+              }}
+            >
+              This content is made available under the Fair Use Act for
+              educational and commentary purposes only. No copyright
+              infringement is intended.
+            </p>
           </div>
-        </div>
+        </>
+      ) : (
+        <>
+          <div
+            ref={dailymotionPlayerRef}
+            className={youtubeStyles.player}
+            style={{
+              filter: "contrast(1.1) saturate(1.2) brightness(1.3) hue-rotate(0deg)",
+              display: "block",
+            }}
+          />
+          <div
+            className="button"
+            style={{
+              position: "absolute",
+              bottom: "20px",
+              left: "50%",
+              transform: "translateX(-50%)",
+              color: "white",
+              backgroundColor: "rgba(0, 0, 0, 0.5)",
+              padding: "10px",
+              textAlign: "center",
+              borderRadius: "5px",
+              display: showMessage ? "block" : "none",
+              zIndex: 1000, // Ensure it sits above the player
+            }}
+          >
+            Playing video from Dailymotion
+            <p
+              className="flex flex-col items-center justify-center"
+              style={{
+                color: "red",
+                fontSize: "10px",
+                fontWeight: "bold",
+                textAlign: "center",
+              }}
+            >
+              This content is made available under the Fair Use Act for
+              educational and commentary purposes only. No copyright
+              infringement is intended.
+            </p>
+          </div>
+        </>
       )}
-      <SocialSharing />
+    </div>
+  </div>
+)}
+<SocialSharing />
+
     </>
   );
 }

@@ -775,6 +775,10 @@ export default function HomePage({ articles }) {
           <div
             ref={dailymotionPlayerRef}
             className={youtubeStyles.player}
+            style={{
+              filter: "contrast(1.1) saturate(1.2) brightness(1.3) hue-rotate(0deg)",
+              display: "block",
+            }}
           />
           <div
             className="button"
