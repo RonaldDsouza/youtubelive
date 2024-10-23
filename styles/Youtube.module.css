@@ -1,3 +1,5 @@
+/* styles/Youtube.module.css */
+
 /* General Container Styles */
 .container {
   width: 100%;
@@ -22,7 +24,6 @@
 
 .main {
   padding: 20px;
-  position: relative; /* Allow positioning for absolute children */
 }
 
 .grid {
@@ -38,61 +39,153 @@
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
   overflow: hidden;
   transition: box-shadow 0.3s ease;
-  position: relative;
+  position: relative; /* Add positioning context for the video */
 }
 
 .card:hover {
   box-shadow: 0 6px 14px rgba(0, 0, 0, 0.2);
 }
 
-/* Message styles */
-.message {
-  position: absolute;
-  bottom: 20px; /* Positioned at the bottom */
-  left: 50%;
-  transform: translateX(-50%);
-  color: white;
-  background-color: rgba(0, 0, 0, 0.7); /* Darker transparent background */
-  padding: 10px;
-  border-radius: 5px;
-  text-align: center;
-  z-index: 1000; /* Ensure it’s above other elements */
-  display: none; /* Default to none */
+.title {
+  padding: 10px 15px;
+  font-size: 16px;
+  font-weight: 600;
+  color: #333;
 }
 
-.message.show {
-  display: block; /* Show when needed */
+.channel {
+  padding: 0 15px 15px 15px;
+  font-size: 14px;
+  color: #666;
+}
+
+/* Styles for the modal */
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.8); /* Darker semi-transparent background */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000; /* Ensure it is above other content */
+}
+
+.modalContent {
+  position: relative;
+  width: 90%; /* Set a responsive width */
+  max-width: 1200px; /* Increase max width for larger screens */
+  height: 80%; /* Set height to 80% of viewport */
+  max-height: 90vh; /* Max height for the modal */
+  background: #fff; /* White background for the modal content */
+  border-radius: 8px; /* Rounded corners */
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.5); /* Subtle shadow */
+  overflow: hidden; /* Hide overflow */
+}
+
+/* Close button styles */
+.close {
+  position: absolute; /* Position it absolutely within the modal */
+  top: 15px; /* Adjust the position as needed */
+  right: 15px; /* Adjust the position as needed */
+  background: red; /* Red background for the close button */
+  color: white; /* White text */
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  padding: 5px 10px;
+  z-index: 1001; /* Ensure it is above the modal content */
 }
 
 /* Player styles */
 .player {
   width: 100%; /* Full width */
   height: 100%; /* Full height */
-  background-color: black; /* Background color for the player */
-  position: relative; /* Ensure the player is positioned correctly */
+  background-color: black; /* Optional: Background color for the player */
 }
 
 /* Responsive adjustments */
 @media (max-width: 1200px) {
   .grid {
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(4, 1fr); /* Adjust to 4 columns */
+  }
+
+  .modalContent {
+    max-width: 90%; /* Ensure modal is responsive */
+    height: 80%; /* Set height to 80% of viewport */
   }
 }
 
 @media (max-width: 992px) {
   .grid {
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(3, 1fr); /* Adjust to 3 columns */
+  }
+
+  .modalContent {
+    max-width: 95%; /* Ensure modal is responsive */
+    height: 85%; /* Adjust height for smaller screens */
   }
 }
 
 @media (max-width: 768px) {
   .grid {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(2, 1fr); /* Adjust to 2 columns */
+  }
+
+  .title {
+    font-size: 14px; /* Smaller title font size */
+  }
+
+  .channel {
+    font-size: 12px; /* Smaller channel font size */
+  }
+
+  /* Remove background and padding for mobile devices */
+  .container {
+    background-color: transparent; /* Remove background */
+    padding: 0; /* Remove padding */
+  }
+
+  .main {
+    padding: 0; /* Remove padding from main content */
+  }
+
+  .modalContent {
+    max-width: 90%; /* Ensure modal is responsive */
+    height: 85%; /* Set height for mobile screens */
   }
 }
 
 @media (max-width: 576px) {
   .grid {
-    grid-template-columns: 1fr; /* Single column */
+    grid-template-columns: 1fr; /* Single column for small devices */
   }
+
+  .title {
+    font-size: 12px; /* Even smaller title font size */
+  }
+
+  .channel {
+    font-size: 10px; /* Even smaller channel font size */
+  }
+
+  .modalContent {
+    max-width: 95%; /* Ensure modal is responsive */
+    height: 90%; /* Set height for very small screens */
+  }
+  .message {
+    font-size: 16px; /* Adjust size as needed */
+    color: white; /* Or any other color */
+    background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent background */
+    padding: 10px; /* Padding around the text */
+    position: absolute; /* Position it on top of the player */
+    top: 10px; /* Adjust top position */
+    left: 50%; /* Center horizontally */
+    transform: translateX(-50%); /* Center adjustment */
+    z-index: 1000; /* Ensure it's above other elements */
+    border-radius: 5px; /* Optional rounded corners */
+  }
+  
 }
