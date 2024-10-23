@@ -3,7 +3,23 @@
       {
         "id": "article7",
         "badge": " [ Sports ] ",
-        "title": "1st Test | Day 2 | Highlights | Bangladesh vs South Africa | 2024",
+        "title": "ProKabaddi | Highlights | UP Yoddhas  vs Bengaluru Bulls | 2024",
+        "image": "https://img.youtube.com/vi/gbsDbn-em2Q/maxresdefault.jpg",
+        "videoitem": ["gbsDbn-em2Q"],
+        "videotittle": ["Bad Genius (2024)"]
+      },
+      {
+        "id": "article7",
+        "badge": " [ Sports ] ",
+        "title": "ProKabaddi | Highlights | Jaipur  vs Telugu | 2024",
+        "image": "https://img.youtube.com/vi/wccT4pAuA1E/maxresdefault.jpg",
+        "videoitem": ["wccT4pAuA1E"],
+        "videotittle": ["Bad Genius (2024)"]
+      },
+      {
+        "id": "article7",
+        "badge": " [ Sports ] ",
+        "title": "1st Test | Day 3 | Highlights | Bangladesh vs South Africa | 2024",
         "image": "https://img.youtube.com/vi/h_b1YRNV0WQ/maxresdefault.jpg",
         "videoitem": ["h_b1YRNV0WQ"],
         "videotittle": ["Bad Genius (2024)"]
