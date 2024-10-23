@@ -889,7 +889,7 @@ export default function HomePage({ articles }) {
                     left: "50%",
                     transform: "translateX(-50%)",
                     color: "white",
-                    backgroundColor: "rgba(0, 0, 0, 0.7)", // Increase transparency or change color
+                    // backgroundColor: "rgba(0, 0, 0, 0.7)", // Increase transparency or change color
                     padding: "10px",
                     borderRadius: "5px",
                     textAlign: "center",
@@ -928,7 +928,7 @@ export default function HomePage({ articles }) {
                     left: "50%",
                     // transform: "translateX(-50%)",
                     color: "white",
-                    backgroundColor: "rgba(0, 0, 0, 0.5)",
+                    // backgroundColor: "rgba(0, 0, 0, 0.5)",
                     padding: "10px",
                     textAlign: "center",
                     borderRadius: "5px",
