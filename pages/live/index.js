@@ -889,7 +889,7 @@ export default function HomePage({ articles }) {
                     left: "50%",
                     transform: "translateX(-50%)",
                     color: "white",
-                    // backgroundColor: "rgba(0, 0, 0, 0.7)", // Increase transparency or change color
+                    backgroundColor: "rgba(0, 0, 0, 0.5)", // Increase transparency or change color
                     padding: "10px",
                     borderRadius: "5px",
                     textAlign: "center",
@@ -898,8 +898,10 @@ export default function HomePage({ articles }) {
                   }}
                 >
                   Playing video from YouTube
-                  <p
-                    className="items-center justify-center"
+               
+                </div>
+                <p
+                     className="flex flex-col items-center justify-center"
                     style={{
                       color: "red",
                       fontSize: "10px",
@@ -912,7 +914,6 @@ export default function HomePage({ articles }) {
                     educational and commentary purposes only. No copyright
                     infringement is intended.
                   </p>
-                </div>
               </>
             ) : (
               <>
@@ -928,7 +929,7 @@ export default function HomePage({ articles }) {
                     left: "50%",
                     transform: "translateX(-50%)",
                     color: "white",
-                    // backgroundColor: "rgba(0, 0, 0, 0.5)",
+                    backgroundColor: "rgba(0, 0, 0, 0.5)",
                     padding: "10px",
                     textAlign: "center",
                     borderRadius: "5px",
@@ -936,8 +937,10 @@ export default function HomePage({ articles }) {
                   }}
                 >
                   Playing video from Dailymotion
-                  <p
-                    className="items-center justify-center"
+                 
+                </div>
+                <p
+                      className="flex flex-col items-center justify-center"
                     style={{
                       color: "red",
                       fontSize: "10px",
@@ -950,7 +953,6 @@ export default function HomePage({ articles }) {
                     educational and commentary purposes only. No copyright
                     infringement is intended.
                   </p>
-                </div>
               </>
             )}
           </div>
