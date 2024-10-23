@@ -866,7 +866,10 @@ export default function HomePage({ articles }) {
                   }}
                 >
                   Playing video from YouTube
-                  <p
+                  This content is made available under the Fair Use Act for
+                    educational and commentary purposes only. No copyright
+                    infringement is intended.
+                  {/* <p
                     className="items-center justify-center"
                     style={{
                       color: "red",
@@ -878,7 +881,7 @@ export default function HomePage({ articles }) {
                     This content is made available under the Fair Use Act for
                     educational and commentary purposes only. No copyright
                     infringement is intended.
-                  </p>
+                  </p> */}
                 </div>
               </>
             ) : (
@@ -893,7 +896,7 @@ export default function HomePage({ articles }) {
                     position: "absolute",
                     bottom: "20px",
                     left: "50%",
-                    transform: "translateX(-50%)",
+                    // transform: "translateX(-50%)",
                     color: "white",
                     backgroundColor: "rgba(0, 0, 0, 0.5)",
                     padding: "10px",
@@ -903,7 +906,10 @@ export default function HomePage({ articles }) {
                   }}
                 >
                   Playing video from Dailymotion
-                  <p
+                  This content is made available under the Fair Use Act for
+                    educational and commentary purposes only. No copyright
+                    infringement is intended.
+                  {/* <p
                     className="items-center justify-center"
                     style={{
                       color: "red",
@@ -915,7 +921,7 @@ export default function HomePage({ articles }) {
                     This content is made available under the Fair Use Act for
                     educational and commentary purposes only. No copyright
                     infringement is intended.
-                  </p>
+                  </p> */}
                 </div>
               </>
             )}
