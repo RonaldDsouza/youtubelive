@@ -962,6 +962,10 @@ export default function HomePage({ articles }) {
 )}
 <SocialSharing />
 
+    </>
+  );
+}
+
 // OVER ALL PAGINATION
 // import React, { useState, useEffect, useRef } from "react";
 // import youtubeStyles from "../../styles/Youtube.module.css"; // YouTube CSS
