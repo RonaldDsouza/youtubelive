@@ -881,49 +881,80 @@ export default function HomePage({ articles }) {
                     display: "block",
                   }}
                 />
-              <div className={youtubeStyles.main}>
-  {isYouTube ? (
-    <>
-      <div className={youtubeStyles.player} ref={youtubePlayerRef} />
-      <div
-        className={`${youtubeStyles.message} ${showMessage ? 'show' : ''}`}
-      >
-        Playing video from YouTube
-        <p
-          style={{
-            color: "red",
-            fontSize: "10px",
-            fontWeight: "bold",
-            textAlign: "center",
-          }}
-        >
-          This content is made available under the Fair Use Act for educational and commentary purposes only. No copyright infringement is intended.
-        </p>
-      </div>
-    </>
-  ) : (
-    <>
-      <div className={youtubeStyles.player} ref={dailymotionPlayerRef} />
-      <div
-        className={`${youtubeStyles.message} ${showMessage ? 'show' : ''}`}
-      >
-        Playing video from Dailymotion
-        <p
-          style={{
-            color: "red",
-            fontSize: "10px",
-            fontWeight: "bold",
-            textAlign: "center",
-          }}
-        >
-          This content is made available under the Fair Use Act for educational and commentary purposes only. No copyright infringement is intended.
-        </p>
-      </div>
-    </>
-  )}
-</div>
-
-       
+                <div
+                  className={youtubeStyles.message}
+                  style={{
+                    position: "absolute",
+                    bottom: "20px",
+                    left: "50%",
+                    transform: "translateX(-50%)",
+                    color: "white",
+                    backgroundColor: "rgba(0, 0, 0, 0.7)", // Increase transparency or change color
+                    padding: "10px",
+                    borderRadius: "5px",
+                    textAlign: "center",
+                    display: showMessage ? "block" : "none",
+                   
+                  }}
+                >
+                  Playing video from YouTube
+                  <p
+                    className="items-center justify-center"
+                    style={{
+                      color: "red",
+                      fontSize: "10px",
+                      fontWeight: "bold",
+                      textAlign: "center",
+                    
+                    }}
+                  >
+                    This content is made available under the Fair Use Act for
+                    educational and commentary purposes only. No copyright
+                    infringement is intended.
+                  </p>
+                </div>
+              </>
+            ) : (
+              <>
+                <div
+                  ref={dailymotionPlayerRef}
+                  className={youtubeStyles.player}
+                />
+                <div
+                  className={youtubeStyles.message}
+                  style={{
+                    position: "absolute",
+                    bottom: "20px",
+                    left: "50%",
+                    // transform: "translateX(-50%)",
+                    color: "white",
+                    backgroundColor: "rgba(0, 0, 0, 0.5)",
+                    padding: "10px",
+                    textAlign: "center",
+                    borderRadius: "5px",
+                    display: showMessage ? "block" : "none",
+                  }}
+                >
+                  Playing video from Dailymotion
+                  <p
+                    className="items-center justify-center"
+                    style={{
+                      color: "red",
+                      fontSize: "10px",
+                      fontWeight: "bold",
+                      textAlign: "center",
+                    
+                    }}
+                  >
+                    This content is made available under the Fair Use Act for
+                    educational and commentary purposes only. No copyright
+                    infringement is intended.
+                  </p>
+                </div>
+              </>
+            )}
+          </div>
+        </div>
       )}
       <SocialSharing />
     </>
