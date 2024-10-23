@@ -116,12 +116,5 @@
     z-index: 1000; /* Ensure it's above other elements */
     border-radius: 5px; /* Optional rounded corners */
   }
-  /* Player styles */
-.player {
-  width: 100%; /* Full width of the container */
-  height: 100%; /* Ensure height is set */
-  background-color: black; /* Clear background for the player */
-  position: relative; /* Needed for z-index to work */
-  z-index: 10; /* Ensure player is above modal shadow */
-}
+  
 }
