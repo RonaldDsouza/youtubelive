@@ -187,4 +187,8 @@
     z-index: 1000; /* Ensure it's above other elements */
     border-radius: 5px; /* Optional rounded corners */
   }
+  .player {
+    position: relative;
+    z-index: 2;
+  }
 }

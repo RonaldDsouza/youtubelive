@@ -47,10 +47,10 @@
 //   const categories = Array.from(new Set(articles.map(article => article.category))).concat("All");
 
 //   // Calculate displayed articles based on pagination and filtering
-//   const filteredArticles = selectedCategory === "All" 
-//     ? articles 
+//   const filteredArticles = selectedCategory === "All"
+//     ? articles
 //     : articles.filter(article => article.category === selectedCategory);
-  
+
 //   const indexOfLastArticle = currentPage * itemsPerPage;
 //   const indexOfFirstArticle = indexOfLastArticle - itemsPerPage;
 //   const currentArticles = filteredArticles.slice(indexOfFirstArticle, indexOfLastArticle);
@@ -149,7 +149,6 @@
 //     transition: "background-color 0.3s", // Smooth transition
 //     margin: "0 5px", // Margin for buttons
 //   };
-
 
 //   return (
 // <>
@@ -309,8 +308,6 @@
 //   );
 // }
 
-
-
 import React, { useState, useEffect, useRef } from "react";
 import youtubeStyles from "../../styles/Youtube.module.css"; // YouTube CSS
 import dailymotionStyles from "../../styles/Dailymotion.module.css"; // Dailymotion CSS
@@ -357,16 +354,22 @@ export default function HomePage({ articles }) {
   const [selectedCategory, setSelectedCategory] = useState("All"); // State for selected category
 
   // Extract unique categories from articles
-  const categories = Array.from(new Set(articles.map(article => article.category))).concat("All");
+  const categories = Array.from(
+    new Set(articles.map((article) => article.category))
+  ).concat("All");
 
   // Calculate displayed articles based on pagination and filtering
-  const filteredArticles = selectedCategory === "All" 
-    ? articles 
-    : articles.filter(article => article.category === selectedCategory);
-  
+  const filteredArticles =
+    selectedCategory === "All"
+      ? articles
+      : articles.filter((article) => article.category === selectedCategory);
+
   const indexOfLastArticle = currentPage * itemsPerPage;
   const indexOfFirstArticle = indexOfLastArticle - itemsPerPage;
-  const currentArticles = filteredArticles.slice(indexOfFirstArticle, indexOfLastArticle);
+  const currentArticles = filteredArticles.slice(
+    indexOfFirstArticle,
+    indexOfLastArticle
+  );
 
   // Calculate total pages
   const totalPages = Math.ceil(filteredArticles.length / itemsPerPage);
@@ -467,70 +470,83 @@ export default function HomePage({ articles }) {
       {
         "@type": "CollectionPage",
         "@id": "https://youtubelive.vercel.app/category/live/",
-        "url": "https://youtubelive.vercel.app/category/live/",
-        "name": "Live News Section - Youtube Live™",
-        "isPartOf": { "@id": "https://youtubelive.vercel.app/#website" },
-        "primaryImageOfPage": { "@id": "https://youtubelive.vercel.app/live/#primaryimage" },
-        "image": { "@id": "https://youtubelive.vercel.app/live/#primaryimage" },
-        "thumbnailUrl": "https://youtubelive.vercel.app/og_image.jpg",
-        "breadcrumb": { "@id": "https://youtubelive.vercel.app/live/#breadcrumb" },
-        "inLanguage": "en-US"
+        url: "https://youtubelive.vercel.app/category/live/",
+        name: "Live News Section - Youtube Live™",
+        isPartOf: { "@id": "https://youtubelive.vercel.app/#website" },
+        primaryImageOfPage: {
+          "@id": "https://youtubelive.vercel.app/live/#primaryimage",
+        },
+        image: { "@id": "https://youtubelive.vercel.app/live/#primaryimage" },
+        thumbnailUrl: "https://youtubelive.vercel.app/og_image.jpg",
+        breadcrumb: {
+          "@id": "https://youtubelive.vercel.app/live/#breadcrumb",
+        },
+        inLanguage: "en-US",
       },
       {
         "@type": "ImageObject",
-        "inLanguage": "en-US",
+        inLanguage: "en-US",
         "@id": "https://youtubelive.vercel.app/live/#primaryimage",
-        "url": "https://youtubelive.vercel.app/og_image.jpg",
-        "contentUrl": "https://youtubelive.vercel.app/og_image.jpg",
-        "width": 1280,
-        "height": 720
+        url: "https://youtubelive.vercel.app/og_image.jpg",
+        contentUrl: "https://youtubelive.vercel.app/og_image.jpg",
+        width: 1280,
+        height: 720,
       },
       {
         "@type": "BreadcrumbList",
         "@id": "https://youtubelive.vercel.app/live/#breadcrumb",
-        "itemListElement": [
-          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://youtubelive.vercel.app/" },
-          { "@type": "ListItem", "position": 2, "name": "Live" }
-        ]
+        itemListElement: [
+          {
+            "@type": "ListItem",
+            position: 1,
+            name: "Home",
+            item: "https://youtubelive.vercel.app/",
+          },
+          { "@type": "ListItem", position: 2, name: "Live" },
+        ],
       },
       {
         "@type": "WebSite",
         "@id": "https://youtubelive.vercel.app/#website",
-        "url": "https://youtubelive.vercel.app/",
-        "name": "Youtube Live™",
-        "description": "",
-        "publisher": { "@id": "https://youtubelive.vercel.app/#organization" },
-        "potentialAction": [
+        url: "https://youtubelive.vercel.app/",
+        name: "Youtube Live™",
+        description: "",
+        publisher: { "@id": "https://youtubelive.vercel.app/#organization" },
+        potentialAction: [
           {
             "@type": "SearchAction",
-            "target": { "@type": "EntryPoint", "urlTemplate": "https://youtubelive.vercel.app/?s={search_term_string}" },
+            target: {
+              "@type": "EntryPoint",
+              urlTemplate:
+                "https://youtubelive.vercel.app/?s={search_term_string}",
+            },
             "query-input": {
               "@type": "PropertyValueSpecification",
-              "valueRequired": true,
-              "valueName": "search_term_string"
-            }
-          }
+              valueRequired: true,
+              valueName: "search_term_string",
+            },
+          },
         ],
-        "inLanguage": "en-US"
+        inLanguage: "en-US",
       },
       {
         "@type": "Organization",
         "@id": "https://youtubelive.vercel.app/#organization",
-        "name": "Youtube Live™",
-        "url": "https://youtubelive.vercel.app/",
-        "logo": {
+        name: "Youtube Live™",
+        url: "https://youtubelive.vercel.app/",
+        logo: {
           "@type": "ImageObject",
-          "inLanguage": "en-US",
+          inLanguage: "en-US",
           "@id": "https://youtubelive.vercel.app/#/schema/logo/image/",
-          "url": "https://youtubelive.vercel.app/logo.png",
-          "contentUrl": "https://youtubelive.vercel.app/logo.png",
-          "width": 280,
-          "height": 100,
-          "caption": "Youtube Live™"
+          url: "https://youtubelive.vercel.app/logo.png",
+          contentUrl: "https://youtubelive.vercel.app/logo.png",
+          width: 280,
+          height: 100,
+          caption: "Youtube Live™",
         },
-        "image": { "@id": "https://youtubelive.vercel.app/#/schema/logo/image/" }
-      }
-    ]
+        image: { "@id": "https://youtubelive.vercel.app/#/schema/logo/image/" },
+      },
+    ],
   });
 
   return (
@@ -546,7 +562,10 @@ export default function HomePage({ articles }) {
         />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <link rel="icon" type="image/x-icon" href="/favicon.ico" />
-        <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+        <meta
+          name="robots"
+          content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+        />
         <meta
           name="keywords"
           content="youtubelive, news, movies, sports, podcast, music, games, shopping, politics, trailers, fashion, education, technology, trending"
@@ -562,9 +581,15 @@ export default function HomePage({ articles }) {
         />
         <meta property="og:locale" content="en_US" />
         <meta property="og:type" content="article" />
-        <meta property="og:title" content="Youtube Live™ - Live News Section." />
+        <meta
+          property="og:title"
+          content="Youtube Live™ - Live News Section."
+        />
         <meta property="og:url" content="https://youtubelive.vercel.app/live" />
-        <meta property="og:site_name" content="Youtube Live™ - Live News Section." />
+        <meta
+          property="og:site_name"
+          content="Youtube Live™ - Live News Section."
+        />
         <meta
           property="og:image"
           content="https://youtubelive.vercel.app/og_image.jpg"
@@ -572,7 +597,10 @@ export default function HomePage({ articles }) {
         <meta property="og:image:width" content="1280" />
         <meta property="og:image:height" content="720" />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Youtube Live™ - Live News Section." />
+        <meta
+          name="twitter:title"
+          content="Youtube Live™ - Live News Section."
+        />
         <meta
           name="twitter:description"
           content="Discover the best YouTube content in news, movies, sports, podcasts, music, games, and more with Youtube Live™. Explore, stream, and enjoy top-quality videos curated for you."
@@ -586,8 +614,8 @@ export default function HomePage({ articles }) {
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: liveSchema }}
         />
-      
-          <script
+
+        <script
           async
           src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4821855388989115"
           crossOrigin="anonymous"
@@ -772,7 +800,8 @@ export default function HomePage({ articles }) {
                         textAlign: "center",
                         cursor: "pointer",
                         boxShadow: "0 0 10px 0 #000",
-                        filter: "contrast(1.1) saturate(1.1) brightness(1.0) hue-rotate(0deg)",
+                        filter:
+                          "contrast(1.1) saturate(1.1) brightness(1.0) hue-rotate(0deg)",
                       }}
                     />
                   </div>
@@ -823,7 +852,9 @@ export default function HomePage({ articles }) {
             Page {currentPage} of {totalPages}
           </span>
           <button
-            onClick={() => setCurrentPage((prev) => Math.min(prev + 1, totalPages))}
+            onClick={() =>
+              setCurrentPage((prev) => Math.min(prev + 1, totalPages))
+            }
             disabled={currentPage === totalPages}
             style={buttonStyle}
           >
@@ -841,7 +872,7 @@ export default function HomePage({ articles }) {
 
             {currentVideoId.length === 11 ? ( // Assuming YouTube IDs are always 11 characters
               <>
-               <div
+                <div
                   id="youtube-player"
                   className={youtubeStyles.player}
                   style={{
@@ -858,11 +889,12 @@ export default function HomePage({ articles }) {
                     left: "50%",
                     transform: "translateX(-50%)",
                     color: "white",
-                    backgroundColor: "rgba(0, 0, 0, 0.5)",
+                    backgroundColor: "rgba(0, 0, 0, 0.7)", // Increase transparency or change color
                     padding: "10px",
                     borderRadius: "5px",
                     textAlign: "center",
                     display: showMessage ? "block" : "none",
+                    zIndex: 1, // Ensure it's behind the player
                   }}
                 >
                   Playing video from YouTube
@@ -894,16 +926,17 @@ export default function HomePage({ articles }) {
                     position: "absolute",
                     bottom: "20px",
                     left: "50%",
-                    // transform: "translateX(-50%)",
+                    transform: "translateX(-50%)",
                     color: "white",
-                    backgroundColor: "rgba(0, 0, 0, 0.5)",
+                    backgroundColor: "rgba(0, 0, 0, 0.7)", // Increase transparency or change color
                     padding: "10px",
-                    textAlign: "center",
                     borderRadius: "5px",
+                    textAlign: "center",
                     display: showMessage ? "block" : "none",
+                    zIndex: 1, // Ensure it's behind the player
                   }}
                 >
-                  Playing video from Dailymotion
+                 Playing video from Dailymotion
                   <p
                     className="items-center justify-center"
                     style={{
@@ -919,6 +952,7 @@ export default function HomePage({ articles }) {
                     infringement is intended.
                   </p>
                 </div>
+                
               </>
             )}
           </div>
@@ -929,31 +963,7 @@ export default function HomePage({ articles }) {
   );
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-                                                      // OVER ALL PAGINATION
+// OVER ALL PAGINATION
 // import React, { useState, useEffect, useRef } from "react";
 // import youtubeStyles from "../../styles/Youtube.module.css"; // YouTube CSS
 // import dailymotionStyles from "../../styles/Dailymotion.module.css"; // Dailymotion CSS
@@ -1241,7 +1251,3 @@ export default function HomePage({ articles }) {
 //     </>
 //   );
 // }
-
-
-
-
