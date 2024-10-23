@@ -1,313 +1,3 @@
-// import React, { useState, useEffect, useRef } from "react";
-// import youtubeStyles from "../../styles/Youtube.module.css"; // YouTube CSS
-// import dailymotionStyles from "../../styles/Dailymotion.module.css"; // Dailymotion CSS
-// import SocialSharing from "../../components/SocialSharing";
-// import Styles from "@styles/styles.module.css";
-// import Head from "next/head";
-// import Script from "next/script";
-
-// export async function getStaticProps() {
-//   try {
-//     const res = await fetch("https://youtubelive.vercel.app/articles.json");
-//     if (!res.ok) {
-//       throw new Error(`Failed to fetch data: ${res.status}`);
-//     }
-
-//     const articles = await res.json();
-
-//     return {
-//       props: {
-//         articles: articles.articles, // Ensure this matches your JSON structure
-//       },
-//     };
-//   } catch (error) {
-//     console.error("Error fetching articles:", error);
-//     return {
-//       props: {
-//         articles: [],
-//       },
-//     };
-//   }
-// }
-
-// export default function HomePage({ articles }) {
-//   const [isModalOpen, setModalOpen] = useState(false);
-//   const [currentVideoId, setCurrentVideoId] = useState("");
-//   const [playerReady, setPlayerReady] = useState(false);
-//   const playerRef = useRef(null);
-//   const dailymotionPlayerRef = useRef(null); // Reference for Dailymotion player
-//   const [showMessage, setShowMessage] = useState(false); // State for the message visibility
-
-//   // Pagination States
-//   const [currentPage, setCurrentPage] = useState(1);
-//   const itemsPerPage = 10; // Number of articles per page
-//   const [selectedCategory, setSelectedCategory] = useState("All"); // State for selected category
-
-//   // Extract unique categories from articles
-//   const categories = Array.from(new Set(articles.map(article => article.category))).concat("All");
-
-//   // Calculate displayed articles based on pagination and filtering
-//   const filteredArticles = selectedCategory === "All"
-//     ? articles
-//     : articles.filter(article => article.category === selectedCategory);
-
-//   const indexOfLastArticle = currentPage * itemsPerPage;
-//   const indexOfFirstArticle = indexOfLastArticle - itemsPerPage;
-//   const currentArticles = filteredArticles.slice(indexOfFirstArticle, indexOfLastArticle);
-
-//   // Calculate total pages
-//   const totalPages = Math.ceil(filteredArticles.length / itemsPerPage);
-
-//   const loadYouTubeAPI = () => {
-//     const onYouTubeIframeAPIReady = () => setPlayerReady(true);
-//     if (typeof window !== "undefined" && typeof YT === "undefined") {
-//       const tag = document.createElement("script");
-//       tag.src = "https://www.youtube.com/iframe_api";
-//       const firstScriptTag = document.getElementsByTagName("script")[0];
-//       firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
-//       window.onYouTubeIframeAPIReady = onYouTubeIframeAPIReady;
-//     } else {
-//       onYouTubeIframeAPIReady();
-//     }
-//   };
-
-//   useEffect(() => {
-//     loadYouTubeAPI();
-//   }, []);
-
-//   useEffect(() => {
-//     if (playerReady && currentVideoId) {
-//       if (currentVideoId.length === 11) {
-//         playerRef.current = new window.YT.Player("youtube-player", {
-//           width: "100%",
-//           height: "100%",
-//           videoId: currentVideoId,
-//           playerVars: {
-//             autoplay: 1,
-//             mute: 0,
-//             enablejsapi: 1,
-//             modestbranding: 1,
-//           },
-//           events: {
-//             onReady: (event) => {
-//               event.target.playVideo();
-//             },
-//           },
-//         });
-//       } else {
-//         loadDailymotionPlayer(currentVideoId);
-//       }
-//     }
-//   }, [playerReady, currentVideoId]);
-
-//   const loadDailymotionPlayer = (videoId) => {
-//     if (dailymotionPlayerRef.current) {
-//       dailymotionPlayerRef.current.innerHTML = ""; // Clear previous player
-//     }
-
-//     const player = document.createElement("iframe");
-//     player.src = `https://www.dailymotion.com/embed/video/${videoId}`;
-//     player.width = "100%";
-//     player.height = "100%";
-//     player.setAttribute("allowfullscreen", "true");
-//     player.setAttribute("frameborder", "0");
-//     player.setAttribute("allow", "autoplay");
-
-//     dailymotionPlayerRef.current.appendChild(player); // Append new player
-//     setShowMessage(true); // Show message when the player loads
-
-//     setTimeout(() => {
-//       setShowMessage(false);
-//     }, 30000); // 30000 milliseconds = 30 seconds
-//   };
-
-//   const openModal = (videoId) => {
-//     setCurrentVideoId(videoId);
-//     setModalOpen(true);
-//   };
-
-//   const closeModal = () => {
-//     setModalOpen(false);
-//     setCurrentVideoId("");
-
-//     if (playerRef.current && playerRef.current.stopVideo) {
-//       playerRef.current.stopVideo(); // Stop the video for YouTube
-//     }
-
-//     if (dailymotionPlayerRef.current) {
-//       dailymotionPlayerRef.current.innerHTML = ""; // Clear the player container
-//     }
-//   };
-
-//   const buttonStyle = {
-//     backgroundColor: "#0070f3", // Button color
-//     color: "white", // Text color
-//     border: "none", // Remove border
-//     borderRadius: "5px", // Rounded corners
-//     padding: "10px 15px", // Padding
-//     cursor: "pointer", // Pointer cursor on hover
-//     transition: "background-color 0.3s", // Smooth transition
-//     margin: "0 5px", // Margin for buttons
-//   };
-
-//   return (
-// <>
-//   <Head>
-//     <title>Youtube Live™ - Live News Section.</title>
-//   </Head>
-
-//   <header className={youtubeStyles.header}>
-//     <h1 className={youtubeStyles.logo}>Live News Section.</h1>
-//   </header>
-
-//   <main className={youtubeStyles.main}>
-//     {currentArticles.length > 0 ? (
-//       <div className={youtubeStyles.grid}>
-//         {currentArticles.map((article) => (
-//           <div key={article.id} className={youtubeStyles.card}>
-//             {article.image && (
-//               <div
-//                 className={youtubeStyles.imageWrapper}
-//                 onClick={() => openModal(article.videoitem[0])}
-//               >
-//                 <img
-//                   src={article.image}
-//                   alt={article.title}
-//                   style={{
-//                     width: "100%",
-//                     height: "200px",
-//                     objectFit: "fill",
-//                     margin: "auto",
-//                     fontWeight: "bold",
-//                     textAlign: "center",
-//                     cursor: "pointer",
-//                     boxShadow: "0 0 10px 0 #000",
-//                     filter: "contrast(1.1) saturate(1.1) brightness(1.0) hue-rotate(0deg)",
-//                   }}
-//                 />
-//               </div>
-//             )}
-//             <div
-//               className={youtubeStyles.title}
-//               style={{
-//                 margin: "auto",
-//                 fontWeight: "bold",
-//                 fontSize: "16px",
-//                 textAlign: "center",
-//                 cursor: "pointer",
-//                 textShadow: "1px 1px 0px #000",
-//               }}
-//             >
-//               {article.title}
-//             </div>
-//             <div className={youtubeStyles.channel}>{article.channel}</div>
-//           </div>
-//         ))}
-//       </div>
-//     ) : (
-//       <p>No videos available.</p>
-//     )}
-//     <p
-//       className="flex flex-col items-center justify-center"
-//       style={{
-//         color: "red",
-//         fontSize: "18px",
-//         fontWeight: "bold",
-//         textAlign: "center",
-//       }}
-//     >
-//       This content is made available under the Fair Use Act for educational
-//       and commentary purposes only. No copyright infringement is intended.
-//     </p>
-
-//     {/* Pagination Controls */}
-//     <div style={{ textAlign: "center", margin: "20px 0" }}>
-//       <button
-//         onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
-//         disabled={currentPage === 1}
-//         style={buttonStyle}
-//       >
-//         Previous
-//       </button>
-//       <span style={{ margin: "0 15px", fontWeight: "bold" }}>
-//         Page {currentPage} of {totalPages}
-//       </span>
-//       <button
-//         onClick={() => setCurrentPage((prev) => Math.min(prev + 1, totalPages))}
-//         disabled={currentPage === totalPages}
-//         style={buttonStyle}
-//       >
-//         Next
-//       </button>
-//     </div>
-//   </main>
-
-//   {isModalOpen && (
-//         <div className={youtubeStyles.modal}>
-//           <div className={youtubeStyles.modalContent}>
-//             <button className={youtubeStyles.close} onClick={closeModal}>
-//               Close
-//             </button>
-
-//             {currentVideoId.length === 11 ? ( // Assuming YouTube IDs are always 11 characters
-//               <>
-//                 <div
-//                   id="youtube-player"
-//                   className={youtubeStyles.player}
-//                   style={{
-//                     filter: "contrast(1.1) saturate(1.2) brightness(1.3) hue-rotate(0deg)",
-//                     display: "block",
-//                   }}
-//                 />
-//                 {showMessage && (
-//                   <div
-//                     className={youtubeStyles.message}
-//                     style={{
-//                       position: "absolute",
-//                       bottom: "20px",
-//                       left: "50%",
-//                       transform: "translateX(-50%)",
-//                       backgroundColor: "rgba(0, 0, 0, 0.8)",
-//                       color: "white",
-//                       padding: "10px",
-//                       borderRadius: "5px",
-//                       zIndex: 1000, // Ensures it's on top
-//                     }}
-//                   >
-//                     Playing video from YouTube
-//                   </div>
-//                 )}
-//               </>
-//             ) : (
-//               <>
-//                 <div ref={dailymotionPlayerRef} className={youtubeStyles.player} />
-//                 {showMessage && (
-//                   <div
-//                     className={youtubeStyles.message}
-//                     style={{
-//                       position: "absolute",
-//                       bottom: "20px",
-//                       left: "50%",
-//                       transform: "translateX(-50%)",
-//                       backgroundColor: "rgba(0, 0, 0, 0.8)",
-//                       color: "white",
-//                       padding: "10px",
-//                       borderRadius: "5px",
-//                       zIndex: 1000, // Ensures it's on top
-//                     }}
-//                   >
-//                     Playing video from Dailymotion
-//                   </div>
-//                 )}
-//               </>
-//             )}
-//           </div>
-//         </div>
-//       )}
-//     </>
-//   );
-// }
-
 import React, { useState, useEffect, useRef } from "react";
 import youtubeStyles from "../../styles/Youtube.module.css"; // YouTube CSS
 import dailymotionStyles from "../../styles/Dailymotion.module.css"; // Dailymotion CSS
@@ -354,22 +44,16 @@ export default function HomePage({ articles }) {
   const [selectedCategory, setSelectedCategory] = useState("All"); // State for selected category
 
   // Extract unique categories from articles
-  const categories = Array.from(
-    new Set(articles.map((article) => article.category))
-  ).concat("All");
+  const categories = Array.from(new Set(articles.map(article => article.category))).concat("All");
 
   // Calculate displayed articles based on pagination and filtering
-  const filteredArticles =
-    selectedCategory === "All"
-      ? articles
-      : articles.filter((article) => article.category === selectedCategory);
-
+  const filteredArticles = selectedCategory === "All" 
+    ? articles 
+    : articles.filter(article => article.category === selectedCategory);
+  
   const indexOfLastArticle = currentPage * itemsPerPage;
   const indexOfFirstArticle = indexOfLastArticle - itemsPerPage;
-  const currentArticles = filteredArticles.slice(
-    indexOfFirstArticle,
-    indexOfLastArticle
-  );
+  const currentArticles = filteredArticles.slice(indexOfFirstArticle, indexOfLastArticle);
 
   // Calculate total pages
   const totalPages = Math.ceil(filteredArticles.length / itemsPerPage);
@@ -800,8 +484,7 @@ export default function HomePage({ articles }) {
                         textAlign: "center",
                         cursor: "pointer",
                         boxShadow: "0 0 10px 0 #000",
-                        filter:
-                          "contrast(1.1) saturate(1.1) brightness(1.0) hue-rotate(0deg)",
+                        filter: "contrast(1.1) saturate(1.1) brightness(1.0) hue-rotate(0deg)",
                       }}
                     />
                   </div>
@@ -852,9 +535,7 @@ export default function HomePage({ articles }) {
             Page {currentPage} of {totalPages}
           </span>
           <button
-            onClick={() =>
-              setCurrentPage((prev) => Math.min(prev + 1, totalPages))
-            }
+            onClick={() => setCurrentPage((prev) => Math.min(prev + 1, totalPages))}
             disabled={currentPage === totalPages}
             style={buttonStyle}
           >
@@ -864,332 +545,102 @@ export default function HomePage({ articles }) {
       </main>
 
       {isModalOpen && (
-        <div className={youtubeStyles.modal}>
-          <div className={youtubeStyles.modalContent}>
-            <button className={youtubeStyles.close} onClick={closeModal}>
-              Close
-            </button>
+  <div className={youtubeStyles.modal}>
+    <div className={youtubeStyles.modalContent}>
+      <button className={youtubeStyles.close} onClick={closeModal}>
+        Close
+      </button>
 
-            {currentVideoId.length === 11 ? ( // Assuming YouTube IDs are always 11 characters
-              <>
-                <div
-                  id="youtube-player"
-                  className={youtubeStyles.player}
-                  style={{
-                    filter:
-                      "contrast(1.1) saturate(1.2) brightness(1.3) hue-rotate(0deg)",
-                    display: "block",
-                  }}
-                />
-            
-              </>
-            ) : (
-              <>
-                <div
-                  ref={dailymotionPlayerRef}
-                  className={youtubeStyles.player}
-                  style={{
-                    filter:
-                      "contrast(1.1) saturate(1.2) brightness(1.3) hue-rotate(0deg)",
-                    display: "block",
-                  }}
-                />
-              
-              </>
-            )}
+      {currentVideoId.length === 11 ? ( // Assuming YouTube IDs are always 11 characters
+        <>
+          <div
+            id="youtube-player"
+            className={youtubeStyles.player}
+            style={{
+              filter: "contrast(1.1) saturate(1.2) brightness(1.3) hue-rotate(0deg)",
+              display: "block",
+            }}
+          />
+          <div
+            className="button"
+            style={{
+              position: "absolute",
+              bottom: "20px",
+              left: "50%",
+              transform: "translateX(-50%)",
+              color: "white",
+              backgroundColor: "rgba(0, 0, 0, 0.5)",
+              padding: "10px",
+              borderRadius: "5px",
+              textAlign: "center",
+              display: showMessage ? "block" : "none",
+              zIndex: 1000, // Ensure it sits above the player
+            }}
+          >
+            Playing video from YouTube
+            <p
+              className="flex flex-col items-center justify-center"
+              style={{
+                color: "red",
+                fontSize: "10px",
+                fontWeight: "bold",
+                textAlign: "center",
+              }}
+            >
+              This content is made available under the Fair Use Act for
+              educational and commentary purposes only. No copyright
+              infringement is intended.
+            </p>
           </div>
-        </div>
+        </>
+      ) : (
+        <>
+          <div
+            ref={dailymotionPlayerRef}
+            className={youtubeStyles.player}
+            style={{
+              filter: "contrast(1.1) saturate(1.2) brightness(1.3) hue-rotate(0deg)",
+              display: "block",
+            }}
+          />
+          <div
+            className="button"
+            style={{
+              position: "absolute",
+              bottom: "20px",
+              left: "50%",
+              transform: "translateX(-50%)",
+              color: "white",
+              backgroundColor: "rgba(0, 0, 0, 0.5)",
+              padding: "10px",
+              textAlign: "center",
+              borderRadius: "5px",
+              display: showMessage ? "block" : "none",
+              zIndex: 1000, // Ensure it sits above the player
+            }}
+          >
+            Playing video from Dailymotion
+            <p
+              className="flex flex-col items-center justify-center"
+              style={{
+                color: "red",
+                fontSize: "10px",
+                fontWeight: "bold",
+                textAlign: "center",
+              }}
+            >
+              This content is made available under the Fair Use Act for
+              educational and commentary purposes only. No copyright
+              infringement is intended.
+            </p>
+          </div>
+        </>
       )}
-      <SocialSharing />
+    </div>
+  </div>
+)}
+<SocialSharing />
+
     </>
   );
 }
-
-// OVER ALL PAGINATION
-// import React, { useState, useEffect, useRef } from "react";
-// import youtubeStyles from "../../styles/Youtube.module.css"; // YouTube CSS
-// import dailymotionStyles from "../../styles/Dailymotion.module.css"; // Dailymotion CSS
-// import Head from "next/head";
-
-// export async function getStaticProps() {
-//   try {
-//     const res = await fetch("https://youtubelive.vercel.app/moviesfull.json");
-//     if (!res.ok) {
-//       throw new Error(`Failed to fetch data: ${res.status}`);
-//     }
-
-//     const movies = await res.json();
-//     const validMovies = Array.isArray(movies) ? movies.filter(movie => movie) : [];
-
-//     return {
-//       props: {
-//         movies: validMovies,
-//       },
-//     };
-//   } catch (error) {
-//     console.error("Error fetching movies:", error);
-//     return {
-//       props: {
-//         movies: [],
-//       },
-//     };
-//   }
-// }
-
-// export default function HomePage({ movies }) {
-//   const [isModalOpen, setModalOpen] = useState(false);
-//   const [currentVideoId, setCurrentVideoId] = useState("");
-//   const [playerReady, setPlayerReady] = useState(false);
-//   const playerRef = useRef(null);
-//   const dailymotionPlayerRef = useRef(null);
-//   const [showMessage, setShowMessage] = useState(false);
-
-//   // Pagination States
-//   const [currentPage, setCurrentPage] = useState(1);
-//   const itemsPerPage = 5; // Number of movies per page
-
-//   // Calculate displayed movies based on pagination
-//   const indexOfLastMovie = currentPage * itemsPerPage;
-//   const indexOfFirstMovie = indexOfLastMovie - itemsPerPage;
-//   const currentMovies = movies.slice(indexOfFirstMovie, indexOfLastMovie);
-
-//   // Calculate total pages
-//   const totalPages = Math.ceil(movies.length / itemsPerPage);
-
-//   const loadYouTubeAPI = () => {
-//     const onYouTubeIframeAPIReady = () => setPlayerReady(true);
-//     if (typeof window !== "undefined" && typeof YT === "undefined") {
-//       const tag = document.createElement("script");
-//       tag.src = "https://www.youtube.com/iframe_api";
-//       const firstScriptTag = document.getElementsByTagName("script")[0];
-//       firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
-//       window.onYouTubeIframeAPIReady = onYouTubeIframeAPIReady;
-//     } else {
-//       onYouTubeIframeAPIReady();
-//     }
-//   };
-
-//   useEffect(() => {
-//     loadYouTubeAPI();
-//   }, []);
-
-//   useEffect(() => {
-//     if (playerReady && currentVideoId) {
-//       if (currentVideoId.length === 11) {
-//         playerRef.current = new window.YT.Player("youtube-player", {
-//           width: "100%",
-//           height: "100%",
-//           videoId: currentVideoId,
-//           playerVars: {
-//             autoplay: 1,
-//             mute: 0,
-//             enablejsapi: 1,
-//             modestbranding: 1,
-//           },
-//           events: {
-//             onReady: (event) => {
-//               event.target.playVideo();
-//             },
-//           },
-//         });
-//       } else {
-//         loadDailymotionPlayer(currentVideoId);
-//       }
-//     }
-//   }, [playerReady, currentVideoId]);
-
-//   const loadDailymotionPlayer = (videoId) => {
-//     if (dailymotionPlayerRef.current) {
-//       dailymotionPlayerRef.current.innerHTML = ""; // Clear previous player
-//     }
-
-//     const player = document.createElement("iframe");
-//     player.src = `https://www.dailymotion.com/embed/video/${videoId}`;
-//     player.width = "100%";
-//     player.height = "100%";
-//     player.setAttribute("allowfullscreen", "true");
-//     player.setAttribute("frameborder", "0");
-//     player.setAttribute("allow", "autoplay");
-
-//     dailymotionPlayerRef.current.appendChild(player); // Append new player
-//     setShowMessage(true); // Show message when the player loads
-
-//     setTimeout(() => {
-//       setShowMessage(false);
-//     }, 30000); // 30000 milliseconds = 30 seconds
-//   };
-
-//   const openModal = (videoId) => {
-//     setCurrentVideoId(videoId);
-//     setModalOpen(true);
-//   };
-
-//   const closeModal = () => {
-//     setModalOpen(false);
-//     setCurrentVideoId("");
-
-//     if (playerRef.current && playerRef.current.stopVideo) {
-//       playerRef.current.stopVideo(); // Stop the video for YouTube
-//     }
-
-//     if (dailymotionPlayerRef.current) {
-//       dailymotionPlayerRef.current.innerHTML = ""; // Clear the player container
-//     }
-//   };
-
-//   const buttonStyle = {
-//     backgroundColor: "#0070f3", // Button color
-//     color: "white", // Text color
-//     border: "none", // Remove border
-//     borderRadius: "5px", // Rounded corners
-//     padding: "10px 15px", // Padding
-//     cursor: "pointer", // Pointer cursor on hover
-//     transition: "background-color 0.3s", // Smooth transition
-//     margin: "0 5px", // Margin for buttons
-//   };
-
-//   return (
-//     <>
-//       <Head>
-//         <title>Movie Streaming</title>
-//       </Head>
-
-//       <header className={youtubeStyles.header}>
-//         <h1 className={youtubeStyles.logo}>Movie Streaming</h1>
-//       </header>
-
-//       <main className={youtubeStyles.main}>
-//         {currentMovies.length > 0 ? (
-//           <div className={youtubeStyles.grid}>
-//             {currentMovies.map((movie) => (
-//               <div key={movie.id} className={youtubeStyles.card}>
-//                 {movie.image && (
-//                   <div
-//                     className={youtubeStyles.imageWrapper}
-//                     onClick={() => openModal(movie.videoId)}
-//                   >
-//                     <img
-//                       src={movie.image}
-//                       alt={movie.title}
-//                       style={{
-//                         width: "100%",
-//                         height: "200px",
-//                         objectFit: "fill",
-//                         margin: "auto",
-//                         fontWeight: "bold",
-//                         textAlign: "center",
-//                         cursor: "pointer",
-//                         boxShadow: "0 0 10px 0 #000",
-//                         filter: "contrast(1.1) saturate(1.1) brightness(1.0) hue-rotate(0deg)",
-//                       }}
-//                     />
-//                   </div>
-//                 )}
-//                 <div
-//                   className={youtubeStyles.title}
-//                   style={{
-//                     margin: "auto",
-//                     fontWeight: "bold",
-//                     fontSize: "16px",
-//                     textAlign: "center",
-//                     cursor: "pointer",
-//                     textShadow: "1px 1px 0px #000",
-//                   }}
-//                 >
-//                   {movie.title}
-//                 </div>
-//                 <div className={youtubeStyles.channel}>{movie.channel}</div>
-//               </div>
-//             ))}
-//           </div>
-//         ) : (
-//           <p>No movies available.</p>
-//         )}
-
-//         {/* Pagination Controls */}
-//         <div style={{ textAlign: "center", margin: "20px 0" }}>
-//           <button
-//             onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
-//             disabled={currentPage === 1}
-//             style={buttonStyle}
-//           >
-//             Previous
-//           </button>
-//           <span style={{ margin: "0 15px", fontWeight: "bold" }}>
-//             Page {currentPage} of {totalPages}
-//           </span>
-//           <button
-//             onClick={() => setCurrentPage((prev) => Math.min(prev + 1, totalPages))}
-//             disabled={currentPage === totalPages}
-//             style={buttonStyle}
-//           >
-//             Next
-//           </button>
-//         </div>
-//       </main>
-
-//       {isModalOpen && (
-//         <div className={youtubeStyles.modal}>
-//           <div className={youtubeStyles.modalContent}>
-//             <button className={youtubeStyles.close} onClick={closeModal}>
-//               Close
-//             </button>
-
-//             {currentVideoId.length === 11 ? ( // Assuming YouTube IDs are always 11 characters
-//               <>
-//                 <div
-//                   id="youtube-player"
-//                   className={youtubeStyles.player}
-//                   style={{
-//                     filter: "contrast(1.1) saturate(1.2) brightness(1.3) hue-rotate(0deg)",
-//                     display: "block",
-//                   }}
-//                 />
-//                 {showMessage && (
-//                   <div
-//                     className={youtubeStyles.message}
-//                     style={{
-//                       position: "absolute",
-//                       bottom: "20px",
-//                       left: "50%",
-//                       transform: "translateX(-50%)",
-//                       backgroundColor: "rgba(0, 0, 0, 0.8)",
-//                       color: "white",
-//                       padding: "10px",
-//                       borderRadius: "5px",
-//                       zIndex: 1000, // Ensures it's on top
-//                     }}
-//                   >
-//                     Playing video from YouTube
-//                   </div>
-//                 )}
-//               </>
-//             ) : (
-//               <>
-//                 <div ref={dailymotionPlayerRef} className={youtubeStyles.player} />
-//                 {showMessage && (
-//                   <div
-//                     className={youtubeStyles.message}
-//                     style={{
-//                       position: "absolute",
-//                       bottom: "20px",
-//                       left: "50%",
-//                       transform: "translateX(-50%)",
-//                       backgroundColor: "rgba(0, 0, 0, 0.8)",
-//                       color: "white",
-//                       padding: "10px",
-//                       borderRadius: "5px",
-//                       zIndex: 1000, // Ensures it's on top
-//                     }}
-//                   >
-//                     Playing video from Dailymotion
-//                   </div>
-//                 )}
-//               </>
-//             )}
-//           </div>
-//         </div>
-//       )}
-//     </>
-//   );
-// }
