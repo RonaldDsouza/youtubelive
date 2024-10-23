@@ -867,7 +867,7 @@ export default function HomePage({ articles }) {
                 >
                   Playing video from YouTube
                   <p
-                    className="flex flex-col items-center justify-center"
+                    className="items-center justify-center"
                     style={{
                       color: "red",
                       fontSize: "10px",
@@ -904,7 +904,7 @@ export default function HomePage({ articles }) {
                 >
                   Playing video from Dailymotion
                   <p
-                    className="flex flex-col items-center justify-center"
+                    className="items-center justify-center"
                     style={{
                       color: "red",
                       fontSize: "10px",
