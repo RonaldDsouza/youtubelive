@@ -552,7 +552,7 @@ export default function HomePage({ articles }) {
             }}
           />
           <div
-            className={youtubeStyles.message1}
+            className={youtubeStyles.message}
             style={{
               position: "absolute",
               bottom: "20px",
@@ -564,7 +564,7 @@ export default function HomePage({ articles }) {
               borderRadius: "5px",
               textAlign: "center",
               zIndex: 1000, // Ensure it sits above the player
-              display: showMessage1 ? "block" : "none",
+              display: showMessage ? "block" : "none",
             }}
           >
             Playing video from YouTube
@@ -590,7 +590,7 @@ export default function HomePage({ articles }) {
             className={youtubeStyles.player}
           />
           <div
-            className={youtubeStyles.message1}
+            className={youtubeStyles.message}
             style={{
               position: "absolute",
               bottom: "20px",
@@ -602,7 +602,7 @@ export default function HomePage({ articles }) {
               textAlign: "center",
               borderRadius: "5px",
               zIndex: 1000, // Ensure it sits above the player
-              display: showMessage1 ? "block" : "none",
+              display: showMessage ? "block" : "none",
             }}
           >
             Playing video from Dailymotion

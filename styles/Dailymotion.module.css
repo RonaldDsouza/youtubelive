@@ -104,19 +104,8 @@
   .grid {
     grid-template-columns: repeat(2, 1fr); /* 2 columns */
   }
+
   .message {
-    font-size: 16px; /* Adjust size as needed */
-    color: white; /* Or any other color */
-    background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent background */
-    padding: 10px; /* Padding around the text */
-    position: absolute; /* Position it on top of the player */
-    top: 10px; /* Adjust top position */
-    left: 50%; /* Center horizontally */
-    transform: translateX(-50%); /* Center adjustment */
-    z-index: 1000; /* Ensure it's above other elements */
-    border-radius: 5px; /* Optional rounded corners */
-  }
-  .message1 {
     position: absolute; /* Position above the player */
     bottom: 20px;
     left: 50%;
