@@ -893,14 +893,12 @@ export default function HomePage({ articles }) {
                     padding: "10px",
                     borderRadius: "5px",
                     textAlign: "center",
-                    display: showMessage ? "block" : "none",
+                   
                    
                   }}
                 >
                   Playing video from YouTube
-               
-                </div>
-                <p
+                  <p
                      className="flex flex-col items-center justify-center"
                     style={{
                       color: "red",
@@ -914,6 +912,8 @@ export default function HomePage({ articles }) {
                     educational and commentary purposes only. No copyright
                     infringement is intended.
                   </p>
+                </div>
+           
               </>
             ) : (
               <>
@@ -933,13 +933,11 @@ export default function HomePage({ articles }) {
                     padding: "10px",
                     textAlign: "center",
                     borderRadius: "5px",
-                    display: showMessage ? "block" : "none",
+                  
                   }}
                 >
                   Playing video from Dailymotion
-                 
-                </div>
-                <p
+                  <p
                       className="flex flex-col items-center justify-center"
                     style={{
                       color: "red",
@@ -952,7 +950,9 @@ export default function HomePage({ articles }) {
                     This content is made available under the Fair Use Act for
                     educational and commentary purposes only. No copyright
                     infringement is intended.
-                  </p>
+                  </p>   
+                </div>
+              
               </>
             )}
           </div>
