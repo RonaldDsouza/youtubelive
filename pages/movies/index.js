@@ -50,36 +50,31 @@ export default function HomePage({ articles }) {
     new Set(articles.map((article) => article.category))
   ).concat("All");
 
-  // Calculate filtered and paginated articles
-  const filteredArticles =
-    selectedCategory === "All"
-      ? articles
-      : articles.filter((article) => article.category === selectedCategory);
+ // Calculate indices for pagination
+ const indexOfLastArticle = currentPage * itemsPerPage;
+ const indexOfFirstArticle = indexOfLastArticle - itemsPerPage;
+ const currentArticles = filteredArticles.slice(
+   indexOfFirstArticle,
+   indexOfLastArticle
+ );
 
-  const indexOfLastArticle = currentPage * itemsPerPage;
-  const indexOfFirstArticle = indexOfLastArticle - itemsPerPage;
-  const currentArticles = filteredArticles.slice(
-    indexOfFirstArticle,
-    indexOfLastArticle
-  );
+ // Calculate total pages
+ const totalPages = Math.ceil(filteredArticles.length / itemsPerPage);
 
-  // Calculate total pages
-  const totalPages = Math.ceil(filteredArticles.length / itemsPerPage);
+ // Functions to handle page navigation
+ const handleNextPage = () => {
+   if (currentPage < totalPages) {
+     setCurrentPage(currentPage + 1);
+   }
+ };
 
-  // Functions to handle page navigation
-  const handleNextPage = () => {
-    if (currentPage < totalPages) {
-      setCurrentPage(currentPage + 1);
-    }
-  };
+ const handlePrevPage = () => {
+   if (currentPage > 1) {
+     setCurrentPage(currentPage - 1);
+   }
+ };
 
-  const handlePrevPage = () => {
-    if (currentPage > 1) {
-      setCurrentPage(currentPage - 1);
-    }
-  };
-
-  const loadYouTubeAPI = () => {
+ const loadYouTubeAPI = () => {
     const onYouTubeIframeAPIReady = () => setPlayerReady(true);
     if (typeof window !== "undefined" && typeof YT === "undefined") {
       const tag = document.createElement("script");
@@ -582,13 +577,12 @@ export default function HomePage({ articles }) {
           and commentary purposes only. No copyright infringement is intended.
         </p>
 
-       {/* Pagination Controls */}
-       <div style={{ textAlign: "center", margin: "20px 0" }}>
+      {/* Pagination Controls */}
+      <div style={{ textAlign: "center", margin: "20px 0" }}>
         <button
-          onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
+          onClick={handlePrevPage}
           disabled={currentPage === 1}
           style={{
-            ...buttonStyle,
             opacity: currentPage === 1 ? 0.5 : 1,
             cursor: currentPage === 1 ? "not-allowed" : "pointer",
           }}
@@ -599,10 +593,9 @@ export default function HomePage({ articles }) {
           Page {currentPage} of {totalPages}
         </span>
         <button
-          onClick={() => setCurrentPage((prev) => Math.min(prev + 1, totalPages))}
+          onClick={handleNextPage}
           disabled={currentPage === totalPages}
           style={{
-            ...buttonStyle,
             opacity: currentPage === totalPages ? 0.5 : 1,
             cursor: currentPage === totalPages ? "not-allowed" : "pointer",
           }}
