@@ -1,19 +1,14 @@
-
-
-
 import React, { useState, useEffect, useRef } from "react";
 import youtubeStyles from "../../styles/Youtube.module.css"; // YouTube CSS
 import dailymotionStyles from "../../styles/Dailymotion.module.css"; // Dailymotion CSS
 import SocialSharing from "../../components/SocialSharing";
-import Script from "next/script";
+import Styles from "@styles/styles.module.css";
 import Head from "next/head";
+import Script from "next/script";
 
 export async function getStaticProps() {
   try {
-    // Fetch data from the local JSON file
-    const res = await fetch("https://youtubelive.vercel.app/movies.json");
-
-    // Check if the response is OK (status in the range 200-299)
+    const res = await fetch("https://youtubelive.vercel.app/movies.json"); 
     if (!res.ok) {
       throw new Error(`Failed to fetch data: ${res.status}`);
     }
@@ -46,16 +41,22 @@ export default function HomePage({ articles }) {
   // Pagination States
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 10; // Number of articles per page
+  const [selectedCategory, setSelectedCategory] = useState("All"); // State for selected category
 
-  // Calculate displayed articles based on pagination
+  // Extract unique categories from articles
+  const categories = Array.from(new Set(articles.map(article => article.category))).concat("All");
+
+  // Calculate displayed articles based on pagination and filtering
+  const filteredArticles = selectedCategory === "All" 
+    ? articles 
+    : articles.filter(article => article.category === selectedCategory);
+  
   const indexOfLastArticle = currentPage * itemsPerPage;
   const indexOfFirstArticle = indexOfLastArticle - itemsPerPage;
-  const currentArticles = articles.slice(indexOfFirstArticle, indexOfLastArticle);
+  const currentArticles = filteredArticles.slice(indexOfFirstArticle, indexOfLastArticle);
 
   // Calculate total pages
-  const totalPages = Math.ceil(articles.length / itemsPerPage);
-
-  
+  const totalPages = Math.ceil(filteredArticles.length / itemsPerPage);
 
   const loadYouTubeAPI = () => {
     const onYouTubeIframeAPIReady = () => setPlayerReady(true);
@@ -90,6 +91,7 @@ export default function HomePage({ articles }) {
           events: {
             onReady: (event) => {
               event.target.playVideo();
+              setShowMessage(true); // Show message when the player is ready
             },
           },
         });
@@ -101,39 +103,19 @@ export default function HomePage({ articles }) {
 
   const loadDailymotionPlayer = (videoId) => {
     if (dailymotionPlayerRef.current) {
-      // Clear existing player if any
       dailymotionPlayerRef.current.innerHTML = ""; // Clear previous player
     }
 
-    // Create the iframe for Dailymotion
     const player = document.createElement("iframe");
-    player.src = `https://geo.dailymotion.com/player/xjrxe.html?video=${videoId}&autoplay=1&Autoquality=1080p`;
+    player.src = `https://www.dailymotion.com/embed/video/${videoId}`;
     player.width = "100%";
     player.height = "100%";
     player.setAttribute("allowfullscreen", "true");
     player.setAttribute("frameborder", "0");
     player.setAttribute("allow", "autoplay");
 
-    // Append the new player
-    dailymotionPlayerRef.current.appendChild(player);
+    dailymotionPlayerRef.current.appendChild(player); // Append new player
     setShowMessage(true); // Show message when the player loads
-
-    // Hide the message after 30 seconds
-    setTimeout(() => {
-      setShowMessage(false);
-    }, 30000); // 30000 milliseconds = 30 seconds
-
-    // Use the Dailymotion API to detect when the video ends
-    player.addEventListener("load", () => {
-      const dailymotionPlayer = player.contentWindow.Dailymotion.player;
-
-      // Check if the Dailymotion player API is available
-      if (dailymotionPlayer) {
-        dailymotionPlayer.on("end", () => {
-          closeModal(); // Close modal when video ends
-        });
-      }
-    });
   };
 
   const openModal = (videoId) => {
@@ -145,22 +127,13 @@ export default function HomePage({ articles }) {
     setModalOpen(false);
     setCurrentVideoId("");
 
-    // Stop YouTube video if it's playing
     if (playerRef.current && playerRef.current.stopVideo) {
       playerRef.current.stopVideo(); // Stop the video for YouTube
     }
 
-    // Clear Dailymotion player
     if (dailymotionPlayerRef.current) {
       dailymotionPlayerRef.current.innerHTML = ""; // Clear the player container
-    }
-  };
-
-  const handlePageChange = (direction) => {
-    if (direction === "next" && currentPage < totalPages) {
-      setCurrentPage((prev) => prev + 1);
-    } else if (direction === "prev" && currentPage > 1) {
-      setCurrentPage((prev) => prev - 1);
+      setShowMessage(false); // Hide message when closing modal
     }
   };
 
@@ -510,16 +483,15 @@ export default function HomePage({ articles }) {
                       src={article.image}
                       alt={article.title}
                       style={{
-                        width: "100%", // Ensures the image is displayed at this width
-                        height: "200px", // Ensures the image is displayed at this height
-                        objectFit: "fill", // Ensures the image covers the dimensions
+                        width: "100%",
+                        height: "200px",
+                        objectFit: "fill",
                         margin: "auto",
                         fontWeight: "bold",
                         textAlign: "center",
                         cursor: "pointer",
-                        boxShadow: "0 0 10px 0 #000", // Shadow effect
-                        filter:
-                          "contrast(1.1) saturate(1.1) brightness(1.0) hue-rotate(0deg)", // Image filter effects
+                        boxShadow: "0 0 10px 0 #000",
+                        filter: "contrast(1.1) saturate(1.1) brightness(1.0) hue-rotate(0deg)",
                       }}
                     />
                   </div>
@@ -578,8 +550,7 @@ export default function HomePage({ articles }) {
           </button>
         </div>
       </main>
-
-
+{/* ok */}
       {isModalOpen && (
         <div className={youtubeStyles.modal}>
           <div className={youtubeStyles.modalContent}>
