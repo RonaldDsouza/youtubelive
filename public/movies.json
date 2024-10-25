@@ -81,18 +81,6 @@
     {
       "id": "article9",
       "badge": " [ Movies ] ",
-      "title": "Wolfs (2024) ",
-      "image": "https://i.ytimg.com/vi/AV-GIyYoBz0/maxresdefault.jpg",
-      "videoitem": [
-        "x97wfcg"
-      ],
-      "videotittle": [
-        "Seven Cemeteries (2024)"
-      ]
-    },
-    {
-      "id": "article9",
-      "badge": " [ Movies ] ",
       "title": "Adbhut (2024) ",
       "image": "https://i.ytimg.com/vi/VgsvJuFs9vc/maxresdefault.jpg",
       "videoitem": [
@@ -102,30 +90,7 @@
         "Seven Cemeteries (2024)"
       ]
     },
-    {
-      "id": "article8",
-      "badge": " [ Movies ] ",
-      "title": "CTRL (2024) ",
-      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSJFj3PQ56oz_sS2S2Xdb2mI8Cb_EZcpbWQOg&s",
-      "videoitem": [
-        "x97weqa"
-      ],
-      "videotittle": [
-        "Seven Cemeteries (2024)"
-      ]
-    },
-    {
-      "id": "article1",
-      "badge": " [ Movies ] ",
-      "title": "Seven Cemeteries (2024) ",
-      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR95lVNRp6dCJ38wyanMVmkgM2AsjfIf_MDJA&s",
-      "videoitem": [
-        "x97otbg"
-      ],
-      "videotittle": [
-        "Seven Cemeteries (2024)"
-      ]
-    },
+  
     {
       "id": "article3",
       "badge": " [ Movies ] ",
