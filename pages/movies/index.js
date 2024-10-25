@@ -96,7 +96,7 @@ export default function HomePage({ articles }) {
     }
 
     const player = document.createElement("iframe");
-    player.src = `https://www.dailymotion.com/embed/video/${videoId}`;
+    player.src = `https://geo.dailymotion.com/player/xjrxe.html?video=${videoId}&autoplay=1&Autoquality=1080p`;
     player.width = "100%";
     player.height = "100%";
     player.setAttribute("allowfullscreen", "true");
