@@ -154,8 +154,8 @@ export default function HomePage({ articles }) {
     "@graph": [
       {
         "@type": "CollectionPage",
-        "@id": "https://youtubelive.vercel.app/category/shopping/",
-        "url": "https://youtubelive.vercel.app/category/shopping/",
+        "@id": "https://youtubelive.vercel.app/shopping/",
+        "url": "https://youtubelive.vercel.app/shopping/",
         "name": "Shopping Section - Youtube Live™",
         "isPartOf": { "@id": "https://youtubelive.vercel.app/#website" },
         "primaryImageOfPage": { "@id": "https://youtubelive.vercel.app/shopping/#primaryimage" },

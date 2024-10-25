@@ -153,8 +153,8 @@ export default function HomePage({ articles }) {
     "@graph": [
       {
         "@type": "CollectionPage",
-        "@id": "https://youtubelive.vercel.app/category/games/",
-        "url": "https://youtubelive.vercel.app/category/games/",
+        "@id": "https://youtubelive.vercel.app/games/",
+        "url": "https://youtubelive.vercel.app/games/",
         "name": "Games Section - Youtube Live™",
         "isPartOf": { "@id": "https://youtubelive.vercel.app/#website" },
         "primaryImageOfPage": { "@id": "https://youtubelive.vercel.app/games/#primaryimage" },

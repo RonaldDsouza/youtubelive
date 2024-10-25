@@ -153,8 +153,8 @@ export default function HomePage({ articles }) {
     "@graph": [
       {
         "@type": "CollectionPage",
-        "@id": "https://youtubelive.vercel.app/category/technology/",
-        "url": "https://youtubelive.vercel.app/category/technology/",
+        "@id": "https://youtubelive.vercel.app/technology/",
+        "url": "https://youtubelive.vercel.app/technology/",
         "name": "Science & Technology Section - Youtube Live™",
         "isPartOf": { "@id": "https://youtubelive.vercel.app/#website" },
         "primaryImageOfPage": { "@id": "https://youtubelive.vercel.app/technology/#primaryimage" },

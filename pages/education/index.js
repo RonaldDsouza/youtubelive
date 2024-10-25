@@ -153,8 +153,8 @@ export default function HomePage({ articles }) {
     "@graph": [
       {
         "@type": "CollectionPage",
-        "@id": "https://youtubelive.vercel.app/category/education/",
-        "url": "https://youtubelive.vercel.app/category/education/",
+        "@id": "https://youtubelive.vercel.app/education/",
+        "url": "https://youtubelive.vercel.app/education/",
         "name": "Education & Courses Section - Youtube Live™",
         "isPartOf": { "@id": "https://youtubelive.vercel.app/#website" },
         "primaryImageOfPage": { "@id": "https://youtubelive.vercel.app/education/#primaryimage" },

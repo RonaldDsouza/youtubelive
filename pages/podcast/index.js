@@ -159,8 +159,8 @@ export default function HomePage({ articles }) {
     "@graph": [
       {
         "@type": "CollectionPage",
-        "@id": "https://youtubelive.vercel.app/category/podcast/",
-        url: "https://youtubelive.vercel.app/category/podcast/",
+        "@id": "https://youtubelive.vercel.app/podcast/",
+        url: "https://youtubelive.vercel.app/podcast/",
         name: "Podcast Section - Youtube Live™",
         isPartOf: { "@id": "https://youtubelive.vercel.app/#website" },
         primaryImageOfPage: {

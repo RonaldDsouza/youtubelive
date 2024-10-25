@@ -153,8 +153,8 @@ export default function HomePage({ articles }) {
     "@graph": [
       {
         "@type": "CollectionPage",
-        "@id": "https://youtubelive.vercel.app/category/latest/",
-        "url": "https://youtubelive.vercel.app/category/latest/",
+        "@id": "https://youtubelive.vercel.app/latest/",
+        "url": "https://youtubelive.vercel.app/latest/",
         "name": "Trending & Latest Section - Youtube Live™",
         "isPartOf": { "@id": "https://youtubelive.vercel.app/#website" },
         "primaryImageOfPage": { "@id": "https://youtubelive.vercel.app/latest/#primaryimage" },

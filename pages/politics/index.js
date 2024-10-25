@@ -153,8 +153,8 @@ export default function HomePage({ articles }) {
     "@graph": [
       {
         "@type": "CollectionPage",
-        "@id": "https://youtubelive.vercel.app/category/politics/",
-        "url": "https://youtubelive.vercel.app/category/politics/",
+        "@id": "https://youtubelive.vercel.app/politics/",
+        "url": "https://youtubelive.vercel.app/politics/",
         "name": "Politics Section - Youtube Live™",
         "isPartOf": { "@id": "https://youtubelive.vercel.app/#website" },
         "primaryImageOfPage": { "@id": "https://youtubelive.vercel.app/politics/#primaryimage" },

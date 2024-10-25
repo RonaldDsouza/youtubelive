@@ -443,8 +443,8 @@ export default function HomePage({ articles }) {
     "@graph": [
       {
         "@type": "CollectionPage",
-        "@id": "https://youtubelive.vercel.app/category/movies/",
-        url: "https://youtubelive.vercel.app/category/movies/",
+        "@id": "https://youtubelive.vercel.app/movies/",
+        url: "https://youtubelive.vercel.app/movies/",
         name: "Movies & Tv Show Section - Youtube Live™",
         isPartOf: { "@id": "https://youtubelive.vercel.app/#website" },
         primaryImageOfPage: {

@@ -153,8 +153,8 @@ export default function HomePage({ articles }) {
     "@graph": [
       {
         "@type": "CollectionPage",
-        "@id": "https://youtubelive.vercel.app/category/live/",
-        url: "https://youtubelive.vercel.app/category/live/",
+        "@id": "https://youtubelive.vercel.app/live/",
+        url: "https://youtubelive.vercel.app/live/",
         name: "Live News Section - Youtube Live™",
         isPartOf: { "@id": "https://youtubelive.vercel.app/#website" },
         primaryImageOfPage: {

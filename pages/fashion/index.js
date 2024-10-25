@@ -153,8 +153,8 @@ export default function HomePage({ articles }) {
     "@graph": [
       {
         "@type": "CollectionPage",
-        "@id": "https://youtubelive.vercel.app/category/fashion/",
-        "url": "https://youtubelive.vercel.app/category/fashion/",
+        "@id": "https://youtubelive.vercel.app/fashion/",
+        "url": "https://youtubelive.vercel.app/fashion/",
         "name": "Fashion & Beauty Section - Youtube Live™",
         "isPartOf": { "@id": "https://youtubelive.vercel.app/#website" },
         "primaryImageOfPage": { "@id": "https://youtubelive.vercel.app/fashion/#primaryimage" },

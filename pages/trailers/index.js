@@ -364,8 +364,8 @@ export default function HomePage({ articles }) {
     "@graph": [
       {
         "@type": "CollectionPage",
-        "@id": "https://youtubelive.vercel.app/category/trailers/",
-        "url": "https://youtubelive.vercel.app/category/trailers/",
+        "@id": "https://youtubelive.vercel.app/trailers/",
+        "url": "https://youtubelive.vercel.app/trailers/",
         "name": "Movie Trailers Section - Youtube Live™",
         "isPartOf": { "@id": "https://youtubelive.vercel.app/#website" },
         "primaryImageOfPage": { "@id": "https://youtubelive.vercel.app/trailers/#primaryimage" },

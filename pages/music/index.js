@@ -153,8 +153,8 @@ export default function HomePage({ articles }) {
     "@graph": [
       {
         "@type": "CollectionPage",
-        "@id": "https://youtubelive.vercel.app/category/music/",
-        "url": "https://youtubelive.vercel.app/category/music/",
+        "@id": "https://youtubelive.vercel.app/music/",
+        "url": "https://youtubelive.vercel.app/music/",
         "name": "Music Section - Youtube Live™",
         "isPartOf": { "@id": "https://youtubelive.vercel.app/#website" },
         "primaryImageOfPage": { "@id": "https://youtubelive.vercel.app/music/#primaryimage" },

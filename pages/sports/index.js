@@ -147,8 +147,8 @@ export default function HomePage({ articles }) {
     "@graph": [
       {
         "@type": "CollectionPage",
-        "@id": "https://youtubelive.vercel.app/category/sports/",
-        "url": "https://youtubelive.vercel.app/category/sports/",
+        "@id": "https://youtubelive.vercel.app/sports/",
+        "url": "https://youtubelive.vercel.app/sports/",
         "name": "Sports Section - Youtube Live™",
         "isPartOf": { "@id": "https://youtubelive.vercel.app/#website" },
         "primaryImageOfPage": { "@id": "https://youtubelive.vercel.app/sports/#primaryimage" },

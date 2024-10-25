@@ -154,8 +154,8 @@ export default function HomePage({ articles }) {
     "@graph": [
       {
         "@type": "CollectionPage",
-        "@id": "https://youtubelive.vercel.app/category/travel/",
-        "url": "https://youtubelive.vercel.app/category/travel/",
+        "@id": "https://youtubelive.vercel.app/travel/",
+        "url": "https://youtubelive.vercel.app/travel/",
         "name": "Luxury & Travel Section - Youtube Live™",
         "isPartOf": { "@id": "https://youtubelive.vercel.app/#website" },
         "primaryImageOfPage": { "@id": "https://youtubelive.vercel.app/travel/#primaryimage" },
