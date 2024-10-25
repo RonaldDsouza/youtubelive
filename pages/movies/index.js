@@ -58,6 +58,19 @@ export default function HomePage({ articles }) {
   // Calculate total pages
   const totalPages = Math.ceil(filteredArticles.length / itemsPerPage);
 
+    // Handlers for pagination buttons
+    const handleNextPage = () => {
+      if (currentPage < totalPages) {
+        setCurrentPage(prev => prev + 1);
+      }
+    };
+  
+    const handlePrevPage = () => {
+      if (currentPage > 1) {
+        setCurrentPage(prev => prev - 1);
+      }
+    };
+  
   const loadYouTubeAPI = () => {
     const onYouTubeIframeAPIReady = () => setPlayerReady(true);
     if (typeof window !== "undefined" && typeof YT === "undefined") {
@@ -529,27 +542,37 @@ export default function HomePage({ articles }) {
           and commentary purposes only. No copyright infringement is intended.
         </p>
 
-        {/* Pagination Controls */}
-        <div style={{ textAlign: "center", margin: "20px 0" }}>
-          <button
-            onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
-            disabled={currentPage === 1}
-            style={buttonStyle}
-          >
-            Previous
-          </button>
-          <span style={{ margin: "0 15px", fontWeight: "bold" }}>
-            Page {currentPage} of {totalPages}
-          </span>
-          <button
-            onClick={() => setCurrentPage((prev) => Math.min(prev + 1, totalPages))}
-            disabled={currentPage === totalPages}
-            style={buttonStyle}
-          >
-            Next
-          </button>
-        </div>
-      </main>
+     {/* Pagination Controls */}
+     <div style={{ textAlign: "center", margin: "20px 0" }}>
+        <button
+          onClick={handlePrevPage}
+          disabled={currentPage === 1}
+          style={{
+            padding: "8px 16px",
+            margin: "0 8px",
+            fontWeight: "bold",
+            cursor: currentPage === 1 ? "not-allowed" : "pointer",
+          }}
+        >
+          Previous
+        </button>
+        <span style={{ margin: "0 15px", fontWeight: "bold" }}>
+          Page {currentPage} of {totalPages}
+        </span>
+        <button
+          onClick={handleNextPage}
+          disabled={currentPage === totalPages}
+          style={{
+            padding: "8px 16px",
+            margin: "0 8px",
+            fontWeight: "bold",
+            cursor: currentPage === totalPages ? "not-allowed" : "pointer",
+          }}
+        >
+          Next
+        </button>
+      </div>
+    </main>
 
       {isModalOpen && (
         <div className={youtubeStyles.modal}>
