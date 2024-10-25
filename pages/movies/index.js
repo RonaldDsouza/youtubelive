@@ -35,9 +35,10 @@ export default function HomePage({ articles }) {
   const [currentVideoId, setCurrentVideoId] = useState("");
   const [playerReady, setPlayerReady] = useState(false);
   const playerRef = useRef(null);
-  const dailymotionPlayerRef = useRef(null); // Reference for Dailymotion player
-  const [showMessage, setShowMessage] = useState(false); // State for the message visibility
-  const [scrollingText, setScrollingText] = useState(""); // State for the scrolling text
+  const dailymotionPlayerRef = useRef(null);
+  const [showMessage, setShowMessage] = useState(false);
+  const [scrollingText, setScrollingText] = useState("");
+  
   // Pagination States
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 10; // Number of articles per page
@@ -46,17 +47,18 @@ export default function HomePage({ articles }) {
   // Extract unique categories from articles
   const categories = Array.from(new Set(articles.map(article => article.category))).concat("All");
 
-  // Calculate displayed articles based on pagination and filtering
+  // Filter articles based on selected category
   const filteredArticles = selectedCategory === "All" 
     ? articles 
     : articles.filter(article => article.category === selectedCategory);
-  
-  const indexOfLastArticle = currentPage * itemsPerPage;
-  const indexOfFirstArticle = indexOfLastArticle - itemsPerPage;
-  const currentArticles = filteredArticles.slice(indexOfFirstArticle, indexOfLastArticle);
 
   // Calculate total pages
   const totalPages = Math.ceil(filteredArticles.length / itemsPerPage);
+
+  // Calculate current articles for the current page
+  const indexOfLastArticle = currentPage * itemsPerPage;  // Last article index for the current page
+  const indexOfFirstArticle = indexOfLastArticle - itemsPerPage;  // First article index for the current page
+  const currentArticles = filteredArticles.slice(indexOfFirstArticle, indexOfLastArticle);  // Get articles for the current page
 
   const loadYouTubeAPI = () => {
     const onYouTubeIframeAPIReady = () => setPlayerReady(true);
@@ -550,7 +552,7 @@ export default function HomePage({ articles }) {
           </button>
         </div>
       </main>
-{/* ok */}
+
       {isModalOpen && (
         <div className={youtubeStyles.modal}>
           <div className={youtubeStyles.modalContent}>
