@@ -1,45 +1,65 @@
 {
-    "articles": [
-      {
-        "id": "5",
-        "badge": " [ Technology ] ",
-        "title": "Truck Concepts That Amaze The Imagination | 2024",
-        "image": "https://img.youtube.com/vi/hOFmGqdALbg/maxresdefault.jpg",
-        "videoitem": ["hOFmGqdALbg"],
-        "videotittle": ["Seven Cemeteries (2024)"]
-      },
-      {
-        "id": "4",
-        "badge": " [ Technology ] ",
-        "title": "Amazing Water Vehicles You Should See ",
-        "image": "https://img.youtube.com/vi/tPEKpDxo5b0/maxresdefault.jpg",
-        "videoitem": ["tPEKpDxo5b0"],
-        "videotittle": ["Seven Cemeteries (2024)"]
-      },
-      {
-        "id": "3",
-        "badge": " [ Technology ] ",
-        "title": "The Tri Folding Phone ",
-        "image": "https://img.youtube.com/vi/Yv_S7KrOlfk/maxresdefault.jpg",
-        "videoitem": ["Yv_S7KrOlfk"],
-        "videotittle": ["Seven Cemeteries (2024)"]
-      },
-      {
-        "id": "2",
-        "badge": " [ Technology ] ",
-        "title": "Emerging Technologies That Will Change The Future",
-        "image": "https://img.youtube.com/vi/OqcEQqPXgrw/maxresdefault.jpg",
-        "videoitem": ["OqcEQqPXgrw"],
-        "videotittle": ["Seven Cemeteries (2024)"]
-      },
-      {
-        "id": "1",
-        "badge": " [ Technology ] ",
-        "title": "ASML Outlook Weighs on Global Tech ",
-        "image": "https://img.youtube.com/vi/aIjwiBAvaAs/maxresdefault.jpg",
-        "videoitem": ["aIjwiBAvaAs"],
-        "videotittle": ["Seven Cemeteries (2024)"]
-      }
-    ]
-  }
-  
+  "articles": [
+    {
+      "id": "5",
+      "badge": " [ Technology ] ",
+      "title": "Truck Concepts That Amaze The Imagination | 2024",
+      "image": "https://img.youtube.com/vi/hOFmGqdALbg/maxresdefault.jpg",
+      "videoitem": [
+        "hOFmGqdALbg"
+      ],
+      "videotittle": [
+        "Seven Cemeteries (2024)"
+      ],
+      "text": "Welcome to Youtube Live™, your go-to platform for discovering the best YouTube content curated just for you. We specialize in presenting the ultimate selection of videos across a wide range of categories including news, movies, sports, podcasts, music, games, shopping, politics, trailers, fashion, education, technology, and the latest trending topics. By analyzing thousands of videos, we ensure that only the highest-quality, most engaging, and relevant content makes it to our platform. Whether you're a fan of current events, a movie buff, a tech enthusiast, or someone who loves to stay on top of trends, we’ve got you covered."
+    },
+    {
+      "id": "4",
+      "badge": " [ Technology ] ",
+      "title": "Amazing Water Vehicles You Should See ",
+      "image": "https://img.youtube.com/vi/tPEKpDxo5b0/maxresdefault.jpg",
+      "videoitem": [
+        "tPEKpDxo5b0"
+      ],
+      "videotittle": [
+        "Seven Cemeteries (2024)"
+      ]
+    },
+    {
+      "id": "3",
+      "badge": " [ Technology ] ",
+      "title": "The Tri Folding Phone ",
+      "image": "https://img.youtube.com/vi/Yv_S7KrOlfk/maxresdefault.jpg",
+      "videoitem": [
+        "Yv_S7KrOlfk"
+      ],
+      "videotittle": [
+        "Seven Cemeteries (2024)"
+      ]
+    },
+    {
+      "id": "2",
+      "badge": " [ Technology ] ",
+      "title": "Emerging Technologies That Will Change The Future",
+      "image": "https://img.youtube.com/vi/OqcEQqPXgrw/maxresdefault.jpg",
+      "videoitem": [
+        "OqcEQqPXgrw"
+      ],
+      "videotittle": [
+        "Seven Cemeteries (2024)"
+      ]
+    },
+    {
+      "id": "1",
+      "badge": " [ Technology ] ",
+      "title": "ASML Outlook Weighs on Global Tech ",
+      "image": "https://img.youtube.com/vi/aIjwiBAvaAs/maxresdefault.jpg",
+      "videoitem": [
+        "aIjwiBAvaAs"
+      ],
+      "videotittle": [
+        "Seven Cemeteries (2024)"
+      ]
+    }
+  ]
+}

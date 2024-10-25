@@ -1,85 +1,125 @@
 {
-    "articles": [
-      {
-        "id": "article9",
-        "badge": " [ Movies ] ",
-        "title": "Taras Part 02 (2024) ",
-        "image": "https://i.ytimg.com/vi/ItIbyGp6ulc/maxresdefault.jpg",
-        "videoitem": ["x97wg7q"],
-        "videotittle": ["Seven Cemeteries (2024)"]
-      },
-      {
-        "id": "article9",
-        "badge": " [ Movies ] ",
-        "title": "Wolfs (2024) ",
-        "image": "https://i.ytimg.com/vi/AV-GIyYoBz0/maxresdefault.jpg",
-        "videoitem": ["x97wfcg"],
-        "videotittle": ["Seven Cemeteries (2024)"]
-      },
-      {
-        "id": "article9",
-        "badge": " [ Movies ] ",
-        "title": "Adbhut (2024) ",
-        "image": "https://i.ytimg.com/vi/VgsvJuFs9vc/maxresdefault.jpg",
-        "videoitem": ["x97wfxe"],
-        "videotittle": ["Seven Cemeteries (2024)"]
-      },
-      {
-        "id": "article8",
-        "badge": " [ Movies ] ",
-        "title": "CTRL (2024) ",
-        "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSJFj3PQ56oz_sS2S2Xdb2mI8Cb_EZcpbWQOg&s",
-        "videoitem": ["x97weqa"],
-        "videotittle": ["Seven Cemeteries (2024)"]
-      },
-      {
-        "id": "article1",
-        "badge": " [ Movies ] ",
-        "title": "Seven Cemeteries (2024) ",
-        "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR95lVNRp6dCJ38wyanMVmkgM2AsjfIf_MDJA&s",
-        "videoitem": ["x97otbg"],
-        "videotittle": ["Seven Cemeteries (2024)"]
-      },
-      {
-        "id": "article3",
-        "badge": " [ Movies ] ",
-        "title": "Bad Genius (2024)",
-        "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRaMfggb_OITCC-OvcYUOHhehFrel__1jhedw&s",
-        "videoitem": ["x97oz1k"],
-        "videotittle": ["Bad Genius (2024)"]
-      },
-      {
-        "id": "article4",
-        "badge": " [ Movies ] ",
-        "title": "The Stoic (2024)",
-        "image": "https://dramatv.click/uploads/thumbs/24f9bcaba-1.jpg",
-        "videoitem": ["x97p1f6"],
-        "videotittle": ["The Stoic (2024)"]
-      },
-      {
-        "id": "article5",
-        "badge": " [ Movies ] ",
-        "title": "9 Windows (2024)",
-        "image": "https://i.ytimg.com/vi/13yHYvml9H4/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLBdpWcmv_0VAZ6vBMnKkaQlvjAlJA",
-        "videoitem": ["x97p2k2"],
-        "videotittle": ["9 Windows (2024)"]
-      },
-      {
-        "id": "article6",
-        "badge": " [ Movies ] ",
-        "title": "Rippy (2024)",
-        "image": "https://i.ytimg.com/vi/hu7IcWuCv7g/maxresdefault.jpg",
-        "videoitem": ["x97p4ce"],
-        "videotittle": ["Rippy (2024)"]
-      },
-      {
-        "id": "article7",
-        "badge": " [ Movies ] ",
-        "title": "Cold Case (2021)",
-        "image": "https://img.youtube.com/vi/Z9uDOF5YmMs/maxresdefault.jpg",
-        "videoitem": ["Z9uDOF5YmMs"],
-        "videotittle": ["Cold Case (2021)"]
-      }
-    ]
-  }
-  
+  "articles": [
+    {
+      "id": "article9",
+      "badge": " [ Movies ] ",
+      "title": "Taras Part 02 (2024) ",
+      "image": "https://i.ytimg.com/vi/ItIbyGp6ulc/maxresdefault.jpg",
+      "videoitem": [
+        "x97wg7q"
+      ],
+      "videotittle": [
+        "Seven Cemeteries (2024)"
+      ],
+      "text": "Welcome to Youtube Live™, your go-to platform for discovering the best YouTube content curated just for you. We specialize in presenting the ultimate selection of videos across a wide range of categories including news, movies, sports, podcasts, music, games, shopping, politics, trailers, fashion, education, technology, and the latest trending topics. By analyzing thousands of videos, we ensure that only the highest-quality, most engaging, and relevant content makes it to our platform. Whether you're a fan of current events, a movie buff, a tech enthusiast, or someone who loves to stay on top of trends, we’ve got you covered."
+    },
+    {
+      "id": "article9",
+      "badge": " [ Movies ] ",
+      "title": "Wolfs (2024) ",
+      "image": "https://i.ytimg.com/vi/AV-GIyYoBz0/maxresdefault.jpg",
+      "videoitem": [
+        "x97wfcg"
+      ],
+      "videotittle": [
+        "Seven Cemeteries (2024)"
+      ]
+    },
+    {
+      "id": "article9",
+      "badge": " [ Movies ] ",
+      "title": "Adbhut (2024) ",
+      "image": "https://i.ytimg.com/vi/VgsvJuFs9vc/maxresdefault.jpg",
+      "videoitem": [
+        "x97wfxe"
+      ],
+      "videotittle": [
+        "Seven Cemeteries (2024)"
+      ]
+    },
+    {
+      "id": "article8",
+      "badge": " [ Movies ] ",
+      "title": "CTRL (2024) ",
+      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSJFj3PQ56oz_sS2S2Xdb2mI8Cb_EZcpbWQOg&s",
+      "videoitem": [
+        "x97weqa"
+      ],
+      "videotittle": [
+        "Seven Cemeteries (2024)"
+      ]
+    },
+    {
+      "id": "article1",
+      "badge": " [ Movies ] ",
+      "title": "Seven Cemeteries (2024) ",
+      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR95lVNRp6dCJ38wyanMVmkgM2AsjfIf_MDJA&s",
+      "videoitem": [
+        "x97otbg"
+      ],
+      "videotittle": [
+        "Seven Cemeteries (2024)"
+      ]
+    },
+    {
+      "id": "article3",
+      "badge": " [ Movies ] ",
+      "title": "Bad Genius (2024)",
+      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRaMfggb_OITCC-OvcYUOHhehFrel__1jhedw&s",
+      "videoitem": [
+        "x97oz1k"
+      ],
+      "videotittle": [
+        "Bad Genius (2024)"
+      ]
+    },
+    {
+      "id": "article4",
+      "badge": " [ Movies ] ",
+      "title": "The Stoic (2024)",
+      "image": "https://dramatv.click/uploads/thumbs/24f9bcaba-1.jpg",
+      "videoitem": [
+        "x97p1f6"
+      ],
+      "videotittle": [
+        "The Stoic (2024)"
+      ]
+    },
+    {
+      "id": "article5",
+      "badge": " [ Movies ] ",
+      "title": "9 Windows (2024)",
+      "image": "https://i.ytimg.com/vi/13yHYvml9H4/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLBdpWcmv_0VAZ6vBMnKkaQlvjAlJA",
+      "videoitem": [
+        "x97p2k2"
+      ],
+      "videotittle": [
+        "9 Windows (2024)"
+      ]
+    },
+    {
+      "id": "article6",
+      "badge": " [ Movies ] ",
+      "title": "Rippy (2024)",
+      "image": "https://i.ytimg.com/vi/hu7IcWuCv7g/maxresdefault.jpg",
+      "videoitem": [
+        "x97p4ce"
+      ],
+      "videotittle": [
+        "Rippy (2024)"
+      ]
+    },
+    {
+      "id": "article7",
+      "badge": " [ Movies ] ",
+      "title": "Cold Case (2021)",
+      "image": "https://img.youtube.com/vi/Z9uDOF5YmMs/maxresdefault.jpg",
+      "videoitem": [
+        "Z9uDOF5YmMs"
+      ],
+      "videotittle": [
+        "Cold Case (2021)"
+      ]
+    }
+  ]
+}

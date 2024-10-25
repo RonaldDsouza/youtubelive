@@ -1,117 +1,173 @@
 {
-    "articles": [
-      {
-        "id": "14",
-        "badge": " [ Sports ] ",
-        "title": "ProKabaddi | Highlights | UP Yoddhas  vs Bengaluru Bulls | 2024",
-        "image": "https://img.youtube.com/vi/gbsDbn-em2Q/maxresdefault.jpg",
-        "videoitem": ["gbsDbn-em2Q"],
-        "videotittle": ["Bad Genius (2024)"]
-      },
-      {
-        "id": "13",
-        "badge": " [ Sports ] ",
-        "title": "ProKabaddi | Highlights | Jaipur  vs Telugu | 2024",
-        "image": "https://img.youtube.com/vi/wccT4pAuA1E/maxresdefault.jpg",
-        "videoitem": ["wccT4pAuA1E"],
-        "videotittle": ["Bad Genius (2024)"]
-      },
-      {
-        "id": "12",
-        "badge": " [ Sports ] ",
-        "title": "1st Test | Day 3 | Highlights | Bangladesh vs South Africa | 2024",
-        "image": "https://img.youtube.com/vi/h_b1YRNV0WQ/maxresdefault.jpg",
-        "videoitem": ["h_b1YRNV0WQ"],
-        "videotittle": ["Bad Genius (2024)"]
-      },
-      {
-        "id": "11",
-        "badge": " [ Sports ] ",
-        "title": "1st Test | Day 2 | Highlights | Bangladesh vs South Africa | 2024",
-        "image": "https://img.youtube.com/vi/ehWurndYoks/maxresdefault.jpg",
-        "videoitem": ["ehWurndYoks"],
-        "videotittle": ["Bad Genius (2024)"]
-      },
-      {
-        "id": "10",
-        "badge": " [ Sports ] ",
-        "title": "1st Test | Day 1 | Highlights | Bangladesh vs South Africa | 2024",
-        "image": "https://img.youtube.com/vi/aytAImV7siU/maxresdefault.jpg",
-        "videoitem": ["aytAImV7siU"],
-        "videotittle": ["Bad Genius (2024)"]
-      },
-      {
-        "id": "9",
-        "badge": " [ Sports ] ",
-        "title": "5th T20I | Highlights | Bangladesh vs Zimbabwe | 2024",
-        "image": "https://img.youtube.com/vi/sjorhXCS7To/maxresdefault.jpg",
-        "videoitem": ["sjorhXCS7To"],
-        "videotittle": ["Bad Genius (2024)"]
-      },
-      {
-        "id": "8",
-        "badge": " [ Sports ] ",
-        "title": "4th T20I | Highlights | Bangladesh vs Zimbabwe | 2024",
-        "image": "https://img.youtube.com/vi/N5XYIiLCD4Y/maxresdefault.jpg",
-        "videoitem": ["N5XYIiLCD4Y"],
-        "videotittle": ["Bad Genius (2024)"]
-      },
-      {
-        "id": "7",
-        "badge": " [ Sports ] ",
-        "title": "3rd T20I | Highlights | Bangladesh vs Zimbabwe | 2024",
-        "image": "https://img.youtube.com/vi/V2DEffiA-KI/maxresdefault.jpg",
-        "videoitem": ["frNx9BvlHrA"],
-        "videotittle": ["Bad Genius (2024)"]
-      },
-      {
-        "id": "6",
-        "badge": " [ Sports ] ",
-        "title": "2nd T20I | Highlights | Bangladesh vs Zimbabwe | 2024",
-        "image": "https://img.youtube.com/vi/pj5Rss_S0sY/maxresdefault.jpg",
-        "videoitem": ["pj5Rss_S0sY"],
-        "videotittle": ["Bad Genius (2024)"]
-      },
-      {
-        "id": "5",
-        "badge": " [ Sports ] ",
-        "title": "WRC Rally Finland 2024",
-        "image": "https://img.youtube.com/vi/8M9irQc5egM/maxresdefault.jpg",
-        "videoitem": ["8M9irQc5egM"],
-        "videotittle": ["Bad Genius (2024)"]
-      },
-      {
-        "id": "4",
-        "badge": " [ Sports ] ",
-        "title": "Italy vs Israel | Highlights | UEFA Nations League | 15th October 2024 ",
-        "image": "https://img.youtube.com/vi/j-_drf51E5w/maxresdefault.jpg",
-        "videoitem": ["j-_drf51E5w"],
-        "videotittle": ["Seven Cemeteries (2024)"]
-      },
-      {
-        "id": "3",
-        "badge": " [ Sports ] ",
-        "title": "Aleksandar Rakić vs Anthony Smith| FULL FIGHT | UFC 308",
-        "image": "https://img.youtube.com/vi/R4sH0o9jel4/maxresdefault.jpg",
-        "videoitem": ["R4sH0o9jel4"],
-        "videotittle": ["Die Alone (2024)"]
-      },
-      {
-        "id": "2",
-        "badge": " [ Sports ] ",
-        "title": "LIVE: Chelsea v Tottenham Hotspur | Barclays WSL 2024-25",
-        "image": "https://img.youtube.com/vi/HLNdLby5_AM/maxresdefault.jpg",
-        "videoitem": ["HLNdLby5_AM"],
-        "videotittle": ["Bad Genius (2024)"]
-      },
-      {
-        "id": "1",
-        "badge": " [ Sports ] ",
-        "title": "FIGHT HIGHLIGHTS | FRANCIS NGANNOU VS. RENAN FERREIRA",
-        "image": "https://img.youtube.com/vi/qV5LsxBF7IM/maxresdefault.jpg",
-        "videoitem": ["qV5LsxBF7IM"],
-        "videotittle": ["Bad Genius (2024)"]
-      }
-    ]
-  }
-  
+  "articles": [
+    {
+      "id": "14",
+      "badge": " [ Sports ] ",
+      "title": "ProKabaddi | Highlights | UP Yoddhas  vs Bengaluru Bulls | 2024",
+      "image": "https://img.youtube.com/vi/gbsDbn-em2Q/maxresdefault.jpg",
+      "videoitem": [
+        "gbsDbn-em2Q"
+      ],
+      "videotittle": [
+        "Bad Genius (2024)"
+      ],
+      "text": "Welcome to Youtube Live™, your go-to platform for discovering the best YouTube content curated just for you. We specialize in presenting the ultimate selection of videos across a wide range of categories including news, movies, sports, podcasts, music, games, shopping, politics, trailers, fashion, education, technology, and the latest trending topics. By analyzing thousands of videos, we ensure that only the highest-quality, most engaging, and relevant content makes it to our platform. Whether you're a fan of current events, a movie buff, a tech enthusiast, or someone who loves to stay on top of trends, we’ve got you covered."
+    },
+    {
+      "id": "13",
+      "badge": " [ Sports ] ",
+      "title": "ProKabaddi | Highlights | Jaipur  vs Telugu | 2024",
+      "image": "https://img.youtube.com/vi/wccT4pAuA1E/maxresdefault.jpg",
+      "videoitem": [
+        "wccT4pAuA1E"
+      ],
+      "videotittle": [
+        "Bad Genius (2024)"
+      ]
+    },
+    {
+      "id": "12",
+      "badge": " [ Sports ] ",
+      "title": "1st Test | Day 3 | Highlights | Bangladesh vs South Africa | 2024",
+      "image": "https://img.youtube.com/vi/h_b1YRNV0WQ/maxresdefault.jpg",
+      "videoitem": [
+        "h_b1YRNV0WQ"
+      ],
+      "videotittle": [
+        "Bad Genius (2024)"
+      ]
+    },
+    {
+      "id": "11",
+      "badge": " [ Sports ] ",
+      "title": "1st Test | Day 2 | Highlights | Bangladesh vs South Africa | 2024",
+      "image": "https://img.youtube.com/vi/ehWurndYoks/maxresdefault.jpg",
+      "videoitem": [
+        "ehWurndYoks"
+      ],
+      "videotittle": [
+        "Bad Genius (2024)"
+      ]
+    },
+    {
+      "id": "10",
+      "badge": " [ Sports ] ",
+      "title": "1st Test | Day 1 | Highlights | Bangladesh vs South Africa | 2024",
+      "image": "https://img.youtube.com/vi/aytAImV7siU/maxresdefault.jpg",
+      "videoitem": [
+        "aytAImV7siU"
+      ],
+      "videotittle": [
+        "Bad Genius (2024)"
+      ]
+    },
+    {
+      "id": "9",
+      "badge": " [ Sports ] ",
+      "title": "5th T20I | Highlights | Bangladesh vs Zimbabwe | 2024",
+      "image": "https://img.youtube.com/vi/sjorhXCS7To/maxresdefault.jpg",
+      "videoitem": [
+        "sjorhXCS7To"
+      ],
+      "videotittle": [
+        "Bad Genius (2024)"
+      ]
+    },
+    {
+      "id": "8",
+      "badge": " [ Sports ] ",
+      "title": "4th T20I | Highlights | Bangladesh vs Zimbabwe | 2024",
+      "image": "https://img.youtube.com/vi/N5XYIiLCD4Y/maxresdefault.jpg",
+      "videoitem": [
+        "N5XYIiLCD4Y"
+      ],
+      "videotittle": [
+        "Bad Genius (2024)"
+      ]
+    },
+    {
+      "id": "7",
+      "badge": " [ Sports ] ",
+      "title": "3rd T20I | Highlights | Bangladesh vs Zimbabwe | 2024",
+      "image": "https://img.youtube.com/vi/V2DEffiA-KI/maxresdefault.jpg",
+      "videoitem": [
+        "frNx9BvlHrA"
+      ],
+      "videotittle": [
+        "Bad Genius (2024)"
+      ]
+    },
+    {
+      "id": "6",
+      "badge": " [ Sports ] ",
+      "title": "2nd T20I | Highlights | Bangladesh vs Zimbabwe | 2024",
+      "image": "https://img.youtube.com/vi/pj5Rss_S0sY/maxresdefault.jpg",
+      "videoitem": [
+        "pj5Rss_S0sY"
+      ],
+      "videotittle": [
+        "Bad Genius (2024)"
+      ]
+    },
+    {
+      "id": "5",
+      "badge": " [ Sports ] ",
+      "title": "WRC Rally Finland 2024",
+      "image": "https://img.youtube.com/vi/8M9irQc5egM/maxresdefault.jpg",
+      "videoitem": [
+        "8M9irQc5egM"
+      ],
+      "videotittle": [
+        "Bad Genius (2024)"
+      ]
+    },
+    {
+      "id": "4",
+      "badge": " [ Sports ] ",
+      "title": "Italy vs Israel | Highlights | UEFA Nations League | 15th October 2024 ",
+      "image": "https://img.youtube.com/vi/j-_drf51E5w/maxresdefault.jpg",
+      "videoitem": [
+        "j-_drf51E5w"
+      ],
+      "videotittle": [
+        "Seven Cemeteries (2024)"
+      ]
+    },
+    {
+      "id": "3",
+      "badge": " [ Sports ] ",
+      "title": "Aleksandar Rakić vs Anthony Smith| FULL FIGHT | UFC 308",
+      "image": "https://img.youtube.com/vi/R4sH0o9jel4/maxresdefault.jpg",
+      "videoitem": [
+        "R4sH0o9jel4"
+      ],
+      "videotittle": [
+        "Die Alone (2024)"
+      ]
+    },
+    {
+      "id": "2",
+      "badge": " [ Sports ] ",
+      "title": "LIVE: Chelsea v Tottenham Hotspur | Barclays WSL 2024-25",
+      "image": "https://img.youtube.com/vi/HLNdLby5_AM/maxresdefault.jpg",
+      "videoitem": [
+        "HLNdLby5_AM"
+      ],
+      "videotittle": [
+        "Bad Genius (2024)"
+      ]
+    },
+    {
+      "id": "1",
+      "badge": " [ Sports ] ",
+      "title": "FIGHT HIGHLIGHTS | FRANCIS NGANNOU VS. RENAN FERREIRA",
+      "image": "https://img.youtube.com/vi/qV5LsxBF7IM/maxresdefault.jpg",
+      "videoitem": [
+        "qV5LsxBF7IM"
+      ],
+      "videotittle": [
+        "Bad Genius (2024)"
+      ]
+    }
+  ]
+}

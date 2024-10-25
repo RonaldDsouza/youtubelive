@@ -1,13 +1,17 @@
 {
-    "articles": [
-      {
-        "id": "article1",
-        "badge": " [ Games ]  ",
-        "title": "Train Sim World 5 - Part 1 - The Beginning",
-        "image": "https://img.youtube.com/vi/7xO74Bknp6Y/maxresdefault.jpg",
-        "videoitem": ["7xO74Bknp6Y"],
-        "videotittle": ["Seven Cemeteries (2024)"]
-      }
-    ]
-  }
-  
+  "articles": [
+    {
+      "id": "article1",
+      "badge": " [ Games ]  ",
+      "title": "Train Sim World 5 - Part 1 - The Beginning",
+      "image": "https://img.youtube.com/vi/7xO74Bknp6Y/maxresdefault.jpg",
+      "videoitem": [
+        "7xO74Bknp6Y"
+      ],
+      "videotittle": [
+        "Seven Cemeteries (2024)"
+      ],
+      "text": "Welcome to Youtube Live™, your go-to platform for discovering the best YouTube content curated just for you. We specialize in presenting the ultimate selection of videos across a wide range of categories including news, movies, sports, podcasts, music, games, shopping, politics, trailers, fashion, education, technology, and the latest trending topics. By analyzing thousands of videos, we ensure that only the highest-quality, most engaging, and relevant content makes it to our platform. Whether you're a fan of current events, a movie buff, a tech enthusiast, or someone who loves to stay on top of trends, we’ve got you covered."
+    }
+  ]
+}
