@@ -38,7 +38,7 @@ export default function HomePage({ articles }) {
   const dailymotionPlayerRef = useRef(null);
   const [showMessage, setShowMessage] = useState(false);
   const [scrollingText, setScrollingText] = useState("");
-  
+
   // Pagination States
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 10; // Number of articles per page
@@ -58,6 +58,8 @@ export default function HomePage({ articles }) {
   // Calculate current articles for the current page
   const indexOfLastArticle = currentPage * itemsPerPage;  // Last article index for the current page
   const indexOfFirstArticle = indexOfLastArticle - itemsPerPage;  // First article index for the current page
+
+  // Ensure currentArticles slices the filtered articles correctly without duplicates
   const currentArticles = filteredArticles.slice(indexOfFirstArticle, indexOfLastArticle);  // Get articles for the current page
 
   const loadYouTubeAPI = () => {
