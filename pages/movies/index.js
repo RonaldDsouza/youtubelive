@@ -2,13 +2,15 @@ import React, { useState, useEffect, useRef } from "react";
 import youtubeStyles from "../../styles/Youtube.module.css"; // YouTube CSS
 import dailymotionStyles from "../../styles/Dailymotion.module.css"; // Dailymotion CSS
 import SocialSharing from "../../components/SocialSharing";
-import Styles from "@styles/styles.module.css";
-import Head from "next/head";
 import Script from "next/script";
+import Head from "next/head";
 
 export async function getStaticProps() {
   try {
+    // Fetch data from the local JSON file
     const res = await fetch("https://youtubelive.vercel.app/movies.json");
+
+    // Check if the response is OK (status in the range 200-299)
     if (!res.ok) {
       throw new Error(`Failed to fetch data: ${res.status}`);
     }
@@ -40,37 +42,43 @@ export default function HomePage({ articles }) {
   const [scrollingText, setScrollingText] = useState(""); // State for the scrolling text
   // Pagination States
   const [currentPage, setCurrentPage] = useState(1);
-  const itemsPerPage = 10; // Number of articles per page
-  const [selectedCategory, setSelectedCategory] = useState("All"); // State for selected category
+  const itemsPerPage = 10;
+  const [selectedCategory, setSelectedCategory] = useState("All");
 
   // Extract unique categories from articles
-  const categories = Array.from(new Set(articles.map(article => article.category))).concat("All");
+  const categories = Array.from(
+    new Set(articles.map((article) => article.category))
+  ).concat("All");
 
-  // Calculate displayed articles based on pagination and filtering
-  const filteredArticles = selectedCategory === "All" 
-    ? articles 
-    : articles.filter(article => article.category === selectedCategory);
-  
+  // Calculate filtered and paginated articles
+  const filteredArticles =
+    selectedCategory === "All"
+      ? articles
+      : articles.filter((article) => article.category === selectedCategory);
+
   const indexOfLastArticle = currentPage * itemsPerPage;
   const indexOfFirstArticle = indexOfLastArticle - itemsPerPage;
-  const currentArticles = filteredArticles.slice(indexOfFirstArticle, indexOfLastArticle);
+  const currentArticles = filteredArticles.slice(
+    indexOfFirstArticle,
+    indexOfLastArticle
+  );
 
   // Calculate total pages
   const totalPages = Math.ceil(filteredArticles.length / itemsPerPage);
 
-    // Handlers for pagination buttons
-    const handleNextPage = () => {
-      if (currentPage < totalPages) {
-        setCurrentPage(prev => prev + 1);
-      }
-    };
-  
-    const handlePrevPage = () => {
-      if (currentPage > 1) {
-        setCurrentPage(prev => prev - 1);
-      }
-    };
-  
+  // Functions to handle page navigation
+  const handleNextPage = () => {
+    if (currentPage < totalPages) {
+      setCurrentPage(currentPage + 1);
+    }
+  };
+
+  const handlePrevPage = () => {
+    if (currentPage > 1) {
+      setCurrentPage(currentPage - 1);
+    }
+  };
+
   const loadYouTubeAPI = () => {
     const onYouTubeIframeAPIReady = () => setPlayerReady(true);
     if (typeof window !== "undefined" && typeof YT === "undefined") {
@@ -104,7 +112,6 @@ export default function HomePage({ articles }) {
           events: {
             onReady: (event) => {
               event.target.playVideo();
-              setShowMessage(true); // Show message when the player is ready
             },
           },
         });
@@ -116,19 +123,39 @@ export default function HomePage({ articles }) {
 
   const loadDailymotionPlayer = (videoId) => {
     if (dailymotionPlayerRef.current) {
+      // Clear existing player if any
       dailymotionPlayerRef.current.innerHTML = ""; // Clear previous player
     }
 
+    // Create the iframe for Dailymotion
     const player = document.createElement("iframe");
-    player.src = `https://www.dailymotion.com/embed/video/${videoId}`;
+    player.src = `https://geo.dailymotion.com/player/xjrxe.html?video=${videoId}&autoplay=1&Autoquality=1080p`;
     player.width = "100%";
     player.height = "100%";
     player.setAttribute("allowfullscreen", "true");
     player.setAttribute("frameborder", "0");
     player.setAttribute("allow", "autoplay");
 
-    dailymotionPlayerRef.current.appendChild(player); // Append new player
+    // Append the new player
+    dailymotionPlayerRef.current.appendChild(player);
     setShowMessage(true); // Show message when the player loads
+
+    // Hide the message after 30 seconds
+    setTimeout(() => {
+      setShowMessage(false);
+    }, 30000); // 30000 milliseconds = 30 seconds
+
+    // Use the Dailymotion API to detect when the video ends
+    player.addEventListener("load", () => {
+      const dailymotionPlayer = player.contentWindow.Dailymotion.player;
+
+      // Check if the Dailymotion player API is available
+      if (dailymotionPlayer) {
+        dailymotionPlayer.on("end", () => {
+          closeModal(); // Close modal when video ends
+        });
+      }
+    });
   };
 
   const openModal = (videoId) => {
@@ -140,13 +167,22 @@ export default function HomePage({ articles }) {
     setModalOpen(false);
     setCurrentVideoId("");
 
+    // Stop YouTube video if it's playing
     if (playerRef.current && playerRef.current.stopVideo) {
       playerRef.current.stopVideo(); // Stop the video for YouTube
     }
 
+    // Clear Dailymotion player
     if (dailymotionPlayerRef.current) {
       dailymotionPlayerRef.current.innerHTML = ""; // Clear the player container
-      setShowMessage(false); // Hide message when closing modal
+    }
+  };
+
+  const handlePageChange = (direction) => {
+    if (direction === "next" && currentPage < totalPages) {
+      setCurrentPage((prev) => prev + 1);
+    } else if (direction === "prev" && currentPage > 1) {
+      setCurrentPage((prev) => prev - 1);
     }
   };
 
@@ -161,14 +197,14 @@ export default function HomePage({ articles }) {
     margin: "0 5px", // Margin for buttons
   };
 
-      // Load scrolling text from articles data if available
-      useEffect(() => {
-        if (articles && articles.length > 0) {
-          setScrollingText(articles[0].text || "");
-          console.log("Scrolling Text from JSON:", articles[0].text); // Debugging log
-        }
-      }, [articles]);
-  
+  // Load scrolling text from articles data if available
+  useEffect(() => {
+    if (articles && articles.length > 0) {
+      setScrollingText(articles[0].text || "");
+      console.log("Scrolling Text from JSON:", articles[0].text); // Debugging log
+    }
+  }, [articles]);
+
   const moviesSchema = JSON.stringify({
     "@context": "https://schema.org",
     "@graph": [
@@ -267,7 +303,10 @@ export default function HomePage({ articles }) {
         />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <link rel="icon" type="image/x-icon" href="/favicon.ico" />
-        <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+        <meta
+          name="robots"
+          content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+        />
         <meta
           name="keywords"
           content="youtubelive, news, movies, sports, podcast, music, games, shopping, politics, trailers, fashion, education, technology, trending"
@@ -496,15 +535,16 @@ export default function HomePage({ articles }) {
                       src={article.image}
                       alt={article.title}
                       style={{
-                        width: "100%",
-                        height: "200px",
-                        objectFit: "fill",
+                        width: "100%", // Ensures the image is displayed at this width
+                        height: "200px", // Ensures the image is displayed at this height
+                        objectFit: "fill", // Ensures the image covers the dimensions
                         margin: "auto",
                         fontWeight: "bold",
                         textAlign: "center",
                         cursor: "pointer",
-                        boxShadow: "0 0 10px 0 #000",
-                        filter: "contrast(1.1) saturate(1.1) brightness(1.0) hue-rotate(0deg)",
+                        boxShadow: "0 0 10px 0 #000", // Shadow effect
+                        filter:
+                          "contrast(1.1) saturate(1.1) brightness(1.0) hue-rotate(0deg)", // Image filter effects
                       }}
                     />
                   </div>
@@ -542,15 +582,14 @@ export default function HomePage({ articles }) {
           and commentary purposes only. No copyright infringement is intended.
         </p>
 
-     {/* Pagination Controls */}
-     <div style={{ textAlign: "center", margin: "20px 0" }}>
+       {/* Pagination Controls */}
+       <div style={{ textAlign: "center", margin: "20px 0" }}>
         <button
-          onClick={handlePrevPage}
+          onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
           disabled={currentPage === 1}
           style={{
-            padding: "8px 16px",
-            margin: "0 8px",
-            fontWeight: "bold",
+            ...buttonStyle,
+            opacity: currentPage === 1 ? 0.5 : 1,
             cursor: currentPage === 1 ? "not-allowed" : "pointer",
           }}
         >
@@ -560,19 +599,19 @@ export default function HomePage({ articles }) {
           Page {currentPage} of {totalPages}
         </span>
         <button
-          onClick={handleNextPage}
+          onClick={() => setCurrentPage((prev) => Math.min(prev + 1, totalPages))}
           disabled={currentPage === totalPages}
           style={{
-            padding: "8px 16px",
-            margin: "0 8px",
-            fontWeight: "bold",
+            ...buttonStyle,
+            opacity: currentPage === totalPages ? 0.5 : 1,
             cursor: currentPage === totalPages ? "not-allowed" : "pointer",
           }}
         >
           Next
         </button>
       </div>
-    </main>
+    
+      </main>
 
       {isModalOpen && (
         <div className={youtubeStyles.modal}>
