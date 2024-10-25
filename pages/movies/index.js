@@ -43,46 +43,19 @@ export default function HomePage({ articles }) {
   const dailymotionPlayerRef = useRef(null); // Reference for Dailymotion player
   const [showMessage, setShowMessage] = useState(false); // State for the message visibility
   const [scrollingText, setScrollingText] = useState(""); // State for the scrolling text
-  
   // Pagination States
-  const itemsPerPage = 10; // Number of items per page
   const [currentPage, setCurrentPage] = useState(1);
-  const [selectedCategory, setSelectedCategory] = useState("All");
+  const itemsPerPage = 10; // Number of articles per page
 
-  // Extract unique categories from articles
-  const categories = Array.from(
-    new Set(articles.map((article) => article.category))
-  ).concat("All");
-
-  // Calculate filtered articles based on selected category
-  const filteredArticles =
-    selectedCategory === "All"
-      ? articles
-      : articles.filter((article) => article.category === selectedCategory);
-
-  // Calculate total pages
-  const totalPages = Math.ceil(filteredArticles.length / itemsPerPage);
-
-  // Calculate indices for pagination
+  // Calculate displayed articles based on pagination
   const indexOfLastArticle = currentPage * itemsPerPage;
   const indexOfFirstArticle = indexOfLastArticle - itemsPerPage;
+  const currentArticles = articles.slice(indexOfFirstArticle, indexOfLastArticle);
 
-  // Ensure currentArticles contains only the current page's articles
-  const currentArticles = filteredArticles.slice(indexOfFirstArticle, indexOfLastArticle);
+  // Calculate total pages
+  const totalPages = Math.ceil(articles.length / itemsPerPage);
 
-  // Functions to handle page navigation
-  const handleNextPage = () => {
-    if (currentPage < totalPages) {
-      setCurrentPage((prev) => prev + 1);
-    }
-  };
-
-  const handlePrevPage = () => {
-    if (currentPage > 1) {
-      setCurrentPage((prev) => prev - 1);
-    }
-  };
-
+  
 
   const loadYouTubeAPI = () => {
     const onYouTubeIframeAPIReady = () => setPlayerReady(true);
@@ -585,8 +558,6 @@ export default function HomePage({ articles }) {
         </p>
 
         {/* Pagination Controls */}
-        
-        {/* Pagination Controls */}
         <div style={{ textAlign: "center", margin: "20px 0" }}>
           <button
             onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
@@ -607,6 +578,7 @@ export default function HomePage({ articles }) {
           </button>
         </div>
       </main>
+
 
       {isModalOpen && (
         <div className={youtubeStyles.modal}>
