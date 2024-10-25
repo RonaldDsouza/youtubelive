@@ -1,3 +1,6 @@
+
+
+
 import React, { useState, useEffect, useRef } from "react";
 import youtubeStyles from "../../styles/Youtube.module.css"; // YouTube CSS
 import dailymotionStyles from "../../styles/Dailymotion.module.css"; // Dailymotion CSS
@@ -42,42 +45,15 @@ export default function HomePage({ articles }) {
   const [scrollingText, setScrollingText] = useState(""); // State for the scrolling text
   // Pagination States
   const [currentPage, setCurrentPage] = useState(1);
-  const itemsPerPage = 10;
-  const [selectedCategory, setSelectedCategory] = useState("All");
+  const itemsPerPage = 10; // Number of articles per page
 
-  // Extract unique categories from articles
-  const categories = Array.from(
-    new Set(articles.map((article) => article.category))
-  ).concat("All");
-
-  // Calculate filtered and paginated articles
-  const filteredArticles =
-    selectedCategory === "All"
-      ? articles
-      : articles.filter((article) => article.category === selectedCategory);
-
+  // Calculate displayed articles based on pagination
   const indexOfLastArticle = currentPage * itemsPerPage;
   const indexOfFirstArticle = indexOfLastArticle - itemsPerPage;
-  const currentArticles = filteredArticles.slice(
-    indexOfFirstArticle,
-    indexOfLastArticle
-  );
+  const currentArticles = articles.slice(indexOfFirstArticle, indexOfLastArticle);
 
   // Calculate total pages
-  const totalPages = Math.ceil(filteredArticles.length / itemsPerPage);
-
-  // Functions to handle page navigation
-  const handleNextPage = () => {
-    if (currentPage < totalPages) {
-      setCurrentPage(currentPage + 1);
-    }
-  };
-
-  const handlePrevPage = () => {
-    if (currentPage > 1) {
-      setCurrentPage(currentPage - 1);
-    }
-  };
+  const totalPages = Math.ceil(articles.length / itemsPerPage);
 
   const loadYouTubeAPI = () => {
     const onYouTubeIframeAPIReady = () => setPlayerReady(true);
@@ -197,14 +173,14 @@ export default function HomePage({ articles }) {
     margin: "0 5px", // Margin for buttons
   };
 
-  // Load scrolling text from articles data if available
-  useEffect(() => {
-    if (articles && articles.length > 0) {
-      setScrollingText(articles[0].text || "");
-      console.log("Scrolling Text from JSON:", articles[0].text); // Debugging log
-    }
-  }, [articles]);
-
+      // Load scrolling text from articles data if available
+      useEffect(() => {
+        if (articles && articles.length > 0) {
+          setScrollingText(articles[0].text || "");
+          console.log("Scrolling Text from JSON:", articles[0].text); // Debugging log
+        }
+      }, [articles]);
+  
   const moviesSchema = JSON.stringify({
     "@context": "https://schema.org",
     "@graph": [
@@ -303,10 +279,7 @@ export default function HomePage({ articles }) {
         />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <link rel="icon" type="image/x-icon" href="/favicon.ico" />
-        <meta
-          name="robots"
-          content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
-        />
+        <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
         <meta
           name="keywords"
           content="youtubelive, news, movies, sports, podcast, music, games, shopping, politics, trailers, fashion, education, technology, trending"
@@ -582,33 +555,28 @@ export default function HomePage({ articles }) {
           and commentary purposes only. No copyright infringement is intended.
         </p>
 
-     {/* Pagination Controls */}
-     <div style={{ textAlign: "center", margin: "20px 0" }}>
-        <button
-          onClick={handlePrevPage}
-          disabled={currentPage === 1}
-          style={{
-            opacity: currentPage === 1 ? 0.5 : 1,
-            cursor: currentPage === 1 ? "not-allowed" : "pointer",
-          }}
-        >
-          Previous
-        </button>
-        <span style={{ margin: "0 15px", fontWeight: "bold" }}>
-          Page {currentPage} of {totalPages}
-        </span>
-        <button
-          onClick={handleNextPage}
-          disabled={currentPage === totalPages}
-          style={{
-            opacity: currentPage === totalPages ? 0.5 : 1,
-            cursor: currentPage === totalPages ? "not-allowed" : "pointer",
-          }}
-        >
-          Next
-        </button>
-      </div>
-    
+        {/* Pagination Controls */}
+        
+        {/* Pagination Controls */}
+        <div style={{ textAlign: "center", margin: "20px 0" }}>
+          <button
+            onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
+            disabled={currentPage === 1}
+            style={buttonStyle}
+          >
+            Previous
+          </button>
+          <span style={{ margin: "0 15px", fontWeight: "bold" }}>
+            Page {currentPage} of {totalPages}
+          </span>
+          <button
+            onClick={() => setCurrentPage((prev) => Math.min(prev + 1, totalPages))}
+            disabled={currentPage === totalPages}
+            style={buttonStyle}
+          >
+            Next
+          </button>
+        </div>
       </main>
 
       {isModalOpen && (
