@@ -438,13 +438,13 @@ export default function HomePage({ articles }) {
     margin: "0 5px", // Margin for buttons
   };
 
-      // Load scrolling text from articles data if available
-      useEffect(() => {
-        if (articles && articles.length > 0) {
-          setScrollingText(articles[0].text || "");
-          console.log("Scrolling Text from JSON:", articles[0].text); // Debugging log
-        }
-      }, [articles]);
+    // Load scrolling text from articles data if available
+    useEffect(() => {
+      if (articles && articles.length > 0) {
+        setScrollingText(articles[0].text || "");
+        console.log("Scrolling Text from JSON:", articles[0].text); // Debugging log
+      }
+    }, [articles]);
   
   const moviesSchema = JSON.stringify({
     "@context": "https://schema.org",
@@ -773,16 +773,15 @@ export default function HomePage({ articles }) {
                       src={article.image}
                       alt={article.title}
                       style={{
-                        width: "100%", // Ensures the image is displayed at this width
-                        height: "200px", // Ensures the image is displayed at this height
-                        objectFit: "fill", // Ensures the image covers the dimensions
+                        width: "100%",
+                        height: "200px",
+                        objectFit: "fill",
                         margin: "auto",
                         fontWeight: "bold",
                         textAlign: "center",
                         cursor: "pointer",
-                        boxShadow: "0 0 10px 0 #000", // Shadow effect
-                        filter:
-                          "contrast(1.1) saturate(1.1) brightness(1.0) hue-rotate(0deg)", // Image filter effects
+                        boxShadow: "0 0 10px 0 #000",
+                        filter: "contrast(1.1) saturate(1.1) brightness(1.0) hue-rotate(0deg)",
                       }}
                     />
                   </div>
@@ -820,8 +819,6 @@ export default function HomePage({ articles }) {
           and commentary purposes only. No copyright infringement is intended.
         </p>
 
-        {/* Pagination Controls */}
-        
         {/* Pagination Controls */}
         <div style={{ textAlign: "center", margin: "20px 0" }}>
           <button
