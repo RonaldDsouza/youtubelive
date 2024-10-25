@@ -50,31 +50,36 @@ export default function HomePage({ articles }) {
     new Set(articles.map((article) => article.category))
   ).concat("All");
 
- // Calculate indices for pagination
- const indexOfLastArticle = currentPage * itemsPerPage;
- const indexOfFirstArticle = indexOfLastArticle - itemsPerPage;
- const currentArticles = filteredArticles.slice(
-   indexOfFirstArticle,
-   indexOfLastArticle
- );
+  // Calculate filtered and paginated articles
+  const filteredArticles =
+    selectedCategory === "All"
+      ? articles
+      : articles.filter((article) => article.category === selectedCategory);
 
- // Calculate total pages
- const totalPages = Math.ceil(filteredArticles.length / itemsPerPage);
+  const indexOfLastArticle = currentPage * itemsPerPage;
+  const indexOfFirstArticle = indexOfLastArticle - itemsPerPage;
+  const currentArticles = filteredArticles.slice(
+    indexOfFirstArticle,
+    indexOfLastArticle
+  );
 
- // Functions to handle page navigation
- const handleNextPage = () => {
-   if (currentPage < totalPages) {
-     setCurrentPage(currentPage + 1);
-   }
- };
+  // Calculate total pages
+  const totalPages = Math.ceil(filteredArticles.length / itemsPerPage);
 
- const handlePrevPage = () => {
-   if (currentPage > 1) {
-     setCurrentPage(currentPage - 1);
-   }
- };
+  // Functions to handle page navigation
+  const handleNextPage = () => {
+    if (currentPage < totalPages) {
+      setCurrentPage(currentPage + 1);
+    }
+  };
 
- const loadYouTubeAPI = () => {
+  const handlePrevPage = () => {
+    if (currentPage > 1) {
+      setCurrentPage(currentPage - 1);
+    }
+  };
+
+  const loadYouTubeAPI = () => {
     const onYouTubeIframeAPIReady = () => setPlayerReady(true);
     if (typeof window !== "undefined" && typeof YT === "undefined") {
       const tag = document.createElement("script");
@@ -577,8 +582,8 @@ export default function HomePage({ articles }) {
           and commentary purposes only. No copyright infringement is intended.
         </p>
 
-      {/* Pagination Controls */}
-      <div style={{ textAlign: "center", margin: "20px 0" }}>
+     {/* Pagination Controls */}
+     <div style={{ textAlign: "center", margin: "20px 0" }}>
         <button
           onClick={handlePrevPage}
           disabled={currentPage === 1}
