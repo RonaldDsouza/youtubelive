@@ -37,7 +37,7 @@ export default function HomePage({ articles }) {
   const playerRef = useRef(null);
   const dailymotionPlayerRef = useRef(null); // Reference for Dailymotion player
   const [showMessage, setShowMessage] = useState(false); // State for the message visibility
-
+  const [scrollingText, setScrollingText] = useState(""); // State for the scrolling text
   // Pagination States
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 10; // Number of articles per page
@@ -148,6 +148,14 @@ export default function HomePage({ articles }) {
     margin: "0 5px", // Margin for buttons
   };
 
+      // Load scrolling text from articles data if available
+      useEffect(() => {
+        if (articles && articles.length > 0) {
+          setScrollingText(articles[0].text || "");
+          console.log("Scrolling Text from JSON:", articles[0].text); // Debugging log
+        }
+      }, [articles]);
+  
   const politicsSchema = JSON.stringify({
     "@context": "https://schema.org",
     "@graph": [
@@ -530,102 +538,167 @@ export default function HomePage({ articles }) {
       </main>
 
       {isModalOpen && (
-  <div className={youtubeStyles.modal}>
-    <div className={youtubeStyles.modalContent}>
-      <button className={youtubeStyles.close} onClick={closeModal}>
-        Close
-      </button>
+        <div className={youtubeStyles.modal}>
+          <div className={youtubeStyles.modalContent}>
+            <button className={youtubeStyles.close} onClick={closeModal}>
+              Close
+            </button>
 
-      {currentVideoId.length === 11 ? ( // Assuming YouTube IDs are always 11 characters
-        <>
-          <div
-            id="youtube-player"
-            className={youtubeStyles.player}
-            style={{
-              filter: "contrast(1.1) saturate(1.2) brightness(1.3) hue-rotate(0deg)",
-              display: "block",
-            }}
-          />
-          <div
-            className="button"
-            style={{
-              position: "absolute",
-              bottom: "20px",
-              left: "50%",
-              transform: "translateX(-50%)",
-              color: "white",
-              backgroundColor: "rgba(0, 0, 0, 0.5)",
-              padding: "10px",
-              borderRadius: "5px",
-              textAlign: "center",
-              display: showMessage ? "block" : "none",
-              zIndex: 1000, // Ensure it sits above the player
-            }}
-          >
-            Playing video from YouTube
-            <p
-              className="flex flex-col items-center justify-center"
-              style={{
-                color: "red",
-                fontSize: "10px",
-                fontWeight: "bold",
-                textAlign: "center",
-              }}
-            >
-              This content is made available under the Fair Use Act for
-              educational and commentary purposes only. No copyright
-              infringement is intended.
-            </p>
+            {currentVideoId.length === 11 ? ( // Assuming YouTube IDs are always 11 characters
+              <>
+                <div
+                  id="youtube-player"
+                  className={youtubeStyles.player}
+                  style={{
+                    filter:
+                      "contrast(1.1) saturate(1.2) brightness(1.3) hue-rotate(0deg)",
+                    display: "block",
+                  }}
+                />
+                <div
+                  className="button"
+                  style={{
+                    position: "absolute",
+                    bottom: "20px",
+                    left: "50%",
+                    transform: "translateX(-50%)",
+                    color: "white",
+                    backgroundColor: "rgba(0, 0, 0, 0.5)",
+                    padding: "10px",
+                    borderRadius: "5px",
+                    textAlign: "center",
+                    display: showMessage ? "block" : "none",
+                    zIndex: 1000, // Ensure it sits above the player
+                  }}
+                >
+                  Playing video from YouTube
+                  <p
+                    className="flex flex-col items-center justify-center"
+                    style={{
+                      color: "red",
+                      fontSize: "10px",
+                      fontWeight: "bold",
+                      textAlign: "center",
+                    }}
+                  >
+                    This content is made available under the Fair Use Act for
+                    educational and commentary purposes only. No copyright
+                    infringement is intended.
+                  </p>
+                </div>
+                {scrollingText && (
+                  <div
+                    className="scrollingTextContainer font-extrabold"
+                    style={{
+                      backgroundColor: "rgba(255, 255, 255, 0.8)",
+                      // color: "black",
+                      padding: "10px",
+                      fontSize: "18px",
+                      fontWeight: "bold",
+                      textAlign: "center",
+                      border: "1px solid #ccc",
+                      overflow: "hidden",
+                      whiteSpace: "nowrap",
+                      width: "100%",
+                      maxWidth: "600px",
+                      margin: "20px auto",
+                      position: "absolute",
+                      top: "-10px",
+                      left: "50%",
+                      transform: "translateX(-50%)",
+                      zIndex: 10,
+                    }}
+                  >
+                    <marquee
+                      behavior="scroll"
+                      direction="left"
+                      scrollamount="10"
+                    >
+                      {scrollingText}
+                    </marquee>
+                  </div>
+                )}
+              </>
+            ) : (
+              <>
+                {scrollingText && (
+                  <div
+                    className="scrollingTextContainer font-extrabold"
+                    style={{
+                      backgroundColor: "rgba(255, 255, 255, 0.8)",
+                      color: "black",
+                      padding: "10px",
+                      fontSize: "18px",
+                      fontWeight: "bold",
+                      textAlign: "center",
+                      border: "1px solid #ccc",
+                      overflow: "hidden",
+                      whiteSpace: "nowrap",
+                      width: "100%",
+                      maxWidth: "600px",
+                      margin: "20px auto",
+                      position: "absolute",
+                      top: "-10px",
+                      left: "50%",
+                      transform: "translateX(-50%)",
+                      zIndex: 10,
+                    }}
+                  >
+                    <marquee
+                      behavior="scroll"
+                      direction="left"
+                      scrollamount="10"
+                    >
+                      {scrollingText}
+                    </marquee>
+                  </div>
+                )}
+                <div
+                  ref={dailymotionPlayerRef}
+                  className={youtubeStyles.player}
+                  style={{
+                    filter:
+                      "contrast(1.1) saturate(1.2) brightness(1.3) hue-rotate(0deg)",
+                    display: "block",
+                  }}
+                />
+                <div
+                  className="button"
+                  style={{
+                    position: "absolute",
+                    bottom: "20px",
+                    left: "50%",
+                    transform: "translateX(-50%)",
+                    color: "white",
+                    backgroundColor: "rgba(0, 0, 0, 0.5)",
+                    padding: "10px",
+                    textAlign: "center",
+                    borderRadius: "5px",
+                    display: showMessage ? "block" : "none",
+                    zIndex: 1000, // Ensure it sits above the player
+                  }}
+                >
+                  Playing video from Dailymotion
+                  <p
+                    className="flex flex-col items-center justify-center"
+                    style={{
+                      color: "red",
+                      fontSize: "10px",
+                      fontWeight: "bold",
+                      textAlign: "center",
+                    }}
+                  >
+                    This content is made available under the Fair Use Act for
+                    educational and commentary purposes only. No copyright
+                    infringement is intended.
+                  </p>
+                </div>
+              </>
+            )}
           </div>
-        </>
-      ) : (
-        <>
-          <div
-            ref={dailymotionPlayerRef}
-            className={youtubeStyles.player}
-            style={{
-              filter: "contrast(1.1) saturate(1.2) brightness(1.3) hue-rotate(0deg)",
-              display: "block",
-            }}
-          />
-          <div
-            className="button"
-            style={{
-              position: "absolute",
-              bottom: "20px",
-              left: "50%",
-              transform: "translateX(-50%)",
-              color: "white",
-              backgroundColor: "rgba(0, 0, 0, 0.5)",
-              padding: "10px",
-              textAlign: "center",
-              borderRadius: "5px",
-              display: showMessage ? "block" : "none",
-              zIndex: 1000, // Ensure it sits above the player
-            }}
-          >
-            Playing video from Dailymotion
-            <p
-              className="flex flex-col items-center justify-center"
-              style={{
-                color: "red",
-                fontSize: "10px",
-                fontWeight: "bold",
-                textAlign: "center",
-              }}
-            >
-              This content is made available under the Fair Use Act for
-              educational and commentary purposes only. No copyright
-              infringement is intended.
-            </p>
-          </div>
-        </>
+        </div>
       )}
-    </div>
-  </div>
-)}
-<SocialSharing />
-
+      <SocialSharing />
     </>
   );
 }

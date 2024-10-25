@@ -37,6 +37,7 @@ export default function HomePage({ articles }) {
   const playerRef = useRef(null);
   const dailymotionPlayerRef = useRef(null); // Reference for Dailymotion player
   const [showMessage, setShowMessage] = useState(false); // State for the message visibility
+  const [scrollingText, setScrollingText] = useState(""); // State for the scrolling text
 
   // Pagination States
   const [currentPage, setCurrentPage] = useState(1);
@@ -45,7 +46,10 @@ export default function HomePage({ articles }) {
   // Calculate displayed articles based on pagination
   const indexOfLastArticle = currentPage * itemsPerPage;
   const indexOfFirstArticle = indexOfLastArticle - itemsPerPage;
-  const currentArticles = articles.slice(indexOfFirstArticle, indexOfLastArticle);
+  const currentArticles = articles.slice(
+    indexOfFirstArticle,
+    indexOfLastArticle
+  );
 
   // Calculate total pages
   const totalPages = Math.ceil(articles.length / itemsPerPage);
@@ -140,78 +144,97 @@ export default function HomePage({ articles }) {
     margin: "0 5px", // Margin for buttons
   };
 
-
-
+      // Load scrolling text from articles data if available
+      useEffect(() => {
+        if (articles && articles.length > 0) {
+          setScrollingText(articles[0].text || "");
+          console.log("Scrolling Text from JSON:", articles[0].text); // Debugging log
+        }
+      }, [articles]);
+  
   const sportsSchema = JSON.stringify({
     "@context": "https://schema.org",
     "@graph": [
       {
         "@type": "CollectionPage",
         "@id": "https://youtubelive.vercel.app/sports/",
-        "url": "https://youtubelive.vercel.app/sports/",
-        "name": "Sports Section - Youtube Live™",
-        "isPartOf": { "@id": "https://youtubelive.vercel.app/#website" },
-        "primaryImageOfPage": { "@id": "https://youtubelive.vercel.app/sports/#primaryimage" },
-        "image": { "@id": "https://youtubelive.vercel.app/sports/#primaryimage" },
-        "thumbnailUrl": "https://youtubelive.vercel.app/og_image.jpg",
-        "breadcrumb": { "@id": "https://youtubelive.vercel.app/sports/#breadcrumb" },
-        "inLanguage": "en-US"
+        url: "https://youtubelive.vercel.app/sports/",
+        name: "Sports Section - Youtube Live™",
+        isPartOf: { "@id": "https://youtubelive.vercel.app/#website" },
+        primaryImageOfPage: {
+          "@id": "https://youtubelive.vercel.app/sports/#primaryimage",
+        },
+        image: { "@id": "https://youtubelive.vercel.app/sports/#primaryimage" },
+        thumbnailUrl: "https://youtubelive.vercel.app/og_image.jpg",
+        breadcrumb: {
+          "@id": "https://youtubelive.vercel.app/sports/#breadcrumb",
+        },
+        inLanguage: "en-US",
       },
       {
         "@type": "ImageObject",
-        "inLanguage": "en-US",
+        inLanguage: "en-US",
         "@id": "https://youtubelive.vercel.app/sports/#primaryimage",
-        "url": "https://youtubelive.vercel.app/og_image.jpg",
-        "contentUrl": "https://youtubelive.vercel.app/og_image.jpg",
-        "width": 1280,
-        "height": 720
+        url: "https://youtubelive.vercel.app/og_image.jpg",
+        contentUrl: "https://youtubelive.vercel.app/og_image.jpg",
+        width: 1280,
+        height: 720,
       },
       {
         "@type": "BreadcrumbList",
         "@id": "https://youtubelive.vercel.app/sports/#breadcrumb",
-        "itemListElement": [
-          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://youtubelive.vercel.app/" },
-          { "@type": "ListItem", "position": 2, "name": "Sports" }
-        ]
+        itemListElement: [
+          {
+            "@type": "ListItem",
+            position: 1,
+            name: "Home",
+            item: "https://youtubelive.vercel.app/",
+          },
+          { "@type": "ListItem", position: 2, name: "Sports" },
+        ],
       },
       {
         "@type": "WebSite",
         "@id": "https://youtubelive.vercel.app/#website",
-        "url": "https://youtubelive.vercel.app/",
-        "name": "Youtube Live™",
-        "description": "",
-        "publisher": { "@id": "https://youtubelive.vercel.app/#organization" },
-        "potentialAction": [
+        url: "https://youtubelive.vercel.app/",
+        name: "Youtube Live™",
+        description: "",
+        publisher: { "@id": "https://youtubelive.vercel.app/#organization" },
+        potentialAction: [
           {
             "@type": "SearchAction",
-            "target": { "@type": "EntryPoint", "urlTemplate": "https://youtubelive.vercel.app/?s={search_term_string}" },
+            target: {
+              "@type": "EntryPoint",
+              urlTemplate:
+                "https://youtubelive.vercel.app/?s={search_term_string}",
+            },
             "query-input": {
               "@type": "PropertyValueSpecification",
-              "valueRequired": true,
-              "valueName": "search_term_string"
-            }
-          }
+              valueRequired: true,
+              valueName: "search_term_string",
+            },
+          },
         ],
-        "inLanguage": "en-US"
+        inLanguage: "en-US",
       },
       {
         "@type": "Organization",
         "@id": "https://youtubelive.vercel.app/#organization",
-        "name": "Youtube Live™",
-        "url": "https://youtubelive.vercel.app/",
-        "logo": {
+        name: "Youtube Live™",
+        url: "https://youtubelive.vercel.app/",
+        logo: {
           "@type": "ImageObject",
-          "inLanguage": "en-US",
+          inLanguage: "en-US",
           "@id": "https://youtubelive.vercel.app/#/schema/logo/image/",
-          "url": "https://youtubelive.vercel.app/logo.png",
-          "contentUrl": "https://youtubelive.vercel.app/logo.png",
-          "width": 280,
-          "height": 100,
-          "caption": "Youtube Live™"
+          url: "https://youtubelive.vercel.app/logo.png",
+          contentUrl: "https://youtubelive.vercel.app/logo.png",
+          width: 280,
+          height: 100,
+          caption: "Youtube Live™",
         },
-        "image": { "@id": "https://youtubelive.vercel.app/#/schema/logo/image/" }
-      }
-    ]
+        image: { "@id": "https://youtubelive.vercel.app/#/schema/logo/image/" },
+      },
+    ],
   });
 
   return (
@@ -227,7 +250,10 @@ export default function HomePage({ articles }) {
         />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <link rel="icon" type="image/x-icon" href="/favicon.ico" />
-        <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+        <meta
+          name="robots"
+          content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+        />
         <meta
           name="keywords"
           content="youtubelive, news, movies, sports, podcast, music, games, shopping, politics, trailers, fashion, education, technology, trending"
@@ -441,186 +467,253 @@ export default function HomePage({ articles }) {
       </header>
 
       <main className={youtubeStyles.main}>
-  {currentArticles.length > 0 ? (
-    <div className={youtubeStyles.grid}>
-      {currentArticles.map((article, index) => (
-        <div key={index} className={youtubeStyles.card}>
-          {article.image && (
-            <div
-              className={youtubeStyles.imageWrapper}
-              onClick={() => openModal(article.videoitem[0])}
-            >
-              <img
-                src={article.image}
-                alt={article.title}
-                style={{
-                  width: "100%",
-                  height: "200px",
-                  objectFit: "fill",
-                  margin: "auto",
-                  fontWeight: "bold",
-                  textAlign: "center",
-                  cursor: "pointer",
-                  boxShadow: "0 0 10px 0 #000",
-                  filter: "contrast(1.1) saturate(1.1) brightness(1.0) hue-rotate(0deg)",
-                }}
-              />
-            </div>
-          )}
-          <div
-            className={youtubeStyles.title}
-            style={{
-              margin: "auto",
-              fontWeight: "bold",
-              fontSize: "16px",
-              textAlign: "center",
-              cursor: "pointer",
-              textShadow: "1px 1px 0px #000",
-            }}
-          >
-            {article.title}
+        {currentArticles.length > 0 ? (
+          <div className={youtubeStyles.grid}>
+            {currentArticles.map((article, index) => (
+              <div key={index} className={youtubeStyles.card}>
+                {article.image && (
+                  <div
+                    className={youtubeStyles.imageWrapper}
+                    onClick={() => openModal(article.videoitem[0])}
+                  >
+                    <img
+                      src={article.image}
+                      alt={article.title}
+                      style={{
+                        width: "100%",
+                        height: "200px",
+                        objectFit: "fill",
+                        margin: "auto",
+                        fontWeight: "bold",
+                        textAlign: "center",
+                        cursor: "pointer",
+                        boxShadow: "0 0 10px 0 #000",
+                        filter:
+                          "contrast(1.1) saturate(1.1) brightness(1.0) hue-rotate(0deg)",
+                      }}
+                    />
+                  </div>
+                )}
+                <div
+                  className={youtubeStyles.title}
+                  style={{
+                    margin: "auto",
+                    fontWeight: "bold",
+                    fontSize: "16px",
+                    textAlign: "center",
+                    cursor: "pointer",
+                    textShadow: "1px 1px 0px #000",
+                  }}
+                >
+                  {article.title}
+                </div>
+                <div className={youtubeStyles.channel}>{article.channel}</div>
+              </div>
+            ))}
           </div>
-          <div className={youtubeStyles.channel}>{article.channel}</div>
+        ) : (
+          <p>No videos available.</p>
+        )}
+
+        <p
+          className="flex flex-col items-center justify-center"
+          style={{
+            color: "red",
+            fontSize: "18px",
+            fontWeight: "bold",
+            textAlign: "center",
+          }}
+        >
+          This content is made available under the Fair Use Act for educational
+          and commentary purposes only. No copyright infringement is intended.
+        </p>
+
+        {/* Pagination Controls */}
+        <div style={{ textAlign: "center", margin: "20px 0" }}>
+          <button
+            onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
+            disabled={currentPage === 1}
+            style={buttonStyle}
+          >
+            Previous
+          </button>
+          <span style={{ margin: "0 15px", fontWeight: "bold" }}>
+            Page {currentPage} of {totalPages}
+          </span>
+          <button
+            onClick={() =>
+              setCurrentPage((prev) => Math.min(prev + 1, totalPages))
+            }
+            disabled={currentPage === totalPages}
+            style={buttonStyle}
+          >
+            Next
+          </button>
         </div>
-      ))}
-    </div>
-  ) : (
-    <p>No videos available.</p>
-  )}
+      </main>
 
-  <p
-    className="flex flex-col items-center justify-center"
-    style={{
-      color: "red",
-      fontSize: "18px",
-      fontWeight: "bold",
-      textAlign: "center",
-    }}
-  >
-    This content is made available under the Fair Use Act for educational
-    and commentary purposes only. No copyright infringement is intended.
-  </p>
+      {isModalOpen && (
+        <div className={youtubeStyles.modal}>
+          <div className={youtubeStyles.modalContent}>
+            <button className={youtubeStyles.close} onClick={closeModal}>
+              Close
+            </button>
 
-  {/* Pagination Controls */}
-  <div style={{ textAlign: "center", margin: "20px 0" }}>
-    <button
-      onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
-      disabled={currentPage === 1}
-      style={buttonStyle}
-    >
-      Previous
-    </button>
-    <span style={{ margin: "0 15px", fontWeight: "bold" }}>
-      Page {currentPage} of {totalPages}
-    </span>
-    <button
-      onClick={() => setCurrentPage((prev) => Math.min(prev + 1, totalPages))}
-      disabled={currentPage === totalPages}
-      style={buttonStyle}
-    >
-      Next
-    </button>
-  </div>
-</main>
-
-{isModalOpen && (
-  <div className={youtubeStyles.modal}>
-    <div className={youtubeStyles.modalContent}>
-      <button className={youtubeStyles.close} onClick={closeModal}>
-        Close
-      </button>
-
-      {currentVideoId.length === 11 ? (
-        <>
-          <div
-            id="youtube-player"
-            className={youtubeStyles.player}
-            style={{
-              filter: "contrast(1.1) saturate(1.2) brightness(1.3) hue-rotate(0deg)",
-              display: "block",
-            }}
-          />
-          <div
-            className="button"
-            style={{
-              position: "absolute",
-              bottom: "20px",
-              left: "50%",
-              transform: "translateX(-50%)",
-              color: "white",
-              backgroundColor: "rgba(0, 0, 0, 0.5)",
-              padding: "10px",
-              borderRadius: "5px",
-              textAlign: "center",
-              display: showMessage ? "block" : "none",
-              zIndex: 1000,
-            }}
-          >
-            Playing video from YouTube
-            <p
-              className="flex flex-col items-center justify-center"
-              style={{
-                color: "red",
-                fontSize: "10px",
-                fontWeight: "bold",
-                textAlign: "center",
-              }}
-            >
-              This content is made available under the Fair Use Act for
-              educational and commentary purposes only. No copyright
-              infringement is intended.
-            </p>
+            {currentVideoId.length === 11 ? ( // Assuming YouTube IDs are always 11 characters
+              <>
+                <div
+                  id="youtube-player"
+                  className={youtubeStyles.player}
+                  style={{
+                    filter:
+                      "contrast(1.1) saturate(1.2) brightness(1.3) hue-rotate(0deg)",
+                    display: "block",
+                  }}
+                />
+                <div
+                  className="button"
+                  style={{
+                    position: "absolute",
+                    bottom: "20px",
+                    left: "50%",
+                    transform: "translateX(-50%)",
+                    color: "white",
+                    backgroundColor: "rgba(0, 0, 0, 0.5)",
+                    padding: "10px",
+                    borderRadius: "5px",
+                    textAlign: "center",
+                    display: showMessage ? "block" : "none",
+                    zIndex: 1000, // Ensure it sits above the player
+                  }}
+                >
+                  Playing video from YouTube
+                  <p
+                    className="flex flex-col items-center justify-center"
+                    style={{
+                      color: "red",
+                      fontSize: "10px",
+                      fontWeight: "bold",
+                      textAlign: "center",
+                    }}
+                  >
+                    This content is made available under the Fair Use Act for
+                    educational and commentary purposes only. No copyright
+                    infringement is intended.
+                  </p>
+                </div>
+                {scrollingText && (
+                  <div
+                    className="scrollingTextContainer font-extrabold"
+                    style={{
+                      backgroundColor: "rgba(255, 255, 255, 0.8)",
+                      // color: "black",
+                      padding: "10px",
+                      fontSize: "18px",
+                      fontWeight: "bold",
+                      textAlign: "center",
+                      border: "1px solid #ccc",
+                      overflow: "hidden",
+                      whiteSpace: "nowrap",
+                      width: "100%",
+                      maxWidth: "600px",
+                      margin: "20px auto",
+                      position: "absolute",
+                      top: "-10px",
+                      left: "50%",
+                      transform: "translateX(-50%)",
+                      zIndex: 10,
+                    }}
+                  >
+                    <marquee
+                      behavior="scroll"
+                      direction="left"
+                      scrollamount="10"
+                    >
+                      {scrollingText}
+                    </marquee>
+                  </div>
+                )}
+              </>
+            ) : (
+              <>
+                {scrollingText && (
+                  <div
+                    className="scrollingTextContainer font-extrabold"
+                    style={{
+                      backgroundColor: "rgba(255, 255, 255, 0.8)",
+                      color: "black",
+                      padding: "10px",
+                      fontSize: "18px",
+                      fontWeight: "bold",
+                      textAlign: "center",
+                      border: "1px solid #ccc",
+                      overflow: "hidden",
+                      whiteSpace: "nowrap",
+                      width: "100%",
+                      maxWidth: "600px",
+                      margin: "20px auto",
+                      position: "absolute",
+                      top: "-10px",
+                      left: "50%",
+                      transform: "translateX(-50%)",
+                      zIndex: 10,
+                    }}
+                  >
+                    <marquee
+                      behavior="scroll"
+                      direction="left"
+                      scrollamount="10"
+                    >
+                      {scrollingText}
+                    </marquee>
+                  </div>
+                )}
+                <div
+                  ref={dailymotionPlayerRef}
+                  className={youtubeStyles.player}
+                  style={{
+                    filter:
+                      "contrast(1.1) saturate(1.2) brightness(1.3) hue-rotate(0deg)",
+                    display: "block",
+                  }}
+                />
+                <div
+                  className="button"
+                  style={{
+                    position: "absolute",
+                    bottom: "20px",
+                    left: "50%",
+                    transform: "translateX(-50%)",
+                    color: "white",
+                    backgroundColor: "rgba(0, 0, 0, 0.5)",
+                    padding: "10px",
+                    textAlign: "center",
+                    borderRadius: "5px",
+                    display: showMessage ? "block" : "none",
+                    zIndex: 1000, // Ensure it sits above the player
+                  }}
+                >
+                  Playing video from Dailymotion
+                  <p
+                    className="flex flex-col items-center justify-center"
+                    style={{
+                      color: "red",
+                      fontSize: "10px",
+                      fontWeight: "bold",
+                      textAlign: "center",
+                    }}
+                  >
+                    This content is made available under the Fair Use Act for
+                    educational and commentary purposes only. No copyright
+                    infringement is intended.
+                  </p>
+                </div>
+              </>
+            )}
           </div>
-        </>
-      ) : (
-        <>
-          <div
-            ref={dailymotionPlayerRef}
-            className={youtubeStyles.player}
-            style={{
-              filter: "contrast(1.1) saturate(1.2) brightness(1.3) hue-rotate(0deg)",
-              display: "block",
-            }}
-          />
-          <div
-            className="button"
-            style={{
-              position: "absolute",
-              bottom: "20px",
-              left: "50%",
-              transform: "translateX(-50%)",
-              color: "white",
-              backgroundColor: "rgba(0, 0, 0, 0.5)",
-              padding: "10px",
-              textAlign: "center",
-              borderRadius: "5px",
-              display: showMessage ? "block" : "none",
-              zIndex: 1000,
-            }}
-          >
-            Playing video from Dailymotion
-            <p
-              className="flex flex-col items-center justify-center"
-              style={{
-                color: "red",
-                fontSize: "10px",
-                fontWeight: "bold",
-                textAlign: "center",
-              }}
-            >
-              This content is made available under the Fair Use Act for
-              educational and commentary purposes only. No copyright
-              infringement is intended.
-            </p>
-          </div>
-        </>
+        </div>
       )}
-    </div>
-  </div>
-)}
-<SocialSharing />
-
-
+      <SocialSharing />
     </>
   );
 }
