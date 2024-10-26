@@ -464,9 +464,10 @@ export default function HomePage({ articles }) {
       >
         <h1
           className={youtubeStyles.logo}
-          // style={{
-          //   textAlign: "center",
-          // }}
+          style={{
+            textAlign: "center",
+            justifyItems:"center"
+          }}
         >
           🎵 🎼🎸 🎷 Music 🎹 🎺 🪕 🥁
         </h1>
