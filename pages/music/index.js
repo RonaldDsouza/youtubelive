@@ -460,14 +460,14 @@ export default function HomePage({ articles }) {
       </div>
 
       {/* <div className={youtubeStyles.container} > */}
-      <header className={youtubeStyles.header}>
-        <h1
-          className={youtubeStyles.logo}
-          style={{
+      <header className={youtubeStyles.header} 
+       style={{
             textAlign: "center",
             //  filter:
             //   "contrast(1.1) saturate(1.1) brightness(1.0) hue-rotate(0deg)",
-          }}
+          }}>
+        <h1
+          className={youtubeStyles.logo}
         >
           🎵 🎼🎶 🎷 Music 🎸🎹 🎺 🪕 🥁
         </h1>
