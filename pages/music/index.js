@@ -446,7 +446,7 @@ export default function HomePage({ articles }) {
       {/* <div className={youtubeStyles.container} > */}
       <header className={youtubeStyles.header}>
         <h1 className={youtubeStyles.logo}>
-        Music Section. 🎵 🎼🎶 🎷 🎸🎹 🎺 🪕 🥁 
+         🎵 🎼🎶 🎷 Music 🎸🎹 🎺 🪕 🥁 
         </h1>
       </header>
 

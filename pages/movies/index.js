@@ -465,7 +465,7 @@ export default function HomePage({ articles }) {
       {/* <div className={youtubeStyles.container} > */}
       <header className={youtubeStyles.header}>
         <h1 className={youtubeStyles.logo}>
-          Sports Live & Highlights Section.
+         🎞️ 🍿 💿 📀 🎥 📽️ Movies & Tv Show 🎬 📺 📸 📹 📼 🎦
         </h1>
       </header>
 
