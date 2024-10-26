@@ -449,7 +449,7 @@ export default function HomePage({ articles }) {
       {/* <div className={youtubeStyles.container} > */}
       <header className={youtubeStyles.header}>
         <h1 className={youtubeStyles.logo}>
-          Sports Live & Highlights Section.
+        Politics Section.🗳️
         </h1>
       </header>
 

@@ -158,83 +158,70 @@ export default function HomePage({ articles }) {
       {
         "@type": "CollectionPage",
         "@id": "https://youtubelive.vercel.app/music/",
-        url: "https://youtubelive.vercel.app/music/",
-        name: "Music Section - Youtube Live™",
-        isPartOf: { "@id": "https://youtubelive.vercel.app/#website" },
-        primaryImageOfPage: {
-          "@id": "https://youtubelive.vercel.app/music/#primaryimage",
-        },
-        image: { "@id": "https://youtubelive.vercel.app/music/#primaryimage" },
-        thumbnailUrl: "https://youtubelive.vercel.app/og_image.jpg",
-        breadcrumb: {
-          "@id": "https://youtubelive.vercel.app/music/#breadcrumb",
-        },
-        inLanguage: "en-US",
+        "url": "https://youtubelive.vercel.app/music/",
+        "name": "Music Section - Youtube Live™",
+        "isPartOf": { "@id": "https://youtubelive.vercel.app/#website" },
+        "primaryImageOfPage": { "@id": "https://youtubelive.vercel.app/music/#primaryimage" },
+        "image": { "@id": "https://youtubelive.vercel.app/music/#primaryimage" },
+        "thumbnailUrl": "https://youtubelive.vercel.app/og_image.jpg",
+        "breadcrumb": { "@id": "https://youtubelive.vercel.app/music/#breadcrumb" },
+        "inLanguage": "en-US"
       },
       {
         "@type": "ImageObject",
-        inLanguage: "en-US",
+        "inLanguage": "en-US",
         "@id": "https://youtubelive.vercel.app/music/#primaryimage",
-        url: "https://youtubelive.vercel.app/og_image.jpg",
-        contentUrl: "https://youtubelive.vercel.app/og_image.jpg",
-        width: 1280,
-        height: 720,
+        "url": "https://youtubelive.vercel.app/og_image.jpg",
+        "contentUrl": "https://youtubelive.vercel.app/og_image.jpg",
+        "width": 1280,
+        "height": 720
       },
       {
         "@type": "BreadcrumbList",
         "@id": "https://youtubelive.vercel.app/music/#breadcrumb",
-        itemListElement: [
-          {
-            "@type": "ListItem",
-            position: 1,
-            name: "Home",
-            item: "https://youtubelive.vercel.app/",
-          },
-          { "@type": "ListItem", position: 2, name: "Music" },
-        ],
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://youtubelive.vercel.app/" },
+          { "@type": "ListItem", "position": 2, "name": "Music" }
+        ]
       },
       {
         "@type": "WebSite",
         "@id": "https://youtubelive.vercel.app/#website",
-        url: "https://youtubelive.vercel.app/",
-        name: "Youtube Live™",
-        description: "",
-        publisher: { "@id": "https://youtubelive.vercel.app/#organization" },
-        potentialAction: [
+        "url": "https://youtubelive.vercel.app/",
+        "name": "Youtube Live™",
+        "description": "",
+        "publisher": { "@id": "https://youtubelive.vercel.app/#organization" },
+        "potentialAction": [
           {
             "@type": "SearchAction",
-            target: {
-              "@type": "EntryPoint",
-              urlTemplate:
-                "https://youtubelive.vercel.app/?s={search_term_string}",
-            },
+            "target": { "@type": "EntryPoint", "urlTemplate": "https://youtubelive.vercel.app/?s={search_term_string}" },
             "query-input": {
               "@type": "PropertyValueSpecification",
-              valueRequired: true,
-              valueName: "search_term_string",
-            },
-          },
+              "valueRequired": true,
+              "valueName": "search_term_string"
+            }
+          }
         ],
-        inLanguage: "en-US",
+        "inLanguage": "en-US"
       },
       {
         "@type": "Organization",
         "@id": "https://youtubelive.vercel.app/#organization",
-        name: "Youtube Live™",
-        url: "https://youtubelive.vercel.app/",
-        logo: {
+        "name": "Youtube Live™",
+        "url": "https://youtubelive.vercel.app/",
+        "logo": {
           "@type": "ImageObject",
-          inLanguage: "en-US",
+          "inLanguage": "en-US",
           "@id": "https://youtubelive.vercel.app/#/schema/logo/image/",
-          url: "https://youtubelive.vercel.app/logo.png",
-          contentUrl: "https://youtubelive.vercel.app/logo.png",
-          width: 280,
-          height: 100,
-          caption: "Youtube Live™",
+          "url": "https://youtubelive.vercel.app/logo.png",
+          "contentUrl": "https://youtubelive.vercel.app/logo.png",
+          "width": 280,
+          "height": 100,
+          "caption": "Youtube Live™"
         },
-        image: { "@id": "https://youtubelive.vercel.app/#/schema/logo/image/" },
-      },
-    ],
+        "image": { "@id": "https://youtubelive.vercel.app/#/schema/logo/image/" }
+      }
+    ]
   });
 
   return (
@@ -250,10 +237,7 @@ export default function HomePage({ articles }) {
         />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <link rel="icon" type="image/x-icon" href="/favicon.ico" />
-        <meta
-          name="robots"
-          content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
-        />
+        <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
         <meta
           name="keywords"
           content="youtubelive, news, movies, sports, podcast, music, games, shopping, politics, trailers, fashion, education, technology, trending"
@@ -460,16 +444,9 @@ export default function HomePage({ articles }) {
       </div>
 
       {/* <div className={youtubeStyles.container} > */}
-      <header className={youtubeStyles.header} 
-      >
-        <h1
-          className={youtubeStyles.logo}
-          style={{
-            textAlign: "center",
-            justifyItems:"center"
-          }}
-        >
-          🎵 🎼🎸 🎷 Music 🎹 🎺 🪕 🥁
+      <header className={youtubeStyles.header}>
+        <h1 className={youtubeStyles.logo}>
+         Music Section.🎵
         </h1>
       </header>
 
@@ -568,39 +545,35 @@ export default function HomePage({ articles }) {
 
             {currentVideoId.length === 11 ? ( // Assuming YouTube IDs are always 11 characters
               <>
+              <div
+                itemscope
+                itemtype="https://schema.org/VideoObject"
+                className={youtubeStyles.player}
+                style={{
+                  filter: "contrast(1.1) saturate(1.2) brightness(1.3) hue-rotate(0deg)",
+                  display: "block",
+                }}
+              >
+                <meta itemprop="name" content={articles.title} />
+                <meta itemprop="description" content={articles.title} />
+                <meta itemprop="uploadDate" content="2024-10-25T20:15:19.000Z" />
+                <meta itemprop="thumbnailUrl" content={articles.image} />
+                <meta itemprop="duration" content="P7172S" />
+                <meta
+                    itemprop="embedUrl"
+                    content={`https://www.youtube-nocookie.com/embed/${articles.videoId}`}
+                  />
+                
                 <div
-                  itemscope
-                  itemtype="https://schema.org/VideoObject"
+                  id="youtube-player"
                   className={youtubeStyles.player}
                   style={{
                     filter:
                       "contrast(1.1) saturate(1.2) brightness(1.3) hue-rotate(0deg)",
                     display: "block",
                   }}
-                >
-                  <meta itemprop="name" content={articles.title} />
-                  <meta itemprop="description" content={articles.title} />
-                  <meta
-                    itemprop="uploadDate"
-                    content="2024-10-25T20:15:19.000Z"
-                  />
-                  <meta itemprop="thumbnailUrl" content={articles.image} />
-                  <meta itemprop="duration" content="P7172S" />
-                  <meta
-                    itemprop="embedUrl"
-                    content={`https://www.youtube-nocookie.com/embed/${articles.videoId}`}
-                  />
-
-                  <div
-                    id="youtube-player"
-                    className={youtubeStyles.player}
-                    style={{
-                      filter:
-                        "contrast(1.1) saturate(1.2) brightness(1.3) hue-rotate(0deg)",
-                      display: "block",
-                    }}
-                  />
-                </div>
+                />
+                  </div>
                 <div
                   className="button"
                   style={{
@@ -632,7 +605,7 @@ export default function HomePage({ articles }) {
                     infringement is intended.
                   </p>
                 </div>
-
+               
                 {scrollingText && (
                   <div
                     className="scrollingTextContainer font-extrabold"
@@ -668,72 +641,63 @@ export default function HomePage({ articles }) {
               </>
             ) : (
               <>
-                {scrollingText && (
-                  <div
-                    className="scrollingTextContainer font-extrabold"
-                    style={{
-                      backgroundColor: "rgba(255, 255, 255, 0.8)",
-                      color: "black",
-                      padding: "10px",
-                      fontSize: "18px",
-                      fontWeight: "bold",
-                      textAlign: "center",
-                      border: "1px solid #ccc",
-                      overflow: "hidden",
-                      whiteSpace: "nowrap",
-                      width: "100%",
-                      maxWidth: "600px",
-                      margin: "20px auto",
-                      position: "absolute",
-                      top: "-10px",
-                      left: "50%",
-                      transform: "translateX(-50%)",
-                      zIndex: 10,
-                    }}
-                  >
-                    <marquee
-                      behavior="scroll"
-                      direction="left"
-                      scrollamount="10"
-                    >
-                      {scrollingText}
-                    </marquee>
-                  </div>
-                )}
-
+              {scrollingText && (
                 <div
-                  itemscope
-                  itemtype="https://schema.org/VideoObject"
-                  className={youtubeStyles.player}
+                  className="scrollingTextContainer font-extrabold"
                   style={{
-                    filter:
-                      "contrast(1.1) saturate(1.2) brightness(1.3) hue-rotate(0deg)",
-                    display: "block",
+                    backgroundColor: "rgba(255, 255, 255, 0.8)",
+                    color: "black",
+                    padding: "10px",
+                    fontSize: "18px",
+                    fontWeight: "bold",
+                    textAlign: "center",
+                    border: "1px solid #ccc",
+                    overflow: "hidden",
+                    whiteSpace: "nowrap",
+                    width: "100%",
+                    maxWidth: "600px",
+                    margin: "20px auto",
+                    position: "absolute",
+                    top: "-10px",
+                    left: "50%",
+                    transform: "translateX(-50%)",
+                    zIndex: 10,
                   }}
                 >
-                  <meta itemprop="name" content={articles.title} />
-                  <meta itemprop="description" content={articles.title} />
-                  <meta
-                    itemprop="uploadDate"
-                    content="2024-10-25T20:15:19.000Z"
-                  />
-                  <meta itemprop="thumbnailUrl" content={articles.image} />
-                  <meta itemprop="duration" content="P7172S" />
-                  <meta
-                    itemprop="embedUrl"
-                    content={`https://geo.dailymotion.com/player/xjrxe.html?video=${articles.videoId}&autoplay=1&Autoquality=1080p`}
-                  />
-
-                  <div
-                    ref={dailymotionPlayerRef}
-                    className={youtubeStyles.player}
-                    style={{
-                      filter:
-                        "contrast(1.1) saturate(1.2) brightness(1.3) hue-rotate(0deg)",
-                      display: "block",
-                    }}
-                  />
+                  <marquee behavior="scroll" direction="left" scrollamount="10">
+                    {scrollingText}
+                  </marquee>
                 </div>
+              )}
+            
+              <div
+                itemscope
+                itemtype="https://schema.org/VideoObject"
+                className={youtubeStyles.player}
+                   style={{
+                    filter: "contrast(1.1) saturate(1.2) brightness(1.3) hue-rotate(0deg)",
+                    display: "block",
+                  }}
+              >
+                <meta itemprop="name" content={articles.title} />
+                <meta itemprop="description" content={articles.title} />
+                <meta itemprop="uploadDate" content="2024-10-25T20:15:19.000Z" />
+                <meta itemprop="thumbnailUrl" content={articles.image} />
+                <meta itemprop="duration" content="P7172S" />
+                <meta
+                  itemprop="embedUrl"
+                  content={`https://geo.dailymotion.com/player/xjrxe.html?video=${articles.videoId}&autoplay=1&Autoquality=1080p`}
+                />
+            
+                <div
+                  ref={dailymotionPlayerRef}
+                  className={youtubeStyles.player}
+                  style={{
+                    filter: "contrast(1.1) saturate(1.2) brightness(1.3) hue-rotate(0deg)",
+                    display: "block",
+                  }}
+                />
+              </div>
                 <div
                   className="button"
                   style={{
@@ -760,12 +724,13 @@ export default function HomePage({ articles }) {
                       textAlign: "center",
                     }}
                   >
-                    This content is made available under the Fair Use Act for
-                    educational and commentary purposes only. No copyright
-                    infringement is intended.
+                    This content is made available under the Fair Use Act for educational
+                    and commentary purposes only. No copyright infringement is intended.
                   </p>
-                </div>
-              </>
+              
+              </div>
+            </>
+            
             )}
           </div>
         </div>
