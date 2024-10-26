@@ -250,7 +250,10 @@ export default function HomePage({ articles }) {
         />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <link rel="icon" type="image/x-icon" href="/favicon.ico" />
-        <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+        <meta
+          name="robots"
+          content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+        />
         <meta
           name="keywords"
           content="youtubelive, news, movies, sports, podcast, music, games, shopping, politics, trailers, fashion, education, technology, trending"
@@ -464,12 +467,14 @@ export default function HomePage({ articles }) {
 
       {/* <div className={youtubeStyles.container} > */}
       <header className={youtubeStyles.header}>
-        <h1 className={youtubeStyles.logo}
-                  style={{
-                    textAlign: "center",
-                    justifyItems:"center"
-                  }}>
-         🎞️ 🍿 💿 📀 🎥 📽️ Movies & Tv Show 🎬 📺 📸 📹 📼 🎦
+        <h1
+          className={youtubeStyles.logo}
+          style={{
+            textAlign: "center",
+            justifyItems: "center",
+          }}
+        >
+          🎞️ 🍿 💿 📽️ 🎬 Movies & Tv Show 📺 📸 📹 📼 🎦
         </h1>
       </header>
 
@@ -568,35 +573,39 @@ export default function HomePage({ articles }) {
 
             {currentVideoId.length === 11 ? ( // Assuming YouTube IDs are always 11 characters
               <>
-              <div
-                itemscope
-                itemtype="https://schema.org/VideoObject"
-                className={youtubeStyles.player}
-                style={{
-                  filter: "contrast(1.1) saturate(1.2) brightness(1.3) hue-rotate(0deg)",
-                  display: "block",
-                }}
-              >
-                <meta itemprop="name" content={articles.title} />
-                <meta itemprop="description" content={articles.title} />
-                <meta itemprop="uploadDate" content="2024-10-25T20:15:19.000Z" />
-                <meta itemprop="thumbnailUrl" content={articles.image} />
-                <meta itemprop="duration" content="P7172S" />
-                <meta
-                    itemprop="embedUrl"
-                    content={`https://www.youtube-nocookie.com/embed/${articles.videoId}`}
-                  />
-                
                 <div
-                  id="youtube-player"
+                  itemscope
+                  itemtype="https://schema.org/VideoObject"
                   className={youtubeStyles.player}
                   style={{
                     filter:
                       "contrast(1.1) saturate(1.2) brightness(1.3) hue-rotate(0deg)",
                     display: "block",
                   }}
-                />
-                  </div>
+                >
+                  <meta itemprop="name" content={articles.title} />
+                  <meta itemprop="description" content={articles.title} />
+                  <meta
+                    itemprop="uploadDate"
+                    content="2024-10-25T20:15:19.000Z"
+                  />
+                  <meta itemprop="thumbnailUrl" content={articles.image} />
+                  <meta itemprop="duration" content="P7172S" />
+                  <meta
+                    itemprop="embedUrl"
+                    content={`https://www.youtube-nocookie.com/embed/${articles.videoId}`}
+                  />
+
+                  <div
+                    id="youtube-player"
+                    className={youtubeStyles.player}
+                    style={{
+                      filter:
+                        "contrast(1.1) saturate(1.2) brightness(1.3) hue-rotate(0deg)",
+                      display: "block",
+                    }}
+                  />
+                </div>
                 <div
                   className="button"
                   style={{
@@ -628,7 +637,7 @@ export default function HomePage({ articles }) {
                     infringement is intended.
                   </p>
                 </div>
-               
+
                 {scrollingText && (
                   <div
                     className="scrollingTextContainer font-extrabold"
@@ -664,63 +673,72 @@ export default function HomePage({ articles }) {
               </>
             ) : (
               <>
-              {scrollingText && (
+                {scrollingText && (
+                  <div
+                    className="scrollingTextContainer font-extrabold"
+                    style={{
+                      backgroundColor: "rgba(255, 255, 255, 0.8)",
+                      color: "black",
+                      padding: "10px",
+                      fontSize: "18px",
+                      fontWeight: "bold",
+                      textAlign: "center",
+                      border: "1px solid #ccc",
+                      overflow: "hidden",
+                      whiteSpace: "nowrap",
+                      width: "100%",
+                      maxWidth: "600px",
+                      margin: "20px auto",
+                      position: "absolute",
+                      top: "-10px",
+                      left: "50%",
+                      transform: "translateX(-50%)",
+                      zIndex: 10,
+                    }}
+                  >
+                    <marquee
+                      behavior="scroll"
+                      direction="left"
+                      scrollamount="10"
+                    >
+                      {scrollingText}
+                    </marquee>
+                  </div>
+                )}
+
                 <div
-                  className="scrollingTextContainer font-extrabold"
-                  style={{
-                    backgroundColor: "rgba(255, 255, 255, 0.8)",
-                    color: "black",
-                    padding: "10px",
-                    fontSize: "18px",
-                    fontWeight: "bold",
-                    textAlign: "center",
-                    border: "1px solid #ccc",
-                    overflow: "hidden",
-                    whiteSpace: "nowrap",
-                    width: "100%",
-                    maxWidth: "600px",
-                    margin: "20px auto",
-                    position: "absolute",
-                    top: "-10px",
-                    left: "50%",
-                    transform: "translateX(-50%)",
-                    zIndex: 10,
-                  }}
-                >
-                  <marquee behavior="scroll" direction="left" scrollamount="10">
-                    {scrollingText}
-                  </marquee>
-                </div>
-              )}
-            
-              <div
-                itemscope
-                itemtype="https://schema.org/VideoObject"
-                className={youtubeStyles.player}
-                   style={{
-                    filter: "contrast(1.1) saturate(1.2) brightness(1.3) hue-rotate(0deg)",
-                    display: "block",
-                  }}
-              >
-                <meta itemprop="name" content={articles.title} />
-                <meta itemprop="description" content={articles.title} />
-                <meta itemprop="uploadDate" content="2024-10-25T20:15:19.000Z" />
-                <meta itemprop="thumbnailUrl" content={articles.image} />
-                <meta itemprop="duration" content="P7172S" />
-                <meta
-                  itemprop="embedUrl"
-                  content={`https://geo.dailymotion.com/player/xjrxe.html?video=${articles.videoId}&autoplay=1&Autoquality=1080p`}
-                />
-            
-                <div
-                  ref={dailymotionPlayerRef}
+                  itemscope
+                  itemtype="https://schema.org/VideoObject"
                   className={youtubeStyles.player}
                   style={{
-                    filter: "contrast(1.1) saturate(1.2) brightness(1.3) hue-rotate(0deg)",
+                    filter:
+                      "contrast(1.1) saturate(1.2) brightness(1.3) hue-rotate(0deg)",
                     display: "block",
                   }}
-                />
-              </div>
+                >
+                  <meta itemprop="name" content={articles.title} />
+                  <meta itemprop="description" content={articles.title} />
+                  <meta
+                    itemprop="uploadDate"
+                    content="2024-10-25T20:15:19.000Z"
+                  />
+                  <meta itemprop="thumbnailUrl" content={articles.image} />
+                  <meta itemprop="duration" content="P7172S" />
+                  <meta
+                    itemprop="embedUrl"
+                    content={`https://geo.dailymotion.com/player/xjrxe.html?video=${articles.videoId}&autoplay=1&Autoquality=1080p`}
+                  />
+
+                  <div
+                    ref={dailymotionPlayerRef}
+                    className={youtubeStyles.player}
+                    style={{
+                      filter:
+                        "contrast(1.1) saturate(1.2) brightness(1.3) hue-rotate(0deg)",
+                      display: "block",
+                    }}
+                  />
+                </div>
                 <div
                   className="button"
                   style={{
@@ -747,13 +765,12 @@ export default function HomePage({ articles }) {
                       textAlign: "center",
                     }}
                   >
-                    This content is made available under the Fair Use Act for educational
-                    and commentary purposes only. No copyright infringement is intended.
+                    This content is made available under the Fair Use Act for
+                    educational and commentary purposes only. No copyright
+                    infringement is intended.
                   </p>
-              
-              </div>
-            </>
-            
+                </div>
+              </>
             )}
           </div>
         </div>
