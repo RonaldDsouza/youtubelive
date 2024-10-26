@@ -1,12 +1,39 @@
 {
     "articles": [
       {
-        "id": "article1",
+        "id": "4",
+        "badge": " [ Music ] ",
+        "title": "Pyaar Bhi Jhootha | The Miranda Brothers",
+        "image": "https://img.youtube.com/vi/BdFnOuLnP_o/maxresdefault.jpg",
+        "videoitem": ["BdFnOuLnP_o"],
+        "videotittle": ["Pyaar Bhi Jhootha | The Miranda Brothers (2024)"],
+          "text": "Welcome to Youtube Live™, your go-to platform for discovering the best YouTube content curated just for you. We specialize in presenting the ultimate selection of videos across a wide range of categories including news, movies, sports, podcasts, music, games, shopping, politics, trailers, fashion, education, technology, and the latest trending topics. By analyzing thousands of videos, we ensure that only the highest-quality, most engaging, and relevant content makes it to our platform. Whether you're a fan of current events, a movie buff, a tech enthusiast, or someone who loves to stay on top of trends, we’ve got you covered."
+      },
+      {
+        "id": "3",
+        "badge": " [ Music ] ",
+        "title": "Jaadu | Do Patti",
+        "image": "https://img.youtube.com/vi/feiYsmCE52c/maxresdefault.jpg",
+        "videoitem": ["feiYsmCE52c"],
+        "videotittle": ["Jaadu | Do Patti (2024)"],
+          "text": "Welcome to Youtube Live™, your go-to platform for discovering the best YouTube content curated just for you. We specialize in presenting the ultimate selection of videos across a wide range of categories including news, movies, sports, podcasts, music, games, shopping, politics, trailers, fashion, education, technology, and the latest trending topics. By analyzing thousands of videos, we ensure that only the highest-quality, most engaging, and relevant content makes it to our platform. Whether you're a fan of current events, a movie buff, a tech enthusiast, or someone who loves to stay on top of trends, we’ve got you covered."
+      },
+      {
+        "id": "2",
+        "badge": " [ Music ] ",
+        "title": "Aaj Ki Raat | Stree 2",
+        "image": "https://img.youtube.com/vi/roz9sXFkTuE/maxresdefault.jpg",
+        "videoitem": ["roz9sXFkTuE"],
+        "videotittle": ["Aaj Ki Raat | Stree 2 (2024)"],
+          "text": "Welcome to Youtube Live™, your go-to platform for discovering the best YouTube content curated just for you. We specialize in presenting the ultimate selection of videos across a wide range of categories including news, movies, sports, podcasts, music, games, shopping, politics, trailers, fashion, education, technology, and the latest trending topics. By analyzing thousands of videos, we ensure that only the highest-quality, most engaging, and relevant content makes it to our platform. Whether you're a fan of current events, a movie buff, a tech enthusiast, or someone who loves to stay on top of trends, we’ve got you covered."
+      },
+      {
+        "id": "1",
         "badge": " [ Music ] ",
         "title": "O Beliya Official Music Video",
         "image": "https://img.youtube.com/vi/UFrg-IQS9Ac/maxresdefault.jpg",
         "videoitem": ["UFrg-IQS9Ac"],
-        "videotittle": ["Seven Cemeteries (2024)"],
+        "videotittle": ["O Beliya Official Music Video (2024)"],
           "text": "Welcome to Youtube Live™, your go-to platform for discovering the best YouTube content curated just for you. We specialize in presenting the ultimate selection of videos across a wide range of categories including news, movies, sports, podcasts, music, games, shopping, politics, trailers, fashion, education, technology, and the latest trending topics. By analyzing thousands of videos, we ensure that only the highest-quality, most engaging, and relevant content makes it to our platform. Whether you're a fan of current events, a movie buff, a tech enthusiast, or someone who loves to stay on top of trends, we’ve got you covered."
       }
     ]
