@@ -8,7 +8,7 @@ import Script from "next/script";
 
 export async function getStaticProps() {
   try {
-    const res = await fetch("https://youtubelive.vercel.app/movies.json"); 
+    const res = await fetch("https://youtubelive.vercel.app/movies.json");
     if (!res.ok) {
       throw new Error(`Failed to fetch data: ${res.status}`);
     }
@@ -35,17 +35,24 @@ export default function HomePage({ articles }) {
   const [currentVideoId, setCurrentVideoId] = useState("");
   const [playerReady, setPlayerReady] = useState(false);
   const playerRef = useRef(null);
-  const dailymotionPlayerRef = useRef(null);
-  const [showMessage, setShowMessage] = useState(false);
-  const [scrollingText, setScrollingText] = useState("");
+  const dailymotionPlayerRef = useRef(null); // Reference for Dailymotion player
+  const [showMessage, setShowMessage] = useState(false); // State for the message visibility
+  const [scrollingText, setScrollingText] = useState(""); // State for the scrolling text
 
   // Pagination States
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 10; // Number of articles per page
 
- // Filtered articles based on currentPage
- const totalPages = Math.ceil(articles.length / itemsPerPage);
- const currentArticles = articles.slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage);
+  // Calculate displayed articles based on pagination
+  const indexOfLastArticle = currentPage * itemsPerPage;
+  const indexOfFirstArticle = indexOfLastArticle - itemsPerPage;
+  const currentArticles = articles.slice(
+    indexOfFirstArticle,
+    indexOfLastArticle
+  );
+
+  // Calculate total pages
+  const totalPages = Math.ceil(articles.length / itemsPerPage);
 
   const loadYouTubeAPI = () => {
     const onYouTubeIframeAPIReady = () => setPlayerReady(true);
@@ -96,7 +103,7 @@ export default function HomePage({ articles }) {
     }
 
     const player = document.createElement("iframe");
-  player.src = `https://geo.dailymotion.com/player/xjrxe.html?video=${videoId}&autoplay=1&Autoquality=1080p`;
+    player.src = `https://geo.dailymotion.com/player/xjrxe.html?video=${videoId}&autoplay=1&Autoquality=1080p`;
     player.width = "100%";
     player.height = "100%";
     player.setAttribute("allowfullscreen", "true");
@@ -137,14 +144,14 @@ export default function HomePage({ articles }) {
     margin: "0 5px", // Margin for buttons
   };
 
-      // Load scrolling text from articles data if available
-      useEffect(() => {
-        if (articles && articles.length > 0) {
-          setScrollingText(articles[0].text || "");
-          console.log("Scrolling Text from JSON:", articles[0].text); // Debugging log
-        }
-      }, [articles]);
-  
+  // Load scrolling text from articles data if available
+  useEffect(() => {
+    if (articles && articles.length > 0) {
+      setScrollingText(articles[0].text || "");
+      console.log("Scrolling Text from JSON:", articles[0].text); // Debugging log
+    }
+  }, [articles]);
+
   const moviesSchema = JSON.stringify({
     "@context": "https://schema.org",
     "@graph": [
@@ -454,15 +461,19 @@ export default function HomePage({ articles }) {
           </button>
         </ul>
       </div>
+
+      {/* <div className={youtubeStyles.container} > */}
       <header className={youtubeStyles.header}>
-        <h1 className={youtubeStyles.logo}>Movies & Tv Show Section.</h1>
+        <h1 className={youtubeStyles.logo}>
+          Sports Live & Highlights Section.
+        </h1>
       </header>
 
       <main className={youtubeStyles.main}>
         {currentArticles.length > 0 ? (
           <div className={youtubeStyles.grid}>
-            {currentArticles.map((article) => (
-              <div key={article.id} className={youtubeStyles.card}>
+            {currentArticles.map((article, index) => (
+              <div key={index} className={youtubeStyles.card}>
                 {article.image && (
                   <div
                     className={youtubeStyles.imageWrapper}
@@ -480,7 +491,8 @@ export default function HomePage({ articles }) {
                         textAlign: "center",
                         cursor: "pointer",
                         boxShadow: "0 0 10px 0 #000",
-                        filter: "contrast(1.1) saturate(1.1) brightness(1.0) hue-rotate(0deg)",
+                        filter:
+                          "contrast(1.1) saturate(1.1) brightness(1.0) hue-rotate(0deg)",
                       }}
                     />
                   </div>
@@ -505,6 +517,7 @@ export default function HomePage({ articles }) {
         ) : (
           <p>No videos available.</p>
         )}
+
         <p
           className="flex flex-col items-center justify-center"
           style={{
@@ -531,7 +544,9 @@ export default function HomePage({ articles }) {
             Page {currentPage} of {totalPages}
           </span>
           <button
-            onClick={() => setCurrentPage((prev) => Math.min(prev + 1, totalPages))}
+            onClick={() =>
+              setCurrentPage((prev) => Math.min(prev + 1, totalPages))
+            }
             disabled={currentPage === totalPages}
             style={buttonStyle}
           >
@@ -549,6 +564,25 @@ export default function HomePage({ articles }) {
 
             {currentVideoId.length === 11 ? ( // Assuming YouTube IDs are always 11 characters
               <>
+              <div
+                itemscope
+                itemtype="https://schema.org/VideoObject"
+                className={youtubeStyles.player}
+                style={{
+                  filter: "contrast(1.1) saturate(1.2) brightness(1.3) hue-rotate(0deg)",
+                  display: "block",
+                }}
+              >
+                <meta itemprop="name" content={articles.title} />
+                <meta itemprop="description" content={articles.title} />
+                <meta itemprop="uploadDate" content="2024-10-25T20:15:19.000Z" />
+                <meta itemprop="thumbnailUrl" content={articles.image} />
+                <meta itemprop="duration" content="P7172S" />
+                <meta
+                    itemprop="embedUrl"
+                    content={`https://www.youtube-nocookie.com/embed/${articles.videoId}`}
+                  />
+                
                 <div
                   id="youtube-player"
                   className={youtubeStyles.player}
@@ -558,6 +592,7 @@ export default function HomePage({ articles }) {
                     display: "block",
                   }}
                 />
+                  </div>
                 <div
                   className="button"
                   style={{
@@ -589,6 +624,7 @@ export default function HomePage({ articles }) {
                     infringement is intended.
                   </p>
                 </div>
+               
                 {scrollingText && (
                   <div
                     className="scrollingTextContainer font-extrabold"
@@ -624,47 +660,63 @@ export default function HomePage({ articles }) {
               </>
             ) : (
               <>
-                {scrollingText && (
-                  <div
-                    className="scrollingTextContainer font-extrabold"
-                    style={{
-                      backgroundColor: "rgba(255, 255, 255, 0.8)",
-                      color: "black",
-                      padding: "10px",
-                      fontSize: "18px",
-                      fontWeight: "bold",
-                      textAlign: "center",
-                      border: "1px solid #ccc",
-                      overflow: "hidden",
-                      whiteSpace: "nowrap",
-                      width: "100%",
-                      maxWidth: "600px",
-                      margin: "20px auto",
-                      position: "absolute",
-                      top: "-10px",
-                      left: "50%",
-                      transform: "translateX(-50%)",
-                      zIndex: 10,
-                    }}
-                  >
-                    <marquee
-                      behavior="scroll"
-                      direction="left"
-                      scrollamount="10"
-                    >
-                      {scrollingText}
-                    </marquee>
-                  </div>
-                )}
+              {scrollingText && (
+                <div
+                  className="scrollingTextContainer font-extrabold"
+                  style={{
+                    backgroundColor: "rgba(255, 255, 255, 0.8)",
+                    color: "black",
+                    padding: "10px",
+                    fontSize: "18px",
+                    fontWeight: "bold",
+                    textAlign: "center",
+                    border: "1px solid #ccc",
+                    overflow: "hidden",
+                    whiteSpace: "nowrap",
+                    width: "100%",
+                    maxWidth: "600px",
+                    margin: "20px auto",
+                    position: "absolute",
+                    top: "-10px",
+                    left: "50%",
+                    transform: "translateX(-50%)",
+                    zIndex: 10,
+                  }}
+                >
+                  <marquee behavior="scroll" direction="left" scrollamount="10">
+                    {scrollingText}
+                  </marquee>
+                </div>
+              )}
+            
+              <div
+                itemscope
+                itemtype="https://schema.org/VideoObject"
+                className={youtubeStyles.player}
+                   style={{
+                    filter: "contrast(1.1) saturate(1.2) brightness(1.3) hue-rotate(0deg)",
+                    display: "block",
+                  }}
+              >
+                <meta itemprop="name" content={articles.title} />
+                <meta itemprop="description" content={articles.title} />
+                <meta itemprop="uploadDate" content="2024-10-25T20:15:19.000Z" />
+                <meta itemprop="thumbnailUrl" content={articles.image} />
+                <meta itemprop="duration" content="P7172S" />
+                <meta
+                  itemprop="embedUrl"
+                  content={`https://geo.dailymotion.com/player/xjrxe.html?video=${articles.videoId}&autoplay=1&Autoquality=1080p`}
+                />
+            
                 <div
                   ref={dailymotionPlayerRef}
                   className={youtubeStyles.player}
                   style={{
-                    filter:
-                      "contrast(1.1) saturate(1.2) brightness(1.3) hue-rotate(0deg)",
+                    filter: "contrast(1.1) saturate(1.2) brightness(1.3) hue-rotate(0deg)",
                     display: "block",
                   }}
                 />
+              </div>
                 <div
                   className="button"
                   style={{
@@ -678,7 +730,7 @@ export default function HomePage({ articles }) {
                     textAlign: "center",
                     borderRadius: "5px",
                     display: showMessage ? "block" : "none",
-                    zIndex: 1000, // Ensure it sits above the player
+                    zIndex: 1000,
                   }}
                 >
                   Playing video from Dailymotion
@@ -691,12 +743,13 @@ export default function HomePage({ articles }) {
                       textAlign: "center",
                     }}
                   >
-                    This content is made available under the Fair Use Act for
-                    educational and commentary purposes only. No copyright
-                    infringement is intended.
+                    This content is made available under the Fair Use Act for educational
+                    and commentary purposes only. No copyright infringement is intended.
                   </p>
-                </div>
-              </>
+              
+              </div>
+            </>
+            
             )}
           </div>
         </div>

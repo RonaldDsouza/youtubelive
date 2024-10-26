@@ -38,25 +38,21 @@ export default function HomePage({ articles }) {
   const dailymotionPlayerRef = useRef(null); // Reference for Dailymotion player
   const [showMessage, setShowMessage] = useState(false); // State for the message visibility
   const [scrollingText, setScrollingText] = useState(""); // State for the scrolling text
+
   // Pagination States
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 10; // Number of articles per page
-  const [selectedCategory, setSelectedCategory] = useState("All"); // State for selected category
 
-  // Extract unique categories from articles
-  const categories = Array.from(new Set(articles.map(article => article.category))).concat("All");
-
-  // Calculate displayed articles based on pagination and filtering
-  const filteredArticles = selectedCategory === "All" 
-    ? articles 
-    : articles.filter(article => article.category === selectedCategory);
-  
+  // Calculate displayed articles based on pagination
   const indexOfLastArticle = currentPage * itemsPerPage;
   const indexOfFirstArticle = indexOfLastArticle - itemsPerPage;
-  const currentArticles = filteredArticles.slice(indexOfFirstArticle, indexOfLastArticle);
+  const currentArticles = articles.slice(
+    indexOfFirstArticle,
+    indexOfLastArticle
+  );
 
   // Calculate total pages
-  const totalPages = Math.ceil(filteredArticles.length / itemsPerPage);
+  const totalPages = Math.ceil(articles.length / itemsPerPage);
 
   const loadYouTubeAPI = () => {
     const onYouTubeIframeAPIReady = () => setPlayerReady(true);
@@ -107,7 +103,7 @@ export default function HomePage({ articles }) {
     }
 
     const player = document.createElement("iframe");
-    player.src = `https://www.dailymotion.com/embed/video/${videoId}`;
+    player.src = `https://geo.dailymotion.com/player/xjrxe.html?video=${videoId}&autoplay=1&Autoquality=1080p`;
     player.width = "100%";
     player.height = "100%";
     player.setAttribute("allowfullscreen", "true");
@@ -148,84 +144,99 @@ export default function HomePage({ articles }) {
     margin: "0 5px", // Margin for buttons
   };
 
-      // Load scrolling text from articles data if available
-      useEffect(() => {
-        if (articles && articles.length > 0) {
-          setScrollingText(articles[0].text || "");
-          console.log("Scrolling Text from JSON:", articles[0].text); // Debugging log
-        }
-      }, [articles]);
-  
+  // Load scrolling text from articles data if available
+  useEffect(() => {
+    if (articles && articles.length > 0) {
+      setScrollingText(articles[0].text || "");
+      console.log("Scrolling Text from JSON:", articles[0].text); // Debugging log
+    }
+  }, [articles]);
+
   const educationSchema = JSON.stringify({
     "@context": "https://schema.org",
     "@graph": [
       {
         "@type": "CollectionPage",
         "@id": "https://youtubelive.vercel.app/education/",
-        "url": "https://youtubelive.vercel.app/education/",
-        "name": "Education & Courses Section - Youtube Live™",
-        "isPartOf": { "@id": "https://youtubelive.vercel.app/#website" },
-        "primaryImageOfPage": { "@id": "https://youtubelive.vercel.app/education/#primaryimage" },
-        "image": { "@id": "https://youtubelive.vercel.app/education/#primaryimage" },
-        "thumbnailUrl": "https://youtubelive.vercel.app/og_image.jpg",
-        "breadcrumb": { "@id": "https://youtubelive.vercel.app/education/#breadcrumb" },
-        "inLanguage": "en-US"
+        url: "https://youtubelive.vercel.app/education/",
+        name: "Education & Courses Section - Youtube Live™",
+        isPartOf: { "@id": "https://youtubelive.vercel.app/#website" },
+        primaryImageOfPage: {
+          "@id": "https://youtubelive.vercel.app/education/#primaryimage",
+        },
+        image: {
+          "@id": "https://youtubelive.vercel.app/education/#primaryimage",
+        },
+        thumbnailUrl: "https://youtubelive.vercel.app/og_image.jpg",
+        breadcrumb: {
+          "@id": "https://youtubelive.vercel.app/education/#breadcrumb",
+        },
+        inLanguage: "en-US",
       },
       {
         "@type": "ImageObject",
-        "inLanguage": "en-US",
+        inLanguage: "en-US",
         "@id": "https://youtubelive.vercel.app/education/#primaryimage",
-        "url": "https://youtubelive.vercel.app/og_image.jpg",
-        "contentUrl": "https://youtubelive.vercel.app/og_image.jpg",
-        "width": 1280,
-        "height": 720
+        url: "https://youtubelive.vercel.app/og_image.jpg",
+        contentUrl: "https://youtubelive.vercel.app/og_image.jpg",
+        width: 1280,
+        height: 720,
       },
       {
         "@type": "BreadcrumbList",
         "@id": "https://youtubelive.vercel.app/education/#breadcrumb",
-        "itemListElement": [
-          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://youtubelive.vercel.app/" },
-          { "@type": "ListItem", "position": 2, "name": "Education" }
-        ]
+        itemListElement: [
+          {
+            "@type": "ListItem",
+            position: 1,
+            name: "Home",
+            item: "https://youtubelive.vercel.app/",
+          },
+          { "@type": "ListItem", position: 2, name: "Education" },
+        ],
       },
       {
         "@type": "WebSite",
         "@id": "https://youtubelive.vercel.app/#website",
-        "url": "https://youtubelive.vercel.app/",
-        "name": "Youtube Live™",
-        "description": "",
-        "publisher": { "@id": "https://youtubelive.vercel.app/#organization" },
-        "potentialAction": [
+        url: "https://youtubelive.vercel.app/",
+        name: "Youtube Live™",
+        description: "",
+        publisher: { "@id": "https://youtubelive.vercel.app/#organization" },
+        potentialAction: [
           {
             "@type": "SearchAction",
-            "target": { "@type": "EntryPoint", "urlTemplate": "https://youtubelive.vercel.app/?s={search_term_string}" },
+            target: {
+              "@type": "EntryPoint",
+              urlTemplate:
+                "https://youtubelive.vercel.app/?s={search_term_string}",
+            },
             "query-input": {
               "@type": "PropertyValueSpecification",
-              "valueRequired": true,
-              "valueName": "search_term_string"
-            }
-          }
+              valueRequired: true,
+              valueName: "search_term_string",
+            },
+          },
         ],
-        "inLanguage": "en-US"
+        inLanguage: "en-US",
       },
       {
         "@type": "Organization",
         "@id": "https://youtubelive.vercel.app/#organization",
-        "name": "Youtube Live™",
-        "url": "https://youtubelive.vercel.app/",
-        "logo": {
+        name: "Youtube Live™",
+        url: "https://youtubelive.vercel.app/",
+        logo: {
           "@type": "ImageObject",
-          "inLanguage": "en-US",
+          inLanguage: "en-US",
           "@id": "https://youtubelive.vercel.app/#/schema/logo/image/",
-          "url": "https://youtubelive.vercel.app/logo.png",
-          "contentUrl": "https://youtubelive.vercel.app/logo.png",
-          "width": 280,
-          "height": 100,
-          "caption": "Youtube Live™"
+          url: "https://youtubelive.vercel.app/logo.png",
+          contentUrl: "https://youtubelive.vercel.app/logo.png",
+          width: 280,
+          height: 100,
+          caption: "Youtube Live™",
         },
-        "image": { "@id": "https://youtubelive.vercel.app/#/schema/logo/image/" }
-      }
-    ]
+        image: { "@id": "https://youtubelive.vercel.app/#/schema/logo/image/" },
+      },
+    ],
   });
 
   return (
@@ -241,7 +252,10 @@ export default function HomePage({ articles }) {
         />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <link rel="icon" type="image/x-icon" href="/favicon.ico" />
-        <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+        <meta
+          name="robots"
+          content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+        />
         <meta
           name="keywords"
           content="youtubelive, news, movies, sports, podcast, music, games, shopping, politics, trailers, fashion, education, technology, trending"
@@ -261,7 +275,10 @@ export default function HomePage({ articles }) {
           property="og:title"
           content="Youtube Live™ - Education & Courses Section."
         />
-        <meta property="og:url" content="https://youtubelive.vercel.app/education" />
+        <meta
+          property="og:url"
+          content="https://youtubelive.vercel.app/education"
+        />
         <meta
           property="og:site_name"
           content="Youtube Live™ - Education & Courses Section."
@@ -290,8 +307,8 @@ export default function HomePage({ articles }) {
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: educationSchema }}
         />
-       
-          <script
+
+        <script
           async
           src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4821855388989115"
           crossOrigin="anonymous"
@@ -453,14 +470,16 @@ export default function HomePage({ articles }) {
 
       {/* <div className={youtubeStyles.container} > */}
       <header className={youtubeStyles.header}>
-        <h1 className={youtubeStyles.logo}>Education & Courses Section.</h1>
+        <h1 className={youtubeStyles.logo}>
+          Sports Live & Highlights Section.
+        </h1>
       </header>
 
       <main className={youtubeStyles.main}>
         {currentArticles.length > 0 ? (
           <div className={youtubeStyles.grid}>
-            {currentArticles.map((article) => (
-              <div key={article.id} className={youtubeStyles.card}>
+            {currentArticles.map((article, index) => (
+              <div key={index} className={youtubeStyles.card}>
                 {article.image && (
                   <div
                     className={youtubeStyles.imageWrapper}
@@ -478,7 +497,8 @@ export default function HomePage({ articles }) {
                         textAlign: "center",
                         cursor: "pointer",
                         boxShadow: "0 0 10px 0 #000",
-                        filter: "contrast(1.1) saturate(1.1) brightness(1.0) hue-rotate(0deg)",
+                        filter:
+                          "contrast(1.1) saturate(1.1) brightness(1.0) hue-rotate(0deg)",
                       }}
                     />
                   </div>
@@ -503,6 +523,7 @@ export default function HomePage({ articles }) {
         ) : (
           <p>No videos available.</p>
         )}
+
         <p
           className="flex flex-col items-center justify-center"
           style={{
@@ -529,7 +550,9 @@ export default function HomePage({ articles }) {
             Page {currentPage} of {totalPages}
           </span>
           <button
-            onClick={() => setCurrentPage((prev) => Math.min(prev + 1, totalPages))}
+            onClick={() =>
+              setCurrentPage((prev) => Math.min(prev + 1, totalPages))
+            }
             disabled={currentPage === totalPages}
             style={buttonStyle}
           >
@@ -548,14 +571,38 @@ export default function HomePage({ articles }) {
             {currentVideoId.length === 11 ? ( // Assuming YouTube IDs are always 11 characters
               <>
                 <div
-                  id="youtube-player"
+                  itemscope
+                  itemtype="https://schema.org/VideoObject"
                   className={youtubeStyles.player}
                   style={{
                     filter:
                       "contrast(1.1) saturate(1.2) brightness(1.3) hue-rotate(0deg)",
                     display: "block",
                   }}
-                />
+                >
+                  <meta itemprop="name" content={articles.title} />
+                  <meta itemprop="description" content={articles.title} />
+                  <meta
+                    itemprop="uploadDate"
+                    content="2024-10-25T20:15:19.000Z"
+                  />
+                  <meta itemprop="thumbnailUrl" content={articles.image} />
+                  <meta itemprop="duration" content="P7172S" />
+                  <meta
+                    itemprop="embedUrl"
+                    content={`https://www.youtube-nocookie.com/embed/${articles.videoId}`}
+                  />
+
+                  <div
+                    id="youtube-player"
+                    className={youtubeStyles.player}
+                    style={{
+                      filter:
+                        "contrast(1.1) saturate(1.2) brightness(1.3) hue-rotate(0deg)",
+                      display: "block",
+                    }}
+                  />
+                </div>
                 <div
                   className="button"
                   style={{
@@ -587,6 +634,7 @@ export default function HomePage({ articles }) {
                     infringement is intended.
                   </p>
                 </div>
+
                 {scrollingText && (
                   <div
                     className="scrollingTextContainer font-extrabold"
@@ -654,15 +702,40 @@ export default function HomePage({ articles }) {
                     </marquee>
                   </div>
                 )}
+
                 <div
-                  ref={dailymotionPlayerRef}
+                  itemscope
+                  itemtype="https://schema.org/VideoObject"
                   className={youtubeStyles.player}
                   style={{
                     filter:
                       "contrast(1.1) saturate(1.2) brightness(1.3) hue-rotate(0deg)",
                     display: "block",
                   }}
-                />
+                >
+                  <meta itemprop="name" content={articles.title} />
+                  <meta itemprop="description" content={articles.title} />
+                  <meta
+                    itemprop="uploadDate"
+                    content="2024-10-25T20:15:19.000Z"
+                  />
+                  <meta itemprop="thumbnailUrl" content={articles.image} />
+                  <meta itemprop="duration" content="P7172S" />
+                  <meta
+                    itemprop="embedUrl"
+                    content={`https://geo.dailymotion.com/player/xjrxe.html?video=${articles.videoId}&autoplay=1&Autoquality=1080p`}
+                  />
+
+                  <div
+                    ref={dailymotionPlayerRef}
+                    className={youtubeStyles.player}
+                    style={{
+                      filter:
+                        "contrast(1.1) saturate(1.2) brightness(1.3) hue-rotate(0deg)",
+                      display: "block",
+                    }}
+                  />
+                </div>
                 <div
                   className="button"
                   style={{
@@ -676,7 +749,7 @@ export default function HomePage({ articles }) {
                     textAlign: "center",
                     borderRadius: "5px",
                     display: showMessage ? "block" : "none",
-                    zIndex: 1000, // Ensure it sits above the player
+                    zIndex: 1000,
                   }}
                 >
                   Playing video from Dailymotion
