@@ -464,7 +464,11 @@ export default function HomePage({ articles }) {
 
       {/* <div className={youtubeStyles.container} > */}
       <header className={youtubeStyles.header}>
-        <h1 className={youtubeStyles.logo}>
+        <h1 className={youtubeStyles.logo}
+                  style={{
+                    textAlign: "center",
+                    justifyItems:"center"
+                  }}>
          🎞️ 🍿 💿 📀 🎥 📽️ Movies & Tv Show 🎬 📺 📸 📹 📼 🎦
         </h1>
       </header>
