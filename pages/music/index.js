@@ -465,10 +465,8 @@ export default function HomePage({ articles }) {
           className={youtubeStyles.logo}
           style={{
             textAlign: "center",
-            cursor: "pointer",
-            boxShadow: "0 0 10px 0 #000",
-            filter:
-              "contrast(1.1) saturate(1.1) brightness(1.0) hue-rotate(0deg)",
+            //  filter:
+            //   "contrast(1.1) saturate(1.1) brightness(1.0) hue-rotate(0deg)",
           }}
         >
           🎵 🎼🎶 🎷 Music 🎸🎹 🎺 🪕 🥁
